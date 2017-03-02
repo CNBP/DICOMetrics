@@ -2,6 +2,8 @@ function Output = RecursivelyLoadDICOM()
 %Author Yang Ding
 % 2017-03-02 
 
+%This is the entry function to load all things. 
+
 
 
 %use GUI to get path. 

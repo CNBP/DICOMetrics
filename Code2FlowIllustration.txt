@@ -1,0 +1,32 @@
+RecursivelyLoadDICOM
+
+Load File: Choose Input;
+
+if(Calculating more than one metric?){
+	call MutliMetrics;
+}else{
+  call SingleMetrics;
+}
+
+function SingleMetric{
+	switch(Metrics to be Evaluated?){
+  case Focus Metrics: 
+  call EvaluateFocusMetrics.m;
+  break;
+  case SNR Metrics: 
+  call EvaluateSNRMetrics.m; 
+  break;
+  case Texture Metrics: 
+  call EvluateTextureMetrics; 
+  break;
+  }
+}
+
+function MutliMetrics{
+	for(start with the first metric;did we finish calculating all metrics?;go to next metrics){
+    call SingleMetric;
+	}
+  
+  Finished Computing All Metrics;
+}
+
