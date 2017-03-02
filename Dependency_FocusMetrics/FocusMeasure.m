@@ -1,4 +1,4 @@
- function FM = fmeasure(Image, Measure, ROI)
+ function FM = FocusMeasure(Image, Measure, ROI)
 %This function measures the relative degree of focus of 
 %an image. It may be invoked as:
 %
@@ -16,6 +16,7 @@
 %
 %  Said Pertuz
 %  Jan/2016
+% Mostly adapated as it is from here: https://www.mathworks.com/matlabcentral/fileexchange/27314-focus-measure
 
 
 if nargin>2 && ~isempty(ROI)

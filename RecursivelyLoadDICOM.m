@@ -1,8 +1,20 @@
-function Output = RecursivelyLoadDICOM2()
+function Output = RecursivelyLoadDICOM()
+%Author Yang Ding
+% 2017-03-02 
+
+
 
 %use GUI to get path. 
 path = uigetdir;
 cd(path);
+
+%Get current path. 
+scriptName = mfilename('fullpath');
+[currentpath, filename, fileextension]= fileparts(scriptName);
+
+% Ensure dependencies are properly referred to
+addpath(genpath('Dependency_General'));
+
 
 %Recursively obtain all files. 
 files = dirrec(path);
