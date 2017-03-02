@@ -1,0 +1,18 @@
+function am=argmax(V)
+% ARGMAX  argugument that maximizes matrix
+%
+%    am=ARGMAX(V) calculates position of the maximum value
+%    of matrix V
+%
+%   Author: Santiago Aja Fernandez
+%   www.lpi.tel.uva.es/~santi
+%   LOCAL STATISTICS TOOLBOX 
+%
+%   Modified: Feb 01 2008
+%
+
+function am=argmax(V)
+
+[a,b]=max(V(:));
+
+am=b;

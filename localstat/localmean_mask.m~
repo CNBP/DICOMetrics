@@ -1,0 +1,32 @@
+function localMean=localmean_mask(I,mask,Ws)
+% varlocal   Local variance
+%
+%    INPUT:
+%
+%	- I: input image
+%       - Ws: Estimation window Ws=[Wx Wy];
+%	- inses: if inses=1 unbiased estimation of Variance
+%
+%   Author: Santiago Aja Fernandez
+%   LOCAL STATISTICS TOOLBOX 
+%
+%   Modified: Feb 01 2008
+%
+
+I=double(I);
+[Mx My]=size(I);
+if length(mask)==1
+Mk=(I>mask);
+else
+Mk=mask;
+end
+
+localMean = filter2(ones(Ws), I) / prod(Ws);
+    
+
+      Norm=filter2(ones(Ws), Mk);
+      Norm=Norm+((Norm)==0);
+      localMean = filter2(ones(Ws), I.*Mk) ./ Norm;     
+
+
+

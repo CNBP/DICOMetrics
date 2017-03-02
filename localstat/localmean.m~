@@ -1,0 +1,21 @@
+function localMean=localmean(I,Ws)
+% varlocal   Local variance
+%
+%    INPUT:
+%
+%	- I: input image
+%       - Ws: Estimation window Ws=[Wx Wy];
+%	- inses: if inses=1 unbiased estimation of Variance
+%
+%   Author: Santiago Aja Fernandez
+%   LOCAL STATISTICS TOOLBOX 
+%
+%   Modified: Feb 01 2008
+%
+
+I=double(I);
+
+
+localMean = filter2(ones(Ws), I) / prod(Ws);
+    
+
