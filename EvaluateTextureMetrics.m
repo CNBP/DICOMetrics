@@ -1,51 +1,82 @@
 function Metric = EvaluateTextureMetrics(Image,AlgoChoice)
-% Author: Yang Ding. 2017-03-02
-% This function loads a regular image try to parse it properly to the format and then send it to a bunch of texture image quality processing processing facility. 
+%EvaluateTextureMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of texture image quality processing processing facility. 
+%Optional file header info (to give more details about the function than in the H1 line)
+%Optional file header info (to give more details about the function than in the H1 line)
+%Optional file header info (to give more details about the function than in the H1 line)
+%
+% Syntax:  Metric = EvaluateTextureMetrics(Image,AlgoChoice)
+%
+% Inputs:
+%    	Image 			- this is the grayscale level image has been passed to be processed and summarized
+%    	AlgoChoice		- a number indicate which algorithm to be used
+%			
+% Outputs:			
+%    	Metric			- metric is the single summary of texture  metric calculated based on algorithm of choice
+%
+% Example: 
+%    	Line 1 of example
+%    	Line 2 of example
+%    	Line 3 of example
+%
+% Other m-files required: 		none
+% Subfunctions: 				none
+% MAT-files required: 			none
+%
+% See also: OTHER_FUNCTION_NAME1,  OTHER_FUNCTION_NAME2
 
-% ImageInBuffer = imread(InputImage);
-% InputRGBImageDouble = im2double(ImageInBuffer);
-% %Image = rgb2gray(InputRGBImageDouble);
-% Image = InputRGBImageDouble;
+% Author: Yang Ding
+% All works sponsored by Dr. Gregory Lodygensky and the Canadian Neonatal Brain Platform
+% Saint. Justine Hospital, Montreal, Quebec, 
+% email address: it@cnbp.ca
+% Website: http://cnbp.ca
+% 2017-03; Last revision: 10:39 AM 2017-03-02
 
-%Input QC Check
-if(~isnumeric(AlgoChoice))
-    Metric = [];
-    return
-end 
-    
-	
-% from this point onward input must be a grayscale image	
-switch AlgoChoice
+%------------- BEGIN CODE --------------
 
-    case 1 % Matlab Entropy
-		Metric = entropy(Image)
-    
-    case 2 % GLCM Contrast
-		glcms = graycomatrix(Image);
-		stats = graycoprops(glcms);		
-		Metric = stats.Contrast;
-          
-    case 3 % GLCM Correlation
-		glcms = graycomatrix(Image);
-		stats = graycoprops(glcms);
-		Metric = stats.Correlation
-           
-    case 4 % GLCM Energy
-		glcms = graycomatrix(Image);
-		stats = graycoprops(glcms);
-		Metric = stats.Energy
-           
-    case 5 % GLCM Homogeneity
-		glcms = graycomatrix(Image);
-		stats = graycoprops(glcms);
-		Metric = stats.Homogeneity
-           
-    otherwise
-        Metric = [];
-		return 
-end
+	% ImageInBuffer = imread(InputImage);
+	% InputRGBImageDouble = im2double(ImageInBuffer);
+	% %Image = rgb2gray(InputRGBImageDouble);
+	% Image = InputRGBImageDouble;
 
+	%Input QC Check
+	if(~isnumeric(AlgoChoice))
+		Metric = [];
+		return
+	end 
+		
+		
+	% from this point onward input must be a grayscale image	
+	switch AlgoChoice
 
+		case 1 % Matlab Entropy
+			Metric = entropy(Image)
+		
+		case 2 % GLCM Contrast
+			glcms = graycomatrix(Image);
+			stats = graycoprops(glcms);		
+			Metric = stats.Contrast;
+			  
+		case 3 % GLCM Correlation
+			glcms = graycomatrix(Image);
+			stats = graycoprops(glcms);
+			Metric = stats.Correlation
+			   
+		case 4 % GLCM Energy
+			glcms = graycomatrix(Image);
+			stats = graycoprops(glcms);
+			Metric = stats.Energy
+			   
+		case 5 % GLCM Homogeneity
+			glcms = graycomatrix(Image);
+			stats = graycoprops(glcms);
+			Metric = stats.Homogeneity
+			   
+		otherwise
+			Metric = [];
+			return 
+	end
+
+%------------- END OF CODE --------------
 end        
 
 
