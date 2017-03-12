@@ -50,10 +50,10 @@ switch AlgoChoice
     case 9
         Metric = MRI_lmmse(Image,[7,7]); 
     
-    case 10 
+    case 10 % Mean signal from the ENTIRE image
         Metric = mean2(Image);
     
-    case 11
+    case 11 %Mean Signal from 50 x 50 pixels in the middle of the image
         [Width,Height] = size(Image);
         q1=50; %size of the crop box
         X_Start = floor((Width-q1)/2); % or round instead of floor; using neither gives warning
@@ -63,7 +63,7 @@ switch AlgoChoice
         Image50 = Image(X_Start:X_Stop, Y_Start:Y_Stop, :);        
         Metric = mean2(Image50);
         
-    case 12
+    case 12 %Mean Signal from 100 x 100 pixels in the middle of the image
         [Width,Height] = size(Image);
         q1=100; %size of the crop box
         X_Start = floor((Width-q1)/2); % or round instead of floor; using neither gives warning
@@ -89,7 +89,8 @@ switch AlgoChoice
         Image50 = Image(X_Start:X_Stop, Y_Start:Y_Stop, :);        
         Signal = mean2(Image50);        
         Metric = 10*log10(Signal / Noise);
-    case 15 % Mid 100 Square SNR
+    
+	case 15 % Mid 100 Square SNR
         Noise = MRI_lmmse(Image,[7,7]);         
         [Width,Height] = size(Image);
         q1=100; %size of the crop box
@@ -100,7 +101,8 @@ switch AlgoChoice
         Image100 = Image(X_Start:X_Stop, Y_Start:Y_Stop, :);       
         Signal = mean2(Image100);        
         Metric = 10*log10(Signal / Noise);        
-    otherwise
+    
+	otherwise
         Metric = [];
 		return 
 end
