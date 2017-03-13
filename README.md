@@ -17,5 +17,13 @@ Publicly available here: https://www.mathworks.com/matlabcentral/fileexchange/27
 2. SANTIAGO AJA-FERNANDEZ's noise estimator for MRI data. 
 Publicly available here: https://www.mathworks.com/matlabcentral/fileexchange/36769-noise-estimators-for-mri-data-toolbox
 
-3. Matlab's implementation of grade level covariance  matrix:
+3. Matlab's implementation of grade level covariance matrix:
 https://www.mathworks.com/help/images/ref/graycoprops.html
+
+4. U of Texas LIVE lab: All sourced from http://live.ece.utexas.edu/research/quality/index.htm on 2017-03-13
+
+A. Mittal's Blind/Referenceless Image Spatial QUality Evaluator (BRISQUE) 
+Chaofeng li's GRNN based No Reference image Quality Index (GRNN-NRQI) 
+A. K. Moorthy's Blind Image Quality Index (BIQI). 
+A. K. Moorthy's Distortion Identification-based Image Verity and INtegrity Evaluation (DIIVINE) Index 
+

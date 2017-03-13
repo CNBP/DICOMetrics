@@ -1,8 +1,5 @@
 function Metric = EvaluateTextureMetrics(Image,AlgoChoice)
 %EvaluateTextureMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of texture image quality processing processing facility. 
-%Optional file header info (to give more details about the function than in the H1 line)
-%Optional file header info (to give more details about the function than in the H1 line)
-%Optional file header info (to give more details about the function than in the H1 line)
 %
 % Syntax:  Metric = EvaluateTextureMetrics(Image,AlgoChoice)
 %
@@ -18,7 +15,7 @@ function Metric = EvaluateTextureMetrics(Image,AlgoChoice)
 %    	Line 2 of example
 %    	Line 3 of example
 %
-% Other m-files required: 		none
+% Other m-files required: 		mostly other Matlab built-in existing functions
 % Subfunctions: 				none
 % MAT-files required: 			none
 %
