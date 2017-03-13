@@ -62,9 +62,9 @@ f = [f gam_horz];
 %% Hp-BP correlations
 
 
-hp_band = pyrband(pyr,pind,1);
+hp_band = pyrBand(pyr,pind,1);
 for ii = 1:length(subband)
-    curr_band = pyrband(pyr,pind,ii+1);
+    curr_band = pyrBand(pyr,pind,ii+1);
     [ssim_val(ii), ssim_map, cs_val(ii)] = ssim_index_new(imresize(curr_band,size(hp_band)),hp_band);
 end
 f = [f cs_val];

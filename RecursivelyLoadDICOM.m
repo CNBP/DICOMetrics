@@ -7,6 +7,9 @@ function Output = RecursivelyLoadDICOM()
 %
 % Outputs:			
 %    	Output			- the matrix array that contains ALL results. 
+%		Dimension 1: File Number
+% 		Dimension 2: Algo Index
+%		Dimension 3: Algo Type
 %
 %
 % Other m-files required: 		dirrec.m; ProcessSingleDICOMInput;
@@ -25,14 +28,20 @@ function Output = RecursivelyLoadDICOM()
 %This is the entry function to load all things. 
 
 % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
-NbFocusMetrics 	= 28;
-NbSNRMetrics 	= 15;
-NbFocusMetrics 	= 5;
+NbFocusMetrics 		= 28;
+NbSNRMetrics 		= 15;
+NbFocusMetrics 		= 5;
+NbLiveLabMetrics 	= 4
 
 % Define algorithm types:
-FocusMetrics 	= 1;
-SNRMetrics 		= 2;
-TextureMetrics 	= 3;
+FileRecords 	= 1;
+FocusMetrics 	= 2;
+SNRMetrics 		= 3;
+TextureMetrics 	= 4;
+LiveLabMetrics 	= 5;
+
+% total number of metric types
+NbMetricTypes = 5;
 
 
 % Use GUI to get path to the folder that contained all the DICOM files. 
@@ -50,79 +59,45 @@ addpath(genpath('Dependency_General'));
 % Recursively obtain all files using dirrec.m
 files = dirrec(path);
 
-
-
-%Loop at per algorithm level  % Do Focus Measure
-for algoIndex = 1:NbFocusMetrics
-    
-    %This counter keeps track which calculation tnis was for. 
-    counter = 1;
-    
-    for fileIndex = 1:length(files)
-        
-        % Check if the file is dicome. 
-        if isdicom(files{fileIndex})	
-            
-            Result = ProcessSingleDICOMInput(files{fileIndex}, FocusMetrics, algoIndex);            
-            
-            VariousScores{counter}= Result;
-            
-            FileName{counter}=files{fileIndex};
-            counter = counter +1;
-        end
-    end
-    
-    Output{algoIndex} = struct('Files',FileName, 'Scores', VariousScores);
-    
+%AlgoType: 1
+%Record all FILES:
+for fileIndex = 1:length(files)    
+	% Check if the file is dicom. 
+	if isdicom(files{fileIndex})	                    
+		Output{fileIndex,1,FileRecords} = files{fileIndex};			
+	end
 end
 
-%Loop at per algorithm level % Do SNR Measure
-for algoIndex = 1:NbSNRMetrics
+
+
+% Algo Type: 2 to 5;
+
+%Loop at the algorithm TYPE level
+for algoType = 2:NbMetricTypes
 	
-    %This counter keeps track which calculation tnis was for. 
-    counter = 1;
-    
-    for fileIndex = 1:length(files)
-        
-        % Check if the file is dicome. 
-        if isdicom(files{fileIndex})	
-            
-            Result = ProcessSingleDICOMInput(files{fileIndex}, SNRMetrics, algoIndex);            
-            
-            VariousScores{counter}= Result;
-            
-            FileName{counter}=files{fileIndex};
-            counter = counter +1;
-        end
-    end
-    
-    Output{algoIndex} = struct('Files',FileName, 'Scores', VariousScores);
-    
+	%Loop at per algorithm level  % Do Focus Measure
+	for algoIndex = 1:NbFocusMetrics       
+		
+		%Loop at the per file level
+		for fileIndex = 1:length(files)        
+			
+			% At per file level, check if the file is dicom. 
+			if isdicom(files{fileIndex})	            
+				
+				%Calculate the focus metrics score
+				Result = ProcessSingleDICOMInput(files{fileIndex}, algoType, algoIndex);
+				
+				%record the focus metric score
+				Output{fileIndex,algoIndex,algoType} = Result;					
+				
+			end
+			
+		end
+		%End Per file level loop		
+	end
+	% End per algorithm level. 
 end
-
-%Loop at per algorithm level  % Do Texture Measure
-for algoIndex = 1:NbFocusMetrics
-	
-    %This counter keeps track which calculation tnis was for. 
-    counter = 1;
-    
-    for fileIndex = 1:length(files)
-        
-        % Check if the file is dicome. 
-        if isdicom(files{fileIndex})	
-            
-            Result = ProcessSingleDICOMInput(files{fileIndex}, TextureMetrics, algoIndex);            
-            
-            VariousScores{counter}= Result;
-            
-            FileName{counter}=files{fileIndex};
-            counter = counter +1;
-        end
-    end
-    
-    Output{algoIndex} = struct('Files',FileName, 'Scores', VariousScores);
-    
-end
+% End per algorithm TYPE level.
 
 
 %------------- END OF CODE --------------

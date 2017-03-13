@@ -39,18 +39,21 @@ function Metric = ProcessSingleDICOMInput(Input, AlgoType, Algo)
     ImageInBuffer = dicomread(Input);
     
     % Convert image to double. 
-    InputRGBImageDouble = im2double(ImageInBuffer);
+    InputDoubleImage = im2double(ImageInBuffer);
     
 	% Switch depending on tourism type called the proper evaluation algorithm
 	switch (AlgoType)	
-		case 1 % Focus Metrics
-			Metric = EvaluateFocusMetrics	(InputRGBImageDouble, Algo);
+		case 2 % Focus Metrics
+			Metric = EvaluateFocusMetrics	(InputDoubleImage, Algo);
 		
-		case 2 % SNR Metrics
-			Metric = EvaluateSNRMetrics		(InputRGBImageDouble, Algo);
+		case 3 % SNR Metrics
+			Metric = EvaluateSNRMetrics		(InputDoubleImage, Algo);
 		
-		case 3 % Texture Metrics
-			Metric = EvaluateTextureMetrics	(InputRGBImageDouble, Algo);
+		case 4 % Texture Metrics
+			Metric = EvaluateTextureMetrics	(InputDoubleImage, Algo);
+			
+		case 5 % LIveLab Metrics
+			Metric = EvluateLiveLabMetrics 	(InputDoubleImage, Algo);
 	end
 
 	%------------- END OF CODE -------------- 

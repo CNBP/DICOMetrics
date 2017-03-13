@@ -25,5 +25,6 @@ https://www.mathworks.com/help/images/ref/graycoprops.html
 A. Mittal's Blind/Referenceless Image Spatial QUality Evaluator (BRISQUE) 
 Chaofeng li's GRNN based No Reference image Quality Index (GRNN-NRQI) 
 A. K. Moorthy's Blind Image Quality Index (BIQI). 
-A. K. Moorthy's Distortion Identification-based Image Verity and INtegrity Evaluation (DIIVINE) Index 
+A. K. Moorthy's Distortion Identification-based Image Verity and INtegrity Evaluation (DIIVINE) Index*  
 
+* Included the dependency from Eero Simoncelli of the steerable pyramid at http://www.cns.nyu.edu/~eero/steerpyr/
