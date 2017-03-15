@@ -31,7 +31,7 @@ function Output = RecursivelyLoadDICOM()
 NbFocusMetrics 		= 28;
 NbSNRMetrics 		= 15;
 NbFocusMetrics 		= 5;
-NbLiveLabMetrics 	= 4
+NbLiveLabMetrics 	= 2;
 
 % Define algorithm types:
 FileRecords 	= 1;
@@ -43,17 +43,19 @@ LiveLabMetrics 	= 5;
 % total number of metric types
 NbMetricTypes = 5;
 
-
-% Use GUI to get path to the folder that contained all the DICOM files. 
-path = uigetdir;
-cd(path);
-
 % Get current path of current script. 
 scriptName = mfilename('fullpath');
 [currentpath, filename, fileextension]= fileparts(scriptName);
 
 % Ensure dependencies are properly referred to
-addpath(genpath('Dependency_General'));
+addpath(genpath(
+addpath(genpath([currentpath,'Dependency_General']));
+
+% Use GUI to get path to the folder that contained all the DICOM files. 
+path = uigetdir;
+cd(path);
+
+
 
 
 % Recursively obtain all files using dirrec.m

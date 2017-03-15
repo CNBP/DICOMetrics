@@ -1,14 +1,14 @@
-function Metric = EvaluateLiveLabMetrics(Image,AlgoChoice)
+function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoChoice)
 %EvaluateLiveLabMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of LiveLab image quality processing utilities.. 
 %
-% Syntax:  Metric = EvaluateLiveLabMetrics(Image,AlgoChoice)
+% Syntax:  LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoChoice)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
 %    	AlgoChoice		- a number indicate which algorithm to be used
 %			
 % Outputs:			
-%    	Metric			- metric is the single summary of texture  metric calculated based on algorithm of choice
+%    	LiveLabMetric			- LiveLabMetric is the single summary of texture  LiveLabMetric calculated based on algorithm of choice
 %
 % Example: 
 %    	Line 1 of example
@@ -39,7 +39,7 @@ function Metric = EvaluateLiveLabMetrics(Image,AlgoChoice)
 
 	%Input QC Check
 	if(~isnumeric(AlgoChoice))
-		Metric = [];
+		LiveLabMetric = [];
 		return
 	end 
 		
@@ -48,25 +48,22 @@ function Metric = EvaluateLiveLabMetrics(Image,AlgoChoice)
 	switch AlgoChoice
 
 		case 1 % BIQI 
-			Metric = biqi(Image)
+			LiveLabMetric = biqi(Image)
 		
 		case 2 % BRISQUE
-			glcms = graycomatrix(Image);
-			stats = graycoprops(glcms);		
-			Metric = stats.Contrast;
-			  
-		case 3 % DIIVINE
-			glcms = graycomatrix(Image);
-			stats = graycoprops(glcms);
-			Metric = stats.Correlation
+			LiveLabMetric = brisquescore(Image)
+		% case 3 % DIIVINE
+			% glcms = graycomatrix(Image);
+			% stats = graycoprops(glcms);
+			% LiveLabMetric = stats.Correlation
 			   
-		case 4 % GRNN
-			glcms = graycomatrix(Image);
-			stats = graycoprops(glcms);
-			Metric = stats.Energy
+		% case 4 % GRNN
+			% glcms = graycomatrix(Image);
+			% stats = graycoprops(glcms);
+			% LiveLabMetric = stats.Energy
 			   
 		otherwise
-			Metric = [];
+			LiveLabMetric = [];
 			return 
 	end
 
