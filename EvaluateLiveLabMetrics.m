@@ -48,10 +48,11 @@ function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 	switch AlgoIndex
 
 		case 1 % BIQI 
-			LiveLabMetric = biqi(Image)
+			LiveLabMetric = biqi(Image);
 		
 		case 2 % BRISQUE
-			LiveLabMetric = brisquescore(Image)
+			LiveLabMetric = brisquescore(Image);
+			
 		% case 3 % DIIVINE
 			% glcms = graycomatrix(Image);
 			% stats = graycoprops(glcms);

@@ -75,6 +75,17 @@ function [quality probs] = biqi(im)
 % model_89_wn, model_89_blur, model_89_jp2k, rang2_ff model_ff
 %========================================================================
 
+%Adapted by Yang Ding for ease of use when not executing from the BIQI
+%directories.
+
+% Get current path of current script. 
+scriptName = mfilename('fullpath');
+[currentpath, filename, fileextension]= fileparts(scriptName);
+
+%Enter the script location in order for the system dependenceis to work
+%well. 
+cd(currentpath);
+
 
 if(size(im,3)~=1)
     im = rgb2gray(im);
@@ -131,8 +142,13 @@ for j = 1:size(rep_vec,1)
 end
 fclose(fid);
 
- system(['svm-scale -r range2 test_ind.txt >> test_ind_scaled']);
-system(['svm-predict -b 1 test_ind_scaled model_89 output_89']);
+
+%Find SVM-Scale files. 
+predict_path = which ('svm-predict.exe');
+scale_path = which ('svm-scale.exe');
+
+system([scale_path,' -r range2 test_ind.txt >> test_ind_scaled']);
+system([predict_path, ' -b 1 test_ind_scaled model_89 output_89']);
 delete test_ind.txt test_ind_scaled
 
 %% Quality along each dimension
@@ -150,8 +166,8 @@ end
 fclose(fid);
 
 % Jp2k quality
-system(['svm-scale -r range2_jp2k test_ind.txt >> test_ind_scaled']);
-system(['svm-predict  -b 1 test_ind_scaled model_89_jp2k output_blur']);
+system([scale_path,' -r range2_jp2k test_ind.txt >> test_ind_scaled']);
+system([predict_path, ' -b 1 test_ind_scaled model_89_jp2k output_blur']);
 load output_blur
 jp2k_score = output_blur;
 delete output_blur test_ind_scaled
@@ -161,23 +177,23 @@ jpeg_score  = jpeg_quality_score(im);
 
 
 % WN quality
-system(['svm-scale -r range2_wn test_ind.txt >> test_ind_scaled']);
-system(['svm-predict -b 1 test_ind_scaled model_89_wn output_blur']);
+system([scale_path,' -r range2_wn test_ind.txt >> test_ind_scaled']);
+system([predict_path, ' -b 1 test_ind_scaled model_89_wn output_blur']);
 load output_blur
 wn_score = output_blur;
 delete output_blur test_ind_scaled
 
 
 % Blur quality
-system(['svm-scale -r range2_blur test_ind.txt >> test_ind_scaled']);
-system(['svm-predict  -b 1 test_ind_scaled model_89_blur output_blur']);
+system([scale_path,' -r range2_blur test_ind.txt >> test_ind_scaled']);
+system([predict_path, ' -b 1 test_ind_scaled model_89_blur output_blur']);
 load output_blur
 blur_score = output_blur;
 delete output_blur test_ind_scaled
 
 % FF quality
-system(['svm-scale -r range2_ff test_ind.txt >> test_ind_scaled']);
-system(['svm-predict  -b 1 test_ind_scaled model_89_ff output_blur']);
+system([scale_path,' -r range2_ff test_ind.txt >> test_ind_scaled']);
+system([predict_path, ' -b 1 test_ind_scaled model_89_ff output_blur']);
 load output_blur
 ff_score = output_blur;
 

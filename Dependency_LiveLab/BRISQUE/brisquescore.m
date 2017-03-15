@@ -1,5 +1,13 @@
 function qualityscore  = brisquescore(imdist)
 
+% Get current path of current script. 
+scriptName = mfilename('fullpath');
+[currentpath, filename, fileextension]= fileparts(scriptName);
+
+%Enter the script location in order for the system dependenceis to work
+%well. 
+cd(currentpath);
+
 if(size(imdist,3)==3)
     imdist = uint8(imdist);
     imdist = rgb2gray(imdist);
@@ -9,7 +17,7 @@ imdist = double(imdist);
 
 if(nargin<2)
 feat = brisque_feature(imdist);
-disp('feat computed')
+disp('feat computed');
 end
 
 
