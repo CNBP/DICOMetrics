@@ -1,11 +1,11 @@
-function Metric = EvaluateTextureMetrics(Image,AlgoChoice)
+function Metric = EvaluateTextureMetrics(Image,AlgoIndex)
 %EvaluateTextureMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of texture image quality processing processing facility. 
 %
-% Syntax:  Metric = EvaluateTextureMetrics(Image,AlgoChoice)
+% Syntax:  Metric = EvaluateTextureMetrics(Image,AlgoIndex)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
-%    	AlgoChoice		- a number indicate which algorithm to be used
+%    	AlgoIndex		- a number indicate which algorithm to be used
 %			
 % Outputs:			
 %    	Metric			- metric is the single summary of texture  metric calculated based on algorithm of choice
@@ -36,14 +36,14 @@ function Metric = EvaluateTextureMetrics(Image,AlgoChoice)
 	% Image = InputRGBImageDouble;
 
 	%Input QC Check
-	if(~isnumeric(AlgoChoice))
+	if(~isnumeric(AlgoIndex))
 		Metric = [];
 		return
 	end 
 		
 		
 	% from this point onward input must be a grayscale image	
-	switch AlgoChoice
+	switch AlgoIndex
 
 		case 1 % Matlab Entropy
 			Metric = entropy(Image)

@@ -27,18 +27,25 @@ function Output = RecursivelyLoadDICOM()
 
 %This is the entry function to load all things. 
 
-% Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
-NbFocusMetrics 		= 28;
-NbSNRMetrics 		= 15;
-NbFocusMetrics 		= 5;
-NbLiveLabMetrics 	= 2;
-
 % Define algorithm types:
 FileRecords 	= 1;
 FocusMetrics 	= 2;
 SNRMetrics 		= 3;
 TextureMetrics 	= 4;
 LiveLabMetrics 	= 5;
+
+% Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
+NbFocusMetrics 		= 28;
+NbSNRMetrics 		= 15;
+NbTextureMetrics 	= 5;
+NbLiveLabMetrics 	= 2;
+
+NbMetrics(FileRecords)      = 1;
+NbMetrics(FocusMetrics) 	= NbFocusMetrics;
+NbMetrics(SNRMetrics) 		= NbSNRMetrics;
+NbMetrics(TextureMetrics) 	= NbTextureMetrics;
+NbMetrics(LiveLabMetrics) 	= NbLiveLabMetrics;
+
 
 % total number of metric types
 NbMetricTypes = 5;
@@ -48,37 +55,36 @@ scriptName = mfilename('fullpath');
 [currentpath, filename, fileextension]= fileparts(scriptName);
 
 % Ensure dependencies are properly referred to
-addpath(genpath(
-addpath(genpath([currentpath,'Dependency_General']));
+addpath(genpath(currentpath));
+addpath(genpath([currentpath,'\Dependency_General']));
 
 % Use GUI to get path to the folder that contained all the DICOM files. 
 path = uigetdir;
 cd(path);
 
-
-
-
 % Recursively obtain all files using dirrec.m
 files = dirrec(path);
 
+%============
 %AlgoType: 1
+%============
 %Record all FILES:
 for fileIndex = 1:length(files)    
 	% Check if the file is dicom. 
 	if isdicom(files{fileIndex})	                    
-		Output{fileIndex,1,FileRecords} = files{fileIndex};			
+		Output{fileIndex,NbMetrics(FileRecords),FileRecords} = files{fileIndex};			
 	end
 end
 
 
-
-% Algo Type: 2 to 5;
-
+%===================
+% Algo Type: 2 to 5
+%===================
 %Loop at the algorithm TYPE level
 for algoType = 2:NbMetricTypes
 	
 	%Loop at per algorithm level  % Do Focus Measure
-	for algoIndex = 1:NbFocusMetrics       
+	for algoIndex = 1:NbMetrics(algoType)       
 		
 		%Loop at the per file level
 		for fileIndex = 1:length(files)        
@@ -87,7 +93,7 @@ for algoType = 2:NbMetricTypes
 			if isdicom(files{fileIndex})	            
 				
 				%Calculate the focus metrics score
-				Result = ProcessSingleDICOMInput(files{fileIndex}, algoType, algoIndex);
+				Result = ProcessSingleDICOMInput(files{fileIndex}, algoIndex, algoType);
 				
 				%record the focus metric score
 				Output{fileIndex,algoIndex,algoType} = Result;					

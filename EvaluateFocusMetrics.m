@@ -1,11 +1,11 @@
-function FocusMetric = EvaluateAllFocusFocusMetric(Image, AlgoChoice)
+function FocusMetric = EvaluateAllFocusFocusMetric(Image, AlgoIndex)
 %FocusMetric - One line description of what the function or script performs (H1 line)
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
-%    	AlgoChoice		- a number indicate which algorithm to be used
+%    	AlgoIndex		- a number indicate which algorithm to be used
 %			
 % Outputs:			
 %    	Metric			- metric is the single summary of focus metric calculated based on algorithm of choice
@@ -29,15 +29,20 @@ function FocusMetric = EvaluateAllFocusFocusMetric(Image, AlgoChoice)
 % 2017-03; Last revision: 10:26 AM 2017-03-02
 
 %------------- BEGIN CODE --------------
-	addpath(genpath('Dependency_FocusFocusMetrics'));
+	% Get current path of current script. 
+	scriptName = mfilename('fullpath');
+	[currentpath, filename, fileextension]= fileparts(scriptName);
+
+	% Ensure dependencies are properly referred to	
+	addpath(genpath([currentpath,'Dependency_FocusFocusMetrics']));
 
 
-	if(~isnumeric(AlgoChoice))
+	if(~isnumeric(AlgoIndex))
 		Metric = [];
 		return
 	end 
 
-	switch AlgoChoice
+	switch AlgoIndex
 	case 1;
 		FocusMetric = FocusMeasure(Image, 'ACMO') %Elapsed time is 0.015575 seconds.
 	case 2         

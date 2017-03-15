@@ -1,15 +1,15 @@
-function SNRMetric = EvaluateSNRMetric(Image,AlgoChoice)
+function SNRMetric = EvaluateSNRMetric(Image,AlgoIndex)
 
 %EvaluateSNRMetric - %This function loads a regular image try to parse it properly to the format and then send it to a bunch of image processing facility. 
 %Optional file header info (to give more details about the function than in the H1 line)
 %Optional file header info (to give more details about the function than in the H1 line)
 %Optional file header info (to give more details about the function than in the H1 line)
 %
-% Syntax:  SNRMetric = EvaluateSNRMetric(Image,AlgoChoice)
+% Syntax:  SNRMetric = EvaluateSNRMetric(Image,AlgoIndex)
 %
 % Inputs:
 %    	Image 			- Image to be processed. 
-%    	AlgoChoice		- Index of algorithm to be used. 
+%    	AlgoIndex		- Index of algorithm to be used. 
 %			
 % Outputs:			
 %    	SNRMetric		- A numeric summary of the number
@@ -40,14 +40,14 @@ function SNRMetric = EvaluateSNRMetric(Image,AlgoChoice)
 	addpath(genpath('Dependency_SNRMetrics/localstat'));
 
 
-	if(~isnumeric(AlgoChoice))
+	if(~isnumeric(AlgoIndex))
 		SNRMetric = [];
 		return
 	end 
 		
-	BinNumber = 1000; %AlgoChoice of Histogram Bins Recommended by Author.
+	BinNumber = 1000; %AlgoIndex of Histogram Bins Recommended by Author.
 
-	switch AlgoChoice
+	switch AlgoIndex
 		case 1
 			SNRMetric = AjaNE(Image,7,BinNumber,1); 
 		

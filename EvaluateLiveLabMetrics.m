@@ -1,11 +1,11 @@
-function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoChoice)
+function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 %EvaluateLiveLabMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of LiveLab image quality processing utilities.. 
 %
-% Syntax:  LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoChoice)
+% Syntax:  LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
-%    	AlgoChoice		- a number indicate which algorithm to be used
+%    	AlgoIndex		- a number indicate which algorithm to be used
 %			
 % Outputs:			
 %    	LiveLabMetric			- LiveLabMetric is the single summary of texture  LiveLabMetric calculated based on algorithm of choice
@@ -38,14 +38,14 @@ function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoChoice)
 	addpath(genpath('Dependency_LiveLab'));	
 
 	%Input QC Check
-	if(~isnumeric(AlgoChoice))
+	if(~isnumeric(AlgoIndex))
 		LiveLabMetric = [];
 		return
 	end 
 		
 		
 	% from this point onward input must be a grayscale image	
-	switch AlgoChoice
+	switch AlgoIndex
 
 		case 1 % BIQI 
 			LiveLabMetric = biqi(Image)

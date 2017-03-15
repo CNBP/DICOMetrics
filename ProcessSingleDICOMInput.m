@@ -1,4 +1,4 @@
-function Metric = ProcessSingleDICOMInput(Input, AlgoType, Algo)
+function Metric = ProcessSingleDICOMInput(Input, AlgoIndex, AlgoType)
 % ProcessSingleDICOMInput - this function partitioned out  the processing stream depending on the algorithm type specified along with the new numeric index of the algorithm  that is chosen. 
 %
 % Syntax:  Metric = ProcessSingleDICOMInput(ExampleDoubleGrayScaleImage, SNRMetric, 5)
@@ -30,7 +30,7 @@ function Metric = ProcessSingleDICOMInput(Input, AlgoType, Algo)
 %------------- BEGIN CODE --------------    
 
 	% Input QC Check
-	if(~isnumeric(AlgoChoice))
+	if(~isnumeric(AlgoIndex))
 		Metric = [];
 		return
 	end 
@@ -44,16 +44,16 @@ function Metric = ProcessSingleDICOMInput(Input, AlgoType, Algo)
 	% Switch depending on tourism type called the proper evaluation algorithm
 	switch (AlgoType)	
 		case 2 % Focus Metrics
-			Metric = EvaluateFocusMetrics	(InputDoubleImage, Algo);
+			Metric = EvaluateFocusMetrics	(InputDoubleImage, AlgoIndex);
 		
 		case 3 % SNR Metrics
-			Metric = EvaluateSNRMetrics		(InputDoubleImage, Algo);
+			Metric = EvaluateSNRMetrics		(InputDoubleImage, AlgoIndex);
 		
 		case 4 % Texture Metrics
-			Metric = EvaluateTextureMetrics	(InputDoubleImage, Algo);
+			Metric = EvaluateTextureMetrics	(InputDoubleImage, AlgoIndex);
 			
 		case 5 % LIveLab Metrics
-			Metric = EvluateLiveLabMetrics 	(InputDoubleImage, Algo);
+			Metric = EvluateLiveLabMetrics 	(InputDoubleImage, AlgoIndex);
 	end
 
 	%------------- END OF CODE -------------- 
