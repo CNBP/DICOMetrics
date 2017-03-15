@@ -55,7 +55,7 @@ scriptName = mfilename('fullpath');
 [currentpath, filename, fileextension]= fileparts(scriptName);
 
 % Ensure dependencies are properly referred to
-addpath(genpath(currentpath));
+addpath(currentpath);
 addpath(genpath([currentpath,'\Dependency_General']));
 
 % Use GUI to get path to the folder that contained all the DICOM files. 

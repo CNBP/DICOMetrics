@@ -1,14 +1,14 @@
-function Metric = EvaluateTextureMetrics(Image,AlgoIndex)
+function TextureMetric = EvaluateTextureMetrics(Image,AlgoIndex)
 %EvaluateTextureMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of texture image quality processing processing facility. 
 %
-% Syntax:  Metric = EvaluateTextureMetrics(Image,AlgoIndex)
+% Syntax:  TextureMetric = EvaluateTextureMetrics(Image,AlgoIndex)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
 %    	AlgoIndex		- a number indicate which algorithm to be used
 %			
 % Outputs:			
-%    	Metric			- metric is the single summary of texture  metric calculated based on algorithm of choice
+%    	TextureMetric			- TextureMetric is the single summary of texture  TextureMetric calculated based on algorithm of choice
 %
 % Example: 
 %    	Line 1 of example
@@ -37,7 +37,7 @@ function Metric = EvaluateTextureMetrics(Image,AlgoIndex)
 
 	%Input QC Check
 	if(~isnumeric(AlgoIndex))
-		Metric = [];
+		TextureMetric = [];
 		return
 	end 
 		
@@ -46,30 +46,30 @@ function Metric = EvaluateTextureMetrics(Image,AlgoIndex)
 	switch AlgoIndex
 
 		case 1 % Matlab Entropy
-			Metric = entropy(Image)
+			TextureMetric = entropy(Image);
 		
 		case 2 % GLCM Contrast
 			glcms = graycomatrix(Image);
 			stats = graycoprops(glcms);		
-			Metric = stats.Contrast;
+			TextureMetric = stats.Contrast;
 			  
 		case 3 % GLCM Correlation
 			glcms = graycomatrix(Image);
 			stats = graycoprops(glcms);
-			Metric = stats.Correlation
+			TextureMetric = stats.Correlation;
 			   
 		case 4 % GLCM Energy
 			glcms = graycomatrix(Image);
 			stats = graycoprops(glcms);
-			Metric = stats.Energy
+			TextureMetric = stats.Energy;
 			   
 		case 5 % GLCM Homogeneity
 			glcms = graycomatrix(Image);
 			stats = graycoprops(glcms);
-			Metric = stats.Homogeneity
+			TextureMetric = stats.Homogeneity;
 			   
 		otherwise
-			Metric = [];
+			TextureMetric = [];
 			return 
 	end
 
