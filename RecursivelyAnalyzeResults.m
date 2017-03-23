@@ -1,7 +1,7 @@
-function Output = RecursivelyLoadDICOM()
-%RecursivelyLoadDICOM - Main initailizer of the function to load all DICOM files. 
+function Output = RecursivelyAnalyzeResults()
+%RecursivelyAnalyzeResults - Main initailizer of the function to load all DICOM files. 
 %
-% Syntax:   Output = RecursivelyLoadDICOM()
+% Syntax:   Output = RecursivelyAnalyzeResults()
 %
 % Inputs:
 %
@@ -29,7 +29,8 @@ function Output = RecursivelyLoadDICOM()
 Output = struct;
 
 % Read in the setting files
-Settings = LoadConfigVariables();
+Setting = LoadConfigVariables();
+
 %This is the entry function to load all things such as the following: 
 
 % % Define algorithm types:
@@ -38,31 +39,25 @@ Settings = LoadConfigVariables();
 % SNRMetrics 		= 3;
 % TextureMetrics 	= 4;
 % LiveLabMetrics 	= 5;
+
 % % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
 % NbFocusMetrics 		= 28;
 % NbSNRMetrics 		= 15;
 % NbTextureMetrics 	= 5;
 % NbLiveLabMetrics 	= 2;
+
 % NbMetrics(FileRecords)      = 1;
 % NbMetrics(FocusMetrics) 	= NbFocusMetrics;
 % NbMetrics(SNRMetrics) 		= NbSNRMetrics;
 % NbMetrics(TextureMetrics) 	= NbTextureMetrics;
 % NbMetrics(LiveLabMetrics) 	= NbLiveLabMetrics;
 
-% Get current path of current script. 
-scriptName = mfilename('fullpath');
-[currentpath, filename, fileextension]= fileparts(scriptName);
+% % total number of metric types
+% NbMetricTypes = 5;
 
-% Ensure dependencies are properly referred to
-addpath(currentpath);
-addpath(genpath([currentpath,'\Dependency_General']));
+% combine all variabels into one large data shseet
 
-% Use GUI to get path to the folder that contained all the DICOM files. 
-path = uigetdir;
-cd(path);
 
-% Recursively obtain all files using dirrec.m
-files = dirrec(path);
 
 %============
 %AlgoType: 1
@@ -71,7 +66,7 @@ files = dirrec(path);
 for fileIndex = 1:length(files)    
 	% Check if the file is dicom. 
 	if isdicom(files{fileIndex})	                    
-		Results{fileIndex, Settings.NbMetrics(Settings.IndexFileRecords),Settings.IndexFileRecords} = files{fileIndex};			
+		Results{fileIndex, Setting.NbMetrics(FileRecords),Setting.FileRecords} = files{fileIndex};			
 	end
 end
 
@@ -80,10 +75,10 @@ end
 % Algo Type: 2 to 5
 %===================
 %Loop at the algorithm TYPE level
-for algoType = 2:Settings.NbMetricTypes
+for algoType = 2:NbMetricTypes
 	
 	%Loop at per algorithm level  % Do Focus Measure
-	for algoIndex = 1:Settings.NbMetrics(algoType)       
+	for algoIndex = 1:NbMetrics(algoType)       
 		
 		%Loop at the per file level
 		for fileIndex = 1:length(files)        
@@ -94,7 +89,7 @@ for algoType = 2:Settings.NbMetricTypes
 				%Calculate the focus metrics score
 				Result = ProcessSingleDICOMInput(files{fileIndex}, algoIndex, algoType);
 				
-				%record the focus metric score
+				%record the focus metric score in a catch all CELL ARRAY
 				Results{fileIndex,algoIndex,algoType} = Result;					
 				
             end			
@@ -112,12 +107,17 @@ end
 
 
 % Update the output struct and it's relevant file structure to store the proper information. 
-Output.FileRecords 		= Results (:,1:Settings.NbMetrics(Settings.IndexFileRecords),	Settings.IndexFileRecords 	);
-Output.FocusMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics),	Settings.IndexFocusMetrics  ));
-Output.SNRMetrics 		= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
-Output.TextureMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
-Output.LiveLabMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
-                  
+% Convert CELL array to MATRIX
+Output.FileRecords 		= cell2mat(Results (:,1:NbMetrics(FileRecords),		FileRecords 	));
+Output.FocusMetrics 	= cell2mat(Results (:,1:NbMetrics(FocusMetrics),	FocusMetrics 	));
+Output.SNRMetrics 		= cell2mat(Results (:,1:NbMetrics(SNRMetrics),		SNRMetrics 		));
+Output.TextureMetrics 	= cell2mat(Results (:,1:NbMetrics(TextureMetrics),	TextureMetrics	));
+Output.LiveLabMetrics 	= cell2mat(Results (:,1:NbMetrics(LiveLabMetrics),	LiveLabMetrics	));
 
+% Put everything in a gigantic matrix for further analyses. 
+ComprehensiveMatrix = cat (2, Output.FocusMetrics, Output.SNRMetrics, Output.TextureMetrics, Output.LiveLabMetrics);
+
+
+                  
 %------------- END OF CODE --------------
 end

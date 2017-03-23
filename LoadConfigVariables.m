@@ -1,5 +1,5 @@
-function Output = Config()
-%Config - Return the config structure that is used by all other function 
+function Output = LoadConfigVariables()
+%LoadConfigVariables - Return the config structure that is used by all other function 
 %This serves as the MASTER variable/settings ini file. 
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
@@ -35,26 +35,28 @@ function Output = Config()
 
 %This is the entry function to load all things. 
 
+
 % Define algorithm types:
-FileRecords 	= 1;
-FocusMetrics 	= 2;
-SNRMetrics 		= 3;
-TextureMetrics 	= 4;
-LiveLabMetrics 	= 5;
+Output.IndexFileRecords 	= 1;
+Output.IndexFocusMetrics 	= 2;
+Output.IndexSNRMetrics 		= 3;
+Output.IndexTextureMetrics 	= 4;
+Output.IndexLiveLabMetrics 	= 5;
 
 % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
-NbFocusMetrics 		= 28;
-NbSNRMetrics 		= 15;
-NbTextureMetrics 	= 5;
-NbLiveLabMetrics 	= 2;
+Output.NbFocusMetrics 		= 28;
+Output.NbSNRMetrics 		= 15;
+Output.NbTextureMetrics 	= 5;
+Output.NbLiveLabMetrics 	= 2;
 
-NbMetrics(FileRecords)      = 1;
-NbMetrics(FocusMetrics) 	= NbFocusMetrics;
-NbMetrics(SNRMetrics) 		= NbSNRMetrics;
-NbMetrics(TextureMetrics) 	= NbTextureMetrics;
-NbMetrics(LiveLabMetrics) 	= NbLiveLabMetrics;
+Output.NbMetrics(Output.IndexFileRecords)   = 1;
+Output.NbMetrics(Output.IndexFocusMetrics) 	= Output.NbFocusMetrics;
+Output.NbMetrics(Output.IndexSNRMetrics) 	= Output.NbSNRMetrics;
+Output.NbMetrics(Output.IndexTextureMetrics)= Output.NbTextureMetrics;
+Output.NbMetrics(Output.IndexLiveLabMetrics)= Output.NbLiveLabMetrics;
 
 % total number of metric types
-NbMetricTypes = 5;
+Output.NbMetricTypes = 5;
 
 %------------- END OF CODE --------------
+end

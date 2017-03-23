@@ -1,4 +1,4 @@
-function [ResubError,cvResubError] = ClassifiersAnalyses(InputDataColumns, OutputOutputLabelss, InputDataColumnsLabels, Algo, CVFold)
+function [ResubError, Classifier, cvResubError, cvClassifier] = ClassifiersAnalyses(InputDataColumns, OutputOutputLabelss, InputDataColumnsLabels, Algo, CVFold)
 %ClassifiersAnalyses - 	Most of the following code are adapted from the machine learning tutorial that is already available on Matlab's own  tutorial website as shown [here](https://www.mathworks.com/help/stats/examples/classification.html). 
 %Optional file header info (to give more details about the function than in the H1 line)
 %Optional file header info (to give more details about the function than in the H1 line)
@@ -47,38 +47,44 @@ function [ResubError,cvResubError] = ClassifiersAnalyses(InputDataColumns, Outpu
 		case 1 % Linear Discriminant Analysis (LDA). Using Pseudo in case of 0 in data columns. 
 			lda = fitcdiscr(InputDataColumns,OutputOutputLabelss, 'DiscrimType','pseudoLinear');
 			ldaClass = resubPredict(lda);
-			ResubError = resubLoss(lda)
-			
+			ResubError = resubLoss(lda);
+			Classifier = lda;
 			% Eg Output: Resub 0.3039 
 				
 			% LDA CV:
 			cvlda = crossval(lda,'CVPartition',cp);
-			cvResubError = kfoldLoss(cvlda)
+			cvResubError = kfoldLoss(cvlda);
+			cvClassifier = cvlda;
 			% Eg Output: ldaCVErr = 0.3265
 			
 		case 2 % Quadratic Discriminant Analysis (QDA). Using Pseudo in case of 0 in data columns. 
 			qda = fitcdiscr(InputDataColumns,OutputOutputLabelss,'DiscrimType','pseudoQuadratic');
 			ResubError = resubLoss(qda)
+			Classifier = qda;
 			% Eg Output: > qdaResubErr = 0.3706
 
 			% QDA CV:
 			cvqda = crossval(qda,'CVPartition',cp);
-			cvResubError = kfoldLoss(cvqda)
+			cvResubError = kfoldLoss(cvqda);
+			cvClassifier = cvqda;
 			% Eg Output: > qdaCVErr = 0.4480
 		
 		case 3 % Naive Bay Classifer (NBC): 
 			nbGau = fitcnb(InputDataColumns,OutputLabels);
-			ResubError = resubLoss(nbGau)
+			ResubError = resubLoss(nbGau);
 			% Eg Output: 	> 0.7353
+			Classifier = nbGau;
 			
 			nbGauCV = crossval(nbGau, 'CVPartition',cp);
-			cvResubError = kfoldLoss(nbGauCV)
+			cvClassifier = nbGauCV;
+			cvResubError = kfoldLoss(nbGauCV);
 			% Eg Output: > 0.7353
 
 		case 4 % NBC with Kernal Distribution:
 			nbKD = fitcnb(InputDataColumns, OutputLabels, 'DistributionNames','kernel', 'Kernel','box');
 			ResubError = resubLoss(nbKD)	
 			% Eg Output: 		>0.6157
+			Classifier = nbGau;
 			
 			nbKDCV = crossval(nbKD, 'CVPartition',cp);
 			cvResubError = kfoldLoss(nbKDCV)
