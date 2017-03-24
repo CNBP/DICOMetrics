@@ -52,3 +52,8 @@ Temporary Items
 .sps
 .zip
 .dcm
+Dependency_LiveLab/BRISQUE/dump
+Dependency_LiveLab/BRISQUE/output
+Dependency_LiveLab/BRISQUE/test_ind_scaled
+Dependency_LiveLab/BRISQUE/test_ind
+Dependency_LiveLab/BRISQUE/dump

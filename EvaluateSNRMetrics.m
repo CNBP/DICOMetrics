@@ -36,8 +36,8 @@ function SNRMetric = EvaluateSNRMetric(Image,AlgoIndex)
 	[currentpath, filename, fileextension]= fileparts(scriptName);
 
 	% Ensure dependencies are properly referred to
-	addpath(genpath('Dependency_SNRMetrics'));
-	addpath(genpath('Dependency_SNRMetrics/localstat'));
+	addpath(genpath([currentpath,'\Dependency_SNRMetrics']));
+	addpath(genpath([currentpath,'\Dependency_SNRMetrics\localstat']));
 
 
 	if(~isnumeric(AlgoIndex))

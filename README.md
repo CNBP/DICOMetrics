@@ -28,3 +28,5 @@ A. K. Moorthy's Blind Image Quality Index (BIQI).
 A. K. Moorthy's Distortion Identification-based Image Verity and INtegrity Evaluation (DIIVINE) Index*  
 
 * Included the dependency from Eero Simoncelli of the steerable pyramid at http://www.cns.nyu.edu/~eero/steerpyr/
+
+5. Avinash Uppuluri's FLCM texture features: https://www.mathworks.com/matlabcentral/fileexchange/22187-glcm-texture-features

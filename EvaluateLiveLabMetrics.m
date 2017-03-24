@@ -35,7 +35,7 @@ function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 	[currentpath, filename, fileextension]= fileparts(scriptName);
 
 	% Ensure dependencies are properly referred to
-	addpath(genpath('Dependency_LiveLab'));	
+	addpath(genpath([currentpath,'\Dependency_LiveLabMetrics']));
 
 	%Input QC Check
 	if(~isnumeric(AlgoIndex))

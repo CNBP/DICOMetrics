@@ -25,6 +25,7 @@ function Output = RecursivelyLoadDICOM()
 
 %------------- BEGIN CODE --------------
 
+tik
 % The structure that will be used to contain all output. 
 Output = struct;
 
@@ -112,12 +113,12 @@ end
 
 
 % Update the output struct and it's relevant file structure to store the proper information. 
-Output.FileRecords 		= Results (:,1:Settings.NbMetrics(Settings.IndexFileRecords),	Settings.IndexFileRecords 	);
-Output.FocusMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics),	Settings.IndexFocusMetrics  ));
+Output.FileRecords 		=          Results (:,1:Settings.NbMetrics(Settings.IndexFileRecords),      Settings.IndexFileRecords 	);
+Output.FocusMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics),     Settings.IndexFocusMetrics  ));
 Output.SNRMetrics 		= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
 Output.TextureMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
 Output.LiveLabMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
-                  
 
+tok
 %------------- END OF CODE --------------
 end

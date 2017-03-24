@@ -46,7 +46,7 @@ Output.IndexLiveLabMetrics 	= 5;
 % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
 Output.NbFocusMetrics 		= 28;
 Output.NbSNRMetrics 		= 15;
-Output.NbTextureMetrics 	= 5;
+Output.NbTextureMetrics 	= 23;
 Output.NbLiveLabMetrics 	= 2;
 
 Output.NbMetrics(Output.IndexFileRecords)   = 1;
