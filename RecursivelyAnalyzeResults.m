@@ -61,7 +61,7 @@ CVFold = 10;
 
 for LabelColumnIndex = 1:size(Label,2)
     %Record all FILES:
-    for ClassiferIndex = 1:NbClassifier    
+    for ClassiferIndex = [1 2 5]
         % Check if the file is dicom. 
         ClassiferInfo = ClassifiersAnalyses(DataMatrix, Label(:,LabelColumnIndex), ClassiferIndex, CVFold);	
 

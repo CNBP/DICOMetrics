@@ -25,7 +25,7 @@ function Output = RecursivelyLoadDICOM()
 
 %------------- BEGIN CODE --------------
 
-tik
+tic
 % The structure that will be used to contain all output. 
 Output = struct;
 
@@ -119,6 +119,6 @@ Output.SNRMetrics 		= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNR
 Output.TextureMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
 Output.LiveLabMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
 
-tok
+toc
 %------------- END OF CODE --------------
 end

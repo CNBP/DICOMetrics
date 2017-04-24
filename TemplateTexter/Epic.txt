@@ -1,0 +1,845 @@
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_ACMO MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_ACMO=col(source(s), name("Focus_ACMO"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_ACMO"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_ACMO)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_BREN MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_BREN=col(source(s), name("Focus_BREN"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_BREN"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_BREN)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_CURV MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_CURV=col(source(s), name("Focus_CURV"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_CURV"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_CURV)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_GDER MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_GDER=col(source(s), name("Focus_GDER"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_GDER"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_GDER)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_GLVA MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_GLVA=col(source(s), name("Focus_GLVA"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_GLVA"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_GLVA)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_GLLV MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_GLLV=col(source(s), name("Focus_GLLV"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_GLLV"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_GLLV)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_GLVN MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_GLVN=col(source(s), name("Focus_GLVN"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_GLVN"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_GLVN)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_GRAE MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_GRAE=col(source(s), name("Focus_GRAE"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_GRAE"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_GRAE)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_GRAT MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_GRAT=col(source(s), name("Focus_GRAT"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_GRAT"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_GRAT)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_GRAS MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_GRAS=col(source(s), name("Focus_GRAS"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_GRAS"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_GRAS)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_HELM MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_HELM=col(source(s), name("Focus_HELM"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_HELM"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_HELM)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_HISE MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_HISE=col(source(s), name("Focus_HISE"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_HISE"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_HISE)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_HISR MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_HISR=col(source(s), name("Focus_HISR"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_HISR"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_HISR)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_LAPE MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_LAPE=col(source(s), name("Focus_LAPE"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_LAPE"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_LAPE)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_LAPM MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_LAPM=col(source(s), name("Focus_LAPM"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_LAPM"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_LAPM)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_LAPV MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_LAPV=col(source(s), name("Focus_LAPV"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_LAPV"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_LAPV)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_LAPD MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_LAPD=col(source(s), name("Focus_LAPD"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_LAPD"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_LAPD)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_SFIL MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_SFIL=col(source(s), name("Focus_SFIL"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_SFIL"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_SFIL)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_SFRQ MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_SFRQ=col(source(s), name("Focus_SFRQ"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_SFRQ"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_SFRQ)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_TENG MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_TENG=col(source(s), name("Focus_TENG"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_TENG"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_TENG)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_TENV MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_TENV=col(source(s), name("Focus_TENV"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_TENV"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_TENV)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_VOLA MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_VOLA=col(source(s), name("Focus_VOLA"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_VOLA"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_VOLA)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_WAVS MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_WAVS=col(source(s), name("Focus_WAVS"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_WAVS"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_WAVS)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_WAVV MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_WAVV=col(source(s), name("Focus_WAVV"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_WAVV"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_WAVV)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Focus_WAVR MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Focus_WAVR=col(source(s), name("Focus_WAVR"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Focus_WAVR"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Focus_WAVR)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_AjaNE1 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_AjaNE1=col(source(s), name("Noise_AjaNE1"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_AjaNE1"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_AjaNE1)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_AjaNE2 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_AjaNE2=col(source(s), name("Noise_AjaNE2"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_AjaNE2"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_AjaNE2)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_AjaNE3 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_AjaNE3=col(source(s), name("Noise_AjaNE3"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_AjaNE3"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_AjaNE3)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_AjaNE4 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_AjaNE4=col(source(s), name("Noise_AjaNE4"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_AjaNE4"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_AjaNE4)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_brummer MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_brummer=col(source(s), name("Noise_brummer"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_brummer"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_brummer)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_chang MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_chang=col(source(s), name("Noise_chang"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_chang"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_chang)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_noise_M1 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_noise_M1=col(source(s), name("Noise_noise_M1"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_noise_M1"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_noise_M1)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_noise_M2 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_noise_M2=col(source(s), name("Noise_noise_M2"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_noise_M2"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_noise_M2)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_MRI_lmmse MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_MRI_lmmse=col(source(s), name("Noise_MRI_lmmse"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_MRI_lmmse"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_MRI_lmmse)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_MeanSignalImage MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_MeanSignalImage=col(source(s), name("Noise_MeanSignalImage"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_MeanSignalImage"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_MeanSignalImage)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_MeanSignal50x50 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_MeanSignal50x50=col(source(s), name("Noise_MeanSignal50x50"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_MeanSignal50x50"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_MeanSignal50x50)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_MeanSignal100x100 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_MeanSignal100x100=col(source(s), name("Noise_MeanSignal100x100"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_MeanSignal100x100"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_MeanSignal100x100)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_SNR MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_SNR=col(source(s), name("Noise_SNR"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_SNR"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_SNR)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_SNR50x50 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_SNR50x50=col(source(s), name("Noise_SNR50x50"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_SNR50x50"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_SNR50x50)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Noise_SNR100x100 MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Noise_SNR100x100=col(source(s), name("Noise_SNR100x100"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Noise_SNR100x100"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Noise_SNR100x100)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_MatEntropy MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_MatEntropy=col(source(s), name("Texture_MatEntropy"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_MatEntropy"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_MatEntropy)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCMAutocorrelation MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCMAutocorrelation=col(source(s), name("Texture_GLCMAutocorrelation"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCMAutocorrelation"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCMAutocorrelation)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCMContrast MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCMContrast=col(source(s), name("Texture_GLCMContrast"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCMContrast"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCMContrast)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCMCorrM MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCMCorrM=col(source(s), name("Texture_GLCMCorrM"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCMCorrM"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCMCorrM)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCMCorrP MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCMCorrP=col(source(s), name("Texture_GLCMCorrP"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCMCorrP"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCMCorrP)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCMCProm MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCMCProm=col(source(s), name("Texture_GLCMCProm"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCMCProm"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCMCProm)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_CShad MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_CShad=col(source(s), name("Texture_GLCM_CShad"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_CShad"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_CShad)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Dissi MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Dissi=col(source(s), name("Texture_GLCM_Dissi"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Dissi"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Dissi)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Energy MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Energy=col(source(s), name("Texture_GLCM_Energy"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Energy"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Energy)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Entropy MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Entropy=col(source(s), name("Texture_GLCM_Entropy"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Entropy"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Entropy)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Homom MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Homom=col(source(s), name("Texture_GLCM_Homom"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Homom"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Homom)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_HomoP MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_HomoP=col(source(s), name("Texture_GLCM_HomoP"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_HomoP"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_HomoP)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_MaxPR MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_MaxPR=col(source(s), name("Texture_GLCM_MaxPR"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_MaxPR"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_MaxPR)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_SOSVH MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_SOSVH=col(source(s), name("Texture_GLCM_SOSVH"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_SOSVH"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_SOSVH)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Savgh MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Savgh=col(source(s), name("Texture_GLCM_Savgh"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Savgh"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Savgh)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Svarh MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Svarh=col(source(s), name("Texture_GLCM_Svarh"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Svarh"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Svarh)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Senth MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Senth=col(source(s), name("Texture_GLCM_Senth"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Senth"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Senth)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Dvarh MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Dvarh=col(source(s), name("Texture_GLCM_Dvarh"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Dvarh"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Dvarh)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_GLCM_Denth MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_GLCM_Denth=col(source(s), name("Texture_GLCM_Denth"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_GLCM_Denth"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_GLCM_Denth)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_Inf1H MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_Inf1H=col(source(s), name("Texture_Inf1H"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_Inf1H"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_Inf1H)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_Inf2H MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_Inf2H=col(source(s), name("Texture_Inf2H"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_Inf2H"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_Inf2H)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_Indnc MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_Indnc=col(source(s), name("Texture_Indnc"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_Indnc"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_Indnc)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 Texture_Idmnc MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:Texture_Idmnc=col(source(s), name("Texture_Idmnc"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("Texture_Idmnc"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*Texture_Idmnc)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 LiveLab_BIQI MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:LiveLab_BIQI=col(source(s), name("LiveLab_BIQI"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("LiveLab_BIQI"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*LiveLab_BIQI)), label(id))                    
+END GPL.                                                                                        
+
+GGRAPH                                                                                          
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 LiveLab_BRISQUE MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+BEGIN GPL                                                                                       
+  SOURCE: s=userSource(id("graphdataset"))                                                      
+  DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
+  DATA:LiveLab_BRISQUE=col(source(s), name("LiveLab_BRISQUE"))
+  DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
+  GUIDE: axis(dim(1), label("Sab2"))                                                            
+  GUIDE: axis(dim(2), label("LiveLab_BRISQUE"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  SCALE: linear(dim(2), include(0))                                                             
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*LiveLab_BRISQUE)), label(id))                    
+END GPL.                                                                                        
+

@@ -35,6 +35,10 @@ ComprehensiveMatrix = cat (2, Output.FocusMetrics, Output.SNRMetrics, Output.Tex
 tic;
 ClassSummary = RecursivelyAnalyzeResults(ComprehensiveMatrix,LabelString);
 
+% Each COLUMN in ClassSummary represent the label data correspond to the each column in LabelString preloaded. 
+% Each ROW in ClassSummary represent the type of classifier algorithem used. Row 1 is LDA, Row 2 is QDA, Row 3 is NB, Row 4 is NB with kernel distribution, Row 5 is decision tree. 
+% Each CELL represent the Classifier as well as the cvClassifier in them. 
+
 % Visualize all trees:
 for treeIndex = 1:size(ClassSummary,2)
     view(ClassSummary(5,treeIndex).cvClassifier,'Mode','graph');
