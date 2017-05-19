@@ -1,14 +1,14 @@
-function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
-%EvaluateLiveLabMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of LiveLab image quality processing utilities.. 
+function NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
+%EvaluateNSSMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of NSS image quality processing utilities.. 
 %
-% Syntax:  LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
+% Syntax:  NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
 %    	AlgoIndex		- a number indicate which algorithm to be used
 %			
 % Outputs:			
-%    	LiveLabMetric			- LiveLabMetric is the single summary of texture  LiveLabMetric calculated based on algorithm of choice
+%    	NSSMetric			- NSSMetric is the single summary of texture  NSSMetric calculated based on algorithm of choice
 %
 % Example: 
 %    	Line 1 of example
@@ -35,11 +35,11 @@ function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 	[currentpath, filename, fileextension]= fileparts(scriptName);
 
 	% Ensure dependencies are properly referred to
-	addpath(genpath([currentpath,'\Dependency_LiveLabMetrics']));
+	addpath(genpath([currentpath,'\Dependency_NSSMetrics']));
 
 	%Input QC Check
 	if(~isnumeric(AlgoIndex))
-		LiveLabMetric = [];
+		NSSMetric = [];
 		return
 	end 
 		
@@ -48,23 +48,23 @@ function LiveLabMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 	switch AlgoIndex
 
 		case 1 % BIQI 
-			LiveLabMetric = biqi(Image);
+			NSSMetric = biqi(Image);
 		
 		case 2 % BRISQUE
-			LiveLabMetric = brisquescore(Image);
+			NSSMetric = brisquescore(Image);
 			
 		% case 3 % DIIVINE
 			% glcms = graycomatrix(Image);
 			% stats = graycoprops(glcms);
-			% LiveLabMetric = stats.Correlation
+			% NSSMetric = stats.Correlation
 			   
 		% case 4 % GRNN
 			% glcms = graycomatrix(Image);
 			% stats = graycoprops(glcms);
-			% LiveLabMetric = stats.Energy
+			% NSSMetric = stats.Energy
 			   
 		otherwise
-			LiveLabMetric = [];
+			NSSMetric = [];
 			return 
 	end
 

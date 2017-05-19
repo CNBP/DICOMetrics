@@ -38,17 +38,17 @@ Settings = LoadConfigVariables();
 % FocusMetrics 	= 2;
 % SNRMetrics 		= 3;
 % TextureMetrics 	= 4;
-% LiveLabMetrics 	= 5;
+% NSSMetrics 	= 5;
 % % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
 % NbFocusMetrics 		= 28;
 % NbSNRMetrics 		= 15;
 % NbTextureMetrics 	= 5;
-% NbLiveLabMetrics 	= 2;
+% NbNSSMetrics 	= 2;
 % NbMetrics(FileRecords)      = 1;
 % NbMetrics(FocusMetrics) 	= NbFocusMetrics;
 % NbMetrics(SNRMetrics) 		= NbSNRMetrics;
 % NbMetrics(TextureMetrics) 	= NbTextureMetrics;
-% NbMetrics(LiveLabMetrics) 	= NbLiveLabMetrics;
+% NbMetrics(NSSMetrics) 	= NbNSSMetrics;
 
 % Get current path of current script. 
 scriptName = mfilename('fullpath');
@@ -117,7 +117,7 @@ Output.FileRecords 		=          Results (:,1:Settings.NbMetrics(Settings.IndexFi
 Output.FocusMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics),     Settings.IndexFocusMetrics  ));
 Output.SNRMetrics 		= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
 Output.TextureMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
-Output.LiveLabMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
+Output.NSSMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexNSSMetrics),	Settings.IndexNSSMetrics));
 
 toc
 %------------- END OF CODE --------------

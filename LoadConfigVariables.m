@@ -41,19 +41,19 @@ Output.IndexFileRecords 	= 1;
 Output.IndexFocusMetrics 	= 2;
 Output.IndexSNRMetrics 		= 3;
 Output.IndexTextureMetrics 	= 4;
-Output.IndexLiveLabMetrics 	= 5;
+Output.IndexNSSMetrics 	= 5;
 
 % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
 Output.NbFocusMetrics 		= 28;
 Output.NbSNRMetrics 		= 15;
 Output.NbTextureMetrics 	= 23;
-Output.NbLiveLabMetrics 	= 2;
+Output.NbNSSMetrics 	= 2;
 
 Output.NbMetrics(Output.IndexFileRecords)   = 1;
 Output.NbMetrics(Output.IndexFocusMetrics) 	= Output.NbFocusMetrics;
 Output.NbMetrics(Output.IndexSNRMetrics) 	= Output.NbSNRMetrics;
 Output.NbMetrics(Output.IndexTextureMetrics)= Output.NbTextureMetrics;
-Output.NbMetrics(Output.IndexLiveLabMetrics)= Output.NbLiveLabMetrics;
+Output.NbMetrics(Output.IndexNSSMetrics)= Output.NbNSSMetrics;
 
 % total number of metric types
 Output.NbMetricTypes = 5;

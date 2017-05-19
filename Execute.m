@@ -29,7 +29,7 @@ Output = RecursivelyLoadDICOM();
 Timer(1,2) = toc;
 
 % Put everything in a gigantic matrix for further analyses. 
-ComprehensiveMatrix = cat (2, Output.FocusMetrics, Output.SNRMetrics, Output.TextureMetrics, Output.LiveLabMetrics);
+ComprehensiveMatrix = cat (2, Output.FocusMetrics, Output.SNRMetrics, Output.TextureMetrics, Output.NSSMetrics);
 
 % Need to condut quality control on ComprehensiveMatrix
 tic;

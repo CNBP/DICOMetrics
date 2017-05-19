@@ -53,7 +53,7 @@ function Metric = ProcessSingleDICOMInput(Input, AlgoIndex, AlgoType)
 			Metric = EvaluateTextureMetrics	(InputDoubleImage, AlgoIndex);
 			
 		case 5 % LIveLab Metrics
-			Metric = EvaluateLiveLabMetrics 	(InputDoubleImage, AlgoIndex);
+			Metric = EvaluateNSSMetrics 	(InputDoubleImage, AlgoIndex);
 	end
 
 	%------------- END OF CODE -------------- 
