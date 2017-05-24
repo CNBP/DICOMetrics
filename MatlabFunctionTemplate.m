@@ -33,28 +33,6 @@ function Output = Config()
 
 %------------- BEGIN CODE --------------
 
-%This is the entry function to load all things. 
 
-% Define algorithm types:
-FileRecords 	= 1;
-FocusMetrics 	= 2;
-SNRMetrics 		= 3;
-TextureMetrics 	= 4;
-NSSMetrics 	= 5;
-
-% Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
-NbFocusMetrics 		= 28;
-NbSNRMetrics 		= 15;
-NbTextureMetrics 	= 5;
-NbNSSMetrics 	= 2;
-
-NbMetrics(FileRecords)      = 1;
-NbMetrics(FocusMetrics) 	= NbFocusMetrics;
-NbMetrics(SNRMetrics) 		= NbSNRMetrics;
-NbMetrics(TextureMetrics) 	= NbTextureMetrics;
-NbMetrics(NSSMetrics) 	= NbNSSMetrics;
-
-% total number of metric types
-NbMetricTypes = 5;
 
 %------------- END OF CODE --------------
