@@ -1,7 +1,7 @@
-function NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
-%EvaluateNSSMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of NSS image quality processing utilities.. 
+function NSSMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
+%EvaluateLiveLabMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of NSS image quality processing utilities.. 
 %
-% Syntax:  NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
+% Syntax:  NSSMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
@@ -35,7 +35,7 @@ function NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
 	[currentpath, filename, fileextension]= fileparts(scriptName);
 
 	% Ensure dependencies are properly referred to
-	addpath(genpath([currentpath,'\Dependency_NSSMetrics']));
+	addpath(genpath([currentpath,'\Dependency_LiveLabMetrics']));
 
 	%Input QC Check
 	if(~isnumeric(AlgoIndex))

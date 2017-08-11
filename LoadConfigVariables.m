@@ -1,6 +1,6 @@
 function Output = LoadConfigVariables()
-%LoadConfigVariables - Return the config structure that is used by all other function 
-%This serves as the MASTER variable/settings ini file. 
+%LoadConfigVariables - Return the config structure that is used by all other function
+%This serves as the MASTER variable/settings ini file.
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
 %
@@ -8,12 +8,12 @@ function Output = LoadConfigVariables()
 %    	input1 			- Description
 %    	input2 			- Description
 %    	input3 			- Description
-%			
-% Outputs:			
+%
+% Outputs:
 %    	output1			- Description
 %    	output2			- Description
 %
-% Example: 
+% Example:
 %    	Line 1 of example
 %    	Line 2 of example
 %    	Line 3 of example
@@ -26,37 +26,50 @@ function Output = LoadConfigVariables()
 
 % Author: Yang Ding
 % All works sponsored by Dr. Gregory Lodygensky and the Canadian Neonatal Brain Platform
-% Saint. Justine Hospital, Montreal, Quebec, 
+% Saint. Justine Hospital, Montreal, Quebec,
 % email address: it@cnbp.ca
 % Website: http://cnbp.ca
-% 2017-03; Last revision: 10:26 AM 2017-03-02
+% 2017-08; Last revision: 2017-08-09 23:07:22 Eastern Time
 
 %------------- BEGIN CODE --------------
 
-%This is the entry function to load all things. 
+  %This is the entry function to load all things.
+
+  % total number of metric types
+  Output.NbMetricTypes = 6;
+
+  % Define algorithm types:
+  Output.IndexFileRecords 	   = 1;
+
+  Output.IndexFocusMetrics 	   = 2;
+  Output.IndexSNRMetrics 		   = 3;
+  Output.IndexTextureMetrics 	 = 4;
+  Output.IndexLiveLabMetrics 	     = 5;
+  Output.IndexDICOMMetrics 	   = 6;
+
+  % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
+  Output.NbFocusMetrics 		 = 28;
+  Output.NbSNRMetrics 		   = 15;
+  Output.NbTextureMetrics 	 = 23;
+  Output.NbLiveLabMetrics 	     = 2;
+  Output.NbDICOMMetrics  	   = 27;
+
+  Output.NbMetrics(Output.IndexFileRecords)    = 1;
+  Output.NbMetrics(Output.IndexFocusMetrics) 	 = Output.NbFocusMetrics;
+  Output.NbMetrics(Output.IndexSNRMetrics) 	   = Output.NbSNRMetrics;
+  Output.NbMetrics(Output.IndexTextureMetrics) = Output.NbTextureMetrics;
+  Output.NbMetrics(Output.IndexLiveLabMetrics)     = Output.NbLiveLabMetrics;
+  Output.NbMetrics(Output.IndexDICOMMetrics)   = Output.NbDICOMMetrics;
 
 
-% Define algorithm types:
-Output.IndexFileRecords 	= 1;
-Output.IndexFocusMetrics 	= 2;
-Output.IndexSNRMetrics 		= 3;
-Output.IndexTextureMetrics 	= 4;
-Output.IndexNSSMetrics 	= 5;
+  scriptName = mfilename('fullpath');
+  [currentpath, filename, fileextension]= fileparts(scriptName);
 
-% Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
-Output.NbFocusMetrics 		= 28;
-Output.NbSNRMetrics 		= 15;
-Output.NbTextureMetrics 	= 23;
-Output.NbNSSMetrics 	= 2;
 
-Output.NbMetrics(Output.IndexFileRecords)   = 1;
-Output.NbMetrics(Output.IndexFocusMetrics) 	= Output.NbFocusMetrics;
-Output.NbMetrics(Output.IndexSNRMetrics) 	= Output.NbSNRMetrics;
-Output.NbMetrics(Output.IndexTextureMetrics)= Output.NbTextureMetrics;
-Output.NbMetrics(Output.IndexNSSMetrics)= Output.NbNSSMetrics;
+  Output.RootDirectory = pwd;
+  Output.ResultFolder = [currentpath '\Results'];
+  % Ensure dependencies are properly referred to
 
-% total number of metric types
-Output.NbMetricTypes = 5;
 
 %------------- END OF CODE --------------
 end
