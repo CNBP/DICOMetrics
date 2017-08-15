@@ -39,13 +39,13 @@ function Output = LableConverter1Dto2D(Label1D)
   % Input quality check.
   if (isempty(Label1D))
     error('Fatal Error:Input label is EMPTY!');
-  elseif (~isa(Label1D,double)
-    error('Fatal Error:Input label must be double!');)
+  elseif (~isa(Label1D,'double'))
+    error('Fatal Error:Input label must be double!');
   elseif (max(Label1D)~= 1)
     error('Fatal Error: max classification label value must be 1');
   elseif (min(Label1D)~= 0)
     error('Fatal Error: min classification label value must be 0');
-  elseif (numel(unique(a)) ~= 2)
+  elseif (numel(unique(Label1D)) ~= 2)
     error('Fatal Error: there can only be 1 o 0');
   end
 

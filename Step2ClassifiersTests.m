@@ -58,7 +58,7 @@ Setting = LoadConfigVariables();
   %Loop through all classes in the labelBinary.
   for labelBinaryColumnIndex = 1:size(labelBinary,2)
       %Record all FILES:
-      for ClassiferIndex = 1:Setting.ClassifierCount;
+      for ClassiferIndex = 1:Setting.ClassiferCount;
           % Check if the file is dicom.
           ClassiferInfo = ClassifiersAnalyses(DataMatrix, labelBinary(:,labelBinaryColumnIndex), ClassiferIndex, Setting.CrossValidationFold);
 
@@ -67,10 +67,10 @@ Setting = LoadConfigVariables();
           Output(ClassiferIndex,labelBinaryColumnIndex).ResubError   = ClassiferInfo.ResubError;
           Output(ClassiferIndex,labelBinaryColumnIndex).cvClassifier = ClassiferInfo.cvClassifier;
           Output(ClassiferIndex,labelBinaryColumnIndex).cvResubError = ClassiferInfo.cvResubError;
-          disp(['Classifier Type \t',num2str(ClassiferIndex), 32, 'is Completed.']);
+          disp(['Classifier Type ',num2str(ClassiferIndex), 32, 'is Completed.']);
       end
 
-      disp(['labelBinary Type ',num2str(labelBinaryColumnIndex), 'Completed.']);
+      disp(['labelBinary Type ',num2str(labelBinaryColumnIndex),32, 'Completed.']);
   end
 
 %------------- END OF CODE --------------
