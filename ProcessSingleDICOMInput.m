@@ -57,7 +57,7 @@ function Metric = ProcessSingleDICOMInput(Input, AlgoIndex, AlgoType)
 			Metric = EvaluateLiveLabMetrics 	(InputDoubleImage, AlgoIndex);
 
 		case 6 % DICOM info
-			Metric = EvaluateDICOMMetrics (ImageInBuffer,AlgoIndex);
+			Metric = EvaluateDICOMMetrics (Input,AlgoIndex);
 	end
 
 	%------------- END OF CODE --------------

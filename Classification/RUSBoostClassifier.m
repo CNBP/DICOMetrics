@@ -113,14 +113,17 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       CurrentMistakes = CurrentFalseNegative + CurrentFalsePositive;
 
       % Compute and concatenate Binary PREDICTED Labels
-      GoodImagePredictedLabel= predictedLabelVector;
-      BadImagePredictedLabel = (predictedLabelVector+(-1)) * -1; % Convert the label to Binary style, for plotConfusion
-      predictedLabel = [BadImagePredictedLabel GoodImagePredictedLabel];
+      %GoodImagePredictedLabel= predictedLabelVector;
+      %BadImagePredictedLabel = (predictedLabelVector+(-1)) * -1; % Convert the label to Binary style, for plotConfusion
+      %predictedLabel = [BadImagePredictedLabel GoodImagePredictedLabel];
+      predictedLabelVector = LabelConverter1Dto2D(predictedLabelVector);
+
 
       % Compute and concatenate Binary TRUE Labels
-      GoodImageTrueLabel= trueLabelsVector;
-      BadImageTrueLabel = (trueLabelsVector+(-1)) * -1; % Convert the labe to Binary style, for plotConfusion
-      trueLabels = [BadImageTrueLabel GoodImageTrueLabel];
+      %GoodImageTrueLabel= trueLabelsVector;
+      %BadImageTrueLabel = (trueLabelsVector+(-1)) * -1; % Convert the labe to Binary style, for plotConfusion
+      %trueLabels = [BadImageTrueLabel GoodImageTrueLabel];
+      trueLabelsVector = LabelConverter1Dto2D(trueLabelsVector);
 
 
       % Note that predicted Label and Truel Labels are 0: bad image, 1: good images where as class number-wise, they are 1 then 2.

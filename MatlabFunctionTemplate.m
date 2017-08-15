@@ -1,6 +1,5 @@
-function Output = Config()
-%Config - Return the config structure that is used by all other function 
-%This serves as the MASTER variable/settings ini file. 
+function Output = Function()
+% NAME - DESCRIPTION
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
 %
@@ -8,12 +7,12 @@ function Output = Config()
 %    	input1 			- Description
 %    	input2 			- Description
 %    	input3 			- Description
-%			
-% Outputs:			
+%
+% Outputs:
 %    	output1			- Description
 %    	output2			- Description
 %
-% Example: 
+% Example:
 %    	Line 1 of example
 %    	Line 2 of example
 %    	Line 3 of example
@@ -26,13 +25,19 @@ function Output = Config()
 
 % Author: Yang Ding
 % All works sponsored by Dr. Gregory Lodygensky and the Canadian Neonatal Brain Platform
-% Saint. Justine Hospital, Montreal, Quebec, 
+% Saint. Justine Hospital, Montreal, Quebec,
 % email address: it@cnbp.ca
 % Website: http://cnbp.ca
-% 2017-03; Last revision: 10:26 AM 2017-03-02
+% Creation: @timestamp@; Last revision:
 
 %------------- BEGIN CODE --------------
 
+  % Default Return:
+
+  % Input Quality Check
 
 
+  % Final return
+  Output = ;
 %------------- END OF CODE --------------
+end

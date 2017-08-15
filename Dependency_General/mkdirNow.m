@@ -1,22 +1,18 @@
 function NowDirectory = mkdirNow()
-%Config - Return the config structure that is used by all other function
+% Make a directory based on the CURRENT execution time, does not enter the directory. 
 %This serves as the MASTER variable/settings ini file.
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
 %
 % Inputs:
-%    	input1 			- Description
-%    	input2 			- Description
-%    	input3 			- Description
+%    	none
 %
 % Outputs:
-%    	output1			- Description
-%    	output2			- Description
+%    	NowDirectory			- the name of the directory being generated.
 %
 % Example:
 %    	Line 1 of example
-%    	Line 2 of example
-%    	Line 3 of example
+
 %
 % Other m-files required: 		none
 % Subfunctions: 				none

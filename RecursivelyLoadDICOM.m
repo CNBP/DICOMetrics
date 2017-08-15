@@ -123,18 +123,14 @@ end
 
 
 % Update the output struct and it's relevant file structure to store the proper information.
-Output.FileRecords 		   = Results ( :,1:Settings.NbMetrics(Settings.IndexFileRecords), Settings.IndexFileRecords 	);
-Output.FocusMetrics 	   = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics), Settings.IndexFocusMetrics ));
-Output.SNRMetrics 		   = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
-Output.TextureMetrics 	 = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
-Output.LiveLabMetrics 			 = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
-Output.DICOMMetrics 	   = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexDICOMMetrics),	Settings.IndexDICOMMetrcis));
+Output.FileRecords 		= 				 Results (:,1:Settings.NbMetrics(Settings.IndexFileRecords), Settings.IndexFileRecords 	);
+Output.FocusMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics), Settings.IndexFocusMetrics ));
+Output.SNRMetrics 		= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
+Output.TextureMetrics = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
+Output.LiveLabMetrics = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
+Output.DICOMMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexDICOMMetrics),	Settings.IndexDICOMMetrics));
 
-%Enter Results directory, save the metrics computed.
-cd(Settings.ResultFolder);
-Dir = mkdirNow("MetricsComputation");
-cd (Dir)
-save('MetricsComputed.mat','Output')
+
 
 toc
 %------------- END OF CODE --------------

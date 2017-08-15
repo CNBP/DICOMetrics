@@ -39,59 +39,59 @@ DCMInfo = dicominfo(Image);
 
   switch AlgoIndex
     case 1
-      Output = DCMInfo.FileSize;
+      Output = double(DCMInfo.FileSize);
     case 2
-      Output = DCMInfo.Width;
+      Output = double(DCMInfo.Width);
     case 3
-      Output = DCMInfo.Height;
+      Output = double(DCMInfo.Height);
     case 4
-      Output = DCMInfo.BitDepth;
+      Output = double(DCMInfo.BitDepth);
     case 5
-      Output = DCMInfo.SliceThickness;
+      Output =  double(DCMInfo.SliceThickness);
     case 6
-      Output = DCMInfo.RepetitionTime;
+      Output =  double(DCMInfo.RepetitionTime);
     case 7
-      Output = DCMInfo.EchoTime;
+      Output =  double(DCMInfo.EchoTime);
     case 8
-      Output = DCMInfo.NumberOfAverages;
+      Output =  double(DCMInfo.NumberOfAverages);
     case 9
-      Output = DCMInfo.ImagingFrequency;
+      Output =  double(DCMInfo.ImagingFrequency);
     case 10
-      Output = DCMInfo.EchoNumber;
+      Output =  double(DCMInfo.EchoNumber);
     case 11
-      Output = DCMInfo.MagneticFieldStrength;
+      Output =  double(DCMInfo.MagneticFieldStrength);
     case 12
-      Output = DCMInfo.SpacingBetweenSlices;
+      Output =  double(DCMInfo.SpacingBetweenSlices);
     case 13
-      Output = DCMInfo.NumberOfPhaseEncodingSteps;
+      Output =  double(DCMInfo.NumberOfPhaseEncodingSteps);
     case 14
-      Output = DCMInfo.EchoTrainLength;
+      Output =  double(DCMInfo.EchoTrainLength);
     case 15
-      Output = DCMInfo.PercentSampling;
+      Output = double(DCMInfo.PercentSampling);
     case 16
-      Output = DCMInfo.PercentPhaseFieldOfView;
+      Output = double(DCMInfo.PercentPhaseFieldOfView);
     case 17
-      Output = DCMInfo.PixelBandwidth;
+      Output = double(DCMInfo.PixelBandwidth);
     case 18
-      Output = DCMInfo.DeviceSerialNumber;
+      Output = str2double(DCMInfo.DeviceSerialNumber);
     case 19
-      Output = DCMInfo.FlipAngle;
+      Output = double(DCMInfo.FlipAngle);
     case 20
-      Output = DCMInfo.SAR;
+      Output = double(DCMInfo.SAR);
     case 21
-      Output = DCMInfo.SeriesNumber;
+      Output = double(DCMInfo.SeriesNumber);
     case 22
-      Output = DCMInfo.AcquisitionNumber;
+      Output = double(DCMInfo.AcquisitionNumber);
     case 23
-      Output = DCMInfo.InstanceNumber;
+      Output = double(DCMInfo.InstanceNumber);
     case 24
-      Output = DCMInfo.SliceLocation;
+      Output = double(DCMInfo.SliceLocation);
     case 25
-      Output = DCMInfo.LargestImagePixelValue;
+      Output = double(DCMInfo.LargestImagePixelValue);
     case 26
-      Output = DCMInfo.WindowCenter;
+      Output = double(DCMInfo.WindowCenter);
     case 27
-      Output = DCMInfo.WindowWidth;
+      Output = double(DCMInfo.WindowWidth);
   end
 
 %------------- END OF CODE --------------

@@ -5,18 +5,10 @@ function Output = LoadConfigVariables()
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
 %
 % Inputs:
-%    	input1 			- Description
-%    	input2 			- Description
-%    	input3 			- Description
+%     none
 %
 % Outputs:
-%    	output1			- Description
-%    	output2			- Description
-%
-% Example:
-%    	Line 1 of example
-%    	Line 2 of example
-%    	Line 3 of example
+%    	Output			- the setting output that contains a series of configuration parameters.
 %
 % Other m-files required: 		none
 % Subfunctions: 				none
@@ -44,21 +36,21 @@ function Output = LoadConfigVariables()
   Output.IndexFocusMetrics 	   = 2;
   Output.IndexSNRMetrics 		   = 3;
   Output.IndexTextureMetrics 	 = 4;
-  Output.IndexLiveLabMetrics 	     = 5;
+  Output.IndexLiveLabMetrics   = 5;
   Output.IndexDICOMMetrics 	   = 6;
 
   % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
   Output.NbFocusMetrics 		 = 28;
   Output.NbSNRMetrics 		   = 15;
   Output.NbTextureMetrics 	 = 23;
-  Output.NbLiveLabMetrics 	     = 2;
+  Output.NbLiveLabMetrics	   = 2;
   Output.NbDICOMMetrics  	   = 27;
 
   Output.NbMetrics(Output.IndexFileRecords)    = 1;
   Output.NbMetrics(Output.IndexFocusMetrics) 	 = Output.NbFocusMetrics;
   Output.NbMetrics(Output.IndexSNRMetrics) 	   = Output.NbSNRMetrics;
   Output.NbMetrics(Output.IndexTextureMetrics) = Output.NbTextureMetrics;
-  Output.NbMetrics(Output.IndexLiveLabMetrics)     = Output.NbLiveLabMetrics;
+  Output.NbMetrics(Output.IndexLiveLabMetrics) = Output.NbLiveLabMetrics;
   Output.NbMetrics(Output.IndexDICOMMetrics)   = Output.NbDICOMMetrics;
 
 
@@ -68,6 +60,10 @@ function Output = LoadConfigVariables()
 
   Output.RootDirectory = pwd;
   Output.ResultFolder = [currentpath '\Results'];
+
+  %Classifer configuration variables
+  Output.ClassiferCount = 6;
+  Output.CrossValidationFold = 10;
   % Ensure dependencies are properly referred to
 
 
