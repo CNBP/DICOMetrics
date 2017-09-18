@@ -4,6 +4,7 @@ function Output = Step2ClassifiersTests(DataMatrix,labelBinary)
 % Syntax:   Output = RecursivelyAnalyzeResults()
 %
 % Inputs:
+%    labelBinary      0 for bad images, 1 for good images.
 %
 % Outputs:
 %    	Output			- the matrix array that contains ALL results.
@@ -58,19 +59,27 @@ Setting = LoadConfigVariables();
   %Loop through all classes in the labelBinary.
   for labelBinaryColumnIndex = 1:size(labelBinary,2)
       %Record all FILES:
-      for ClassiferIndex = 1:Setting.ClassiferCount;
+      for ClassifierIndex = 1:Setting.ClassifierCount;
           % Check if the file is dicom.
-          ClassiferInfo = ClassifiersAnalyses(DataMatrix, labelBinary(:,labelBinaryColumnIndex), ClassiferIndex, Setting.CrossValidationFold);
+          ClassifierInfo = ClassifiersAnalyses(DataMatrix, labelBinary(:,labelBinaryColumnIndex), ClassifierIndex, Setting.CrossValidationFold);
+          if (isempty(ClassifierInfo))
+            % Copy over the classifier info.
+            Output(ClassifierIndex,labelBinaryColumnIndex).Classifier   = []
+            Output(ClassifierIndex,labelBinaryColumnIndex).Mistakes     = 9999;
+            Output(ClassifierIndex,labelBinaryColumnIndex).FalseNegative= 9999;
+            Output(ClassifierIndex,labelBinaryColumnIndex).FalsePositive= 9999;
+          else
+            % Copy over the classifier info.
+            Output(ClassifierIndex,labelBinaryColumnIndex).Classifier   = ClassifierInfo;
+            Output(ClassifierIndex,labelBinaryColumnIndex).Mistakes     = ClassifierInfo.Mistakes     ;
+            Output(ClassifierIndex,labelBinaryColumnIndex).FalseNegative= ClassifierInfo.FalseNegative;
+            Output(ClassifierIndex,labelBinaryColumnIndex).FalsePositive= ClassifierInfo.FalsePositive;
+          end
 
-          % Copy over the classifier info.
-          Output(ClassiferIndex,labelBinaryColumnIndex).Classifier   = ClassiferInfo.Classifier;
-          Output(ClassiferIndex,labelBinaryColumnIndex).ResubError   = ClassiferInfo.ResubError;
-          Output(ClassiferIndex,labelBinaryColumnIndex).cvClassifier = ClassiferInfo.cvClassifier;
-          Output(ClassiferIndex,labelBinaryColumnIndex).cvResubError = ClassiferInfo.cvResubError;
-          disp(['Classifier Type ',num2str(ClassiferIndex), 32, 'is Completed.']);
+          disp(['Classifier Type ' num2str(ClassifierIndex) 32 'is Completed.']);
       end
 
-      disp(['labelBinary Type ',num2str(labelBinaryColumnIndex),32, 'Completed.']);
+      disp(['LabelBinary Type ' num2str(labelBinaryColumnIndex) 32 'Completed.']);
   end
 
 %------------- END OF CODE --------------

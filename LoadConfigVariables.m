@@ -61,8 +61,8 @@ function Output = LoadConfigVariables()
   Output.RootDirectory = pwd;
   Output.ResultFolder = [currentpath '\Results'];
 
-  %Classifer configuration variables
-  Output.ClassiferCount = 6;
+  %Classifier configuration variables
+  Output.ClassifierCount = 6;
   Output.CrossValidationFold = 10;
   % Ensure dependencies are properly referred to
 

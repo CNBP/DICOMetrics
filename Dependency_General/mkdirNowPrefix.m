@@ -26,7 +26,7 @@ function NewDir = mkdirNowPrefix(string)
 % 2017-03; Last revision: 2017-08-14 21:46:14 Eastern Time
 
 %------------- BEGIN CODE --------------
-NowDirectory = char(datetime('now','format','yyyy-MM-dd_HH-mm-ss'));
+NowDirectory = char(datetime('now','format','yyyy-MM-dd_HHmmss'));
 NewDir = [string '-' NowDirectory];
 mkdir(NewDir);
 

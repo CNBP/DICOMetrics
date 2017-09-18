@@ -43,16 +43,20 @@ function Output = LableConverter1Dto2D(Label1D)
     error('Fatal Error:Input label must be double!');
   elseif (max(Label1D)~= 1)
     error('Fatal Error: max classification label value must be 1');
-  elseif (min(Label1D)~= 0)
-    error('Fatal Error: min classification label value must be 0');
-  elseif (numel(unique(Label1D)) ~= 2)
+  elseif (min(Label1D)~= 0 && min(Label1D)~= 1) % In the case when predicted all lables of 1, can happen with TINY positive case count and shitty prediction labels.
+    disp(min(Label1D));
+    error('Fatal Error: min classification label value must be 0 or 1.');
+  elseif (numel(unique(Label1D)) > 2)
+      disp(numel(unique(Label1D)));
     error('Fatal Error: there can only be 1 o 0');
   end
 
 
   % Compute and concatenate Binary PREDICTED Labels
-  GoodImagePredictedLabel= Label1D;
-  BadImagePredictedLabel = (Label1D+(-1)) * -1; % Convert the label to Binary style, for plotConfusion
+  GoodImagePredictedLabel= Label1D; % where 0 is bad, 1 is good.
+
+  BadImagePredictedLabel = (Label1D+(-1)) * -1; % Convert the label to Binary style, for plotConfusion. Where 1) -1 is bad, 0 is good, 2) then * -1 is applied, flipping it to 1 is bad, 0 is good.
+
   Output = [BadImagePredictedLabel GoodImagePredictedLabel];
 
 %------------- END OF CODE --------------

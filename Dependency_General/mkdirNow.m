@@ -1,5 +1,5 @@
 function NowDirectory = mkdirNow()
-% Make a directory based on the CURRENT execution time, does not enter the directory. 
+% Make a directory based on the CURRENT execution time, does not enter the directory.
 %This serves as the MASTER variable/settings ini file.
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
@@ -28,7 +28,7 @@ function NowDirectory = mkdirNow()
 % 2017-03; Last revision: 10:26 AM 2017-03-02
 
 %------------- BEGIN CODE --------------
-NowDirectory = char(datetime('now','format','yyyy-MM-dd_HH-mm-ss'));
+NowDirectory = char(datetime('now','format','yyyy-MM-dd_HHmmss'));
 mkdir(NowDirectory);
 return;
 %------------- END OF CODE --------------

@@ -1,7 +1,7 @@
 function [OutputLabels, OutputScores] = SingleModelPredictor(metrics, inputSingleModel)
   % OutputLabels - Return an array of label based on the inputted SINGLE model (not CVed) and based on the metric input, not model or metric specific
   %
-  % Syntax:  OutputLabels = RUSBoostClassifer(metrics,trueLabels)
+  % Syntax:  OutputLabels = RUSBoostClassifier(metrics,trueLabels)
   %
   % Inputs:
   %    	metrics 			- metrics per subject, observations in rows, metrics arranged in columns.

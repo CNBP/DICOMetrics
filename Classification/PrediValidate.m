@@ -1,7 +1,7 @@
 function [predictedLabelVector predictedScore] = PrediValidate(validationMetrics, trueLabelsVector, inputClassifierModel)
   % OutputLabels - In addition to predict the label and score, also save it by compare against the true label and give a confus
   %
-  % Syntax:  OutputLabels = RUSBoostClassifer(validationMetrics,trueLabels)
+  % Syntax:  OutputLabels = RUSBoostClassifier(validationMetrics,trueLabels)
   %
   % Inputs:
   %    	validationMetrics 			- validationMetrics per subject, observations in rows, validationMetrics arranged in columns.

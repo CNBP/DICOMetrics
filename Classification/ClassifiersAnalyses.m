@@ -5,7 +5,7 @@ function Result = ClassifiersAnalyses(InputDataColumns, trueLabels, AlgoChoice, 
 %
 % Inputs:
 %    	InputDataColumns 	- this is the main data matrix where the bulk of the data reside
-%    	OutputLabels 	    - true label of the the data provided.
+%    	trueLabels 	    - true label of the the data provided. 0 for bad images 1 for good images.
 %		  Algo                    - Description
 % 		CVFold					- Description
 % Outputs:
@@ -54,85 +54,81 @@ function Result = ClassifiersAnalyses(InputDataColumns, trueLabels, AlgoChoice, 
 	switch AlgoChoice
 		case 1 % Linear Discriminant Analysis (LDA). Using Pseudo in case of 0 in data columns.
 			lda = fitcdiscr(InputDataColumns,trueLabels, 'DiscrimType','pseudoLinear');
-			ldaClass = resubPredict(lda);
-			Result.ResubError = resubLoss(lda);
-			Result.Classifier = lda;
-			% Eg Output: Resub 0.3039
-
-			% LDA CV:
-			cvlda = crossval(lda,'CVPartition',cp);
-			Result.cvResubError = kfoldLoss(cvlda);
-			Result.cvClassifier = cvlda;
+      Result = SingleModelClassifier(lda, InputDataColumns, trueLabels, 'pLDA')
 			% Eg Output: ldaCVErr = 0.3265
 			disp('Linear Discriminant Analysis (LDA) Completed');
 		case 2 % Quadratic Discriminant Analysis (QDA). Using Pseudo in case of 0 in data columns.
 			qda = fitcdiscr(InputDataColumns,trueLabels,'DiscrimType','pseudoQuadratic');
-			Result.ResubError = resubLoss(qda);
-			Result.Classifier = qda;
-			% Eg Output: > qdaResubErr = 0.3706
-
-			% QDA CV:
-			cvqda = crossval(qda,'CVPartition',cp);
-			Result.cvResubError = kfoldLoss(cvqda);
-			Result.cvClassifier = cvqda;
+			Result = SingleModelClassifier(qda, InputDataColumns, trueLabels, 'pQDA')
 			% Eg Output: > qdaCVErr = 0.4480
 			disp('Quadratic Discriminant Analysis (QDA) Completed');
-		case 3 % Naive Bay Classifer (NBC):
-			nbGau = fitcnb(InputDataColumns,trueLabels);
-			Result.ResubError = resubLoss(nbGau);
-			% Eg Output: 	> 0.7353
-			Result.Classifier = nbGau;
+		case 3 % Naive Bay Classifier (NBC):
+      try
+        nbGau = fitcnb(InputDataColumns,trueLabels);
+        Result = SingleModelClassifier(nbGau, InputDataColumns, trueLabels, 'NBC')
+        disp('Naive Bay Classifier Completed');
+  			% Eg Output: > 0.7353
+      catch
+        warning('Warning: Problem forming Naive Bay Classifier. Assigning a value of []');
+        disp('Naive Bay Classifier FAILED');
+        Result = [];
+      end
 
-			nbGauCV = crossval(nbGau, 'CVPartition',cp);
-			Result.cvClassifier = nbGauCV;
-			Result.cvResubError = kfoldLoss(nbGauCV);
-			% Eg Output: > 0.7353
-			disp('Naive Bay Classifier Completed');
 		case 4 % NBC with Kernal Distribution:
-			nbKD = fitcnb(InputDataColumns, trueLabels, 'DistributionNames','kernel', 'Kernel','box');
-			Result.ResubError = resubLoss(nbKD);
-			% Eg Output: 		>0.6157
-			Result.Classifier = nbKD;
+      try
+        nbKD = fitcnb(InputDataColumns, trueLabels, 'DistributionNames','kernel', 'Kernel','box');
+        Result = SingleModelClassifier(nbKD, InputDataColumns, trueLabels, 'NBC-BoxKernel')
+        % Eg Output: 		>0.6355
+        disp('Naive Bay Classifier with Box Kernal Distribution is Completed');
+      catch
+        warning('Warning: Problem forming Naive Bay Classifier with Kernal Distribution. Assigning a value of []');
+        disp('Naive Bay Classifier with Box Kernal Distribution FAILED');
+        Result = [];
+      end
 
-			nbKDCV = crossval(nbKD, 'CVPartition',cp);
-			Result.cvClassifier = nbKDCV;
-			Result.cvResubError = kfoldLoss(nbKDCV);
-			% Eg Output: 		>0.6355
-			disp('Naive Bay Classifier with Kernal Distribution is Completed');
 		case 5 %Decision Tree:
 			t = fitctree(InputDataColumns, trueLabels);
-			Result.Classifier = t;
-			Result.ResubError = resubLoss(t);
-			% Eg Output: 	0.0843
+			Result = SingleModelClassifier(t, InputDataColumns, trueLabels, 'DecisionTree')
+      disp('Decision Tree is Completed');
+    case 6 %Rusboosted cvClassifier
+      Result = RUSBoostClassifier(InputDataColumns, trueLabels, 50)
+      disp('RusBoosted Tree Ensemble is Completed');
+    case 7 %Rusboosted cvClassifier
+      Result = RUSBoostClassifier(InputDataColumns, trueLabels, 50)
+      disp('RusBoosted Tree Ensemble is Completed');
+    case 8 %Rusbootted
+      Result = RUSBoostClassifier(InputDataColumns, trueLabels, 50)
+      disp('RusBoosted Tree Ensemble is Completed');
+    case 99999999
+      %t = fitctree(InputDataColumns, trueLabels);
+			%Result.ResubError = resubLoss(t);
+			%% Eg Output: 	0.0843
+%
+			%%cvt = crossval(t,'CVPartition',cp);
+			%%cvClassifier = cvt;
+			%%Result.cvResubError = kfoldLoss(cvt)
+			%% Eg Output: 	0.4098
+%
+			%resubcost = resubLoss(t,'Subtrees','all');
+			%[cost,secost,ntermnodes,bestlevel] = cvloss(t,'Subtrees','all');
+			%plot(ntermnodes,cost,'b-', ntermnodes,resubcost,'r--');
+			%figure(gcf);
+			%xlabel('Number of terminal nodes');
+			%ylabel('Cost (misclassification error)');
+			%legend('Cross-validation','Resubstitution');
+			%[mincost,minloc] = min(cost);
+			%cutoff = mincost + secost(minloc);
+			%hold on
+			%plot([0 20], [cutoff cutoff], 'k:');
+			%plot(ntermnodes(bestlevel+1), cost(bestlevel+1), 'mo');
+			%legend('Cross-validation','Resubstitution','Min + 1 std. err.','Best choice');
+			%hold off
+			%pt = prune(t,'Level',bestlevel);
+			%Result.cvClassifier = pt;
+			%view(pt,'Mode','graph');
+%
+			%Result.cvResubError = cost(bestlevel+1);
 
-			%cvt = crossval(t,'CVPartition',cp);
-			%cvClassifer = cvt;
-			%Result.cvResubError = kfoldLoss(cvt)
-			% Eg Output: 	0.4098
-
-			resubcost = resubLoss(t,'Subtrees','all');
-			[cost,secost,ntermnodes,bestlevel] = cvloss(t,'Subtrees','all');
-			plot(ntermnodes,cost,'b-', ntermnodes,resubcost,'r--');
-			figure(gcf);
-			xlabel('Number of terminal nodes');
-			ylabel('Cost (misclassification error)');
-			legend('Cross-validation','Resubstitution');
-			[mincost,minloc] = min(cost);
-			cutoff = mincost + secost(minloc);
-			hold on
-			plot([0 20], [cutoff cutoff], 'k:');
-			plot(ntermnodes(bestlevel+1), cost(bestlevel+1), 'mo');
-			legend('Cross-validation','Resubstitution','Min + 1 std. err.','Best choice');
-			hold off
-			pt = prune(t,'Level',bestlevel);
-			Result.cvClassifier = pt;
-			view(pt,'Mode','graph');
-
-			Result.cvResubError = cost(bestlevel+1);
-
-			disp('Pruned Decision Tree is Completed');
-		case 6 %Rusboosted cvClassifier
-      RUSBoostClassifer(InputDataColumns, trueLabels, 50)
 		otherwise
 			Result = [];
 			return

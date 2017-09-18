@@ -1,32 +1,30 @@
-function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, DefaultMistakeThreshold, bias)
-  %OutputLabels - Return an array containing all RUSBoosted classifiers at various weight and tree counts.
-  %
-  % Syntax:  OutputLabels = RUSBoostClassifer(metrics,trueLabels)
-  %
-  % Inputs:
-  %    	metrics 			- metrics per subject, observations in rows, metrics arranged in columns.
-  %    	trueLabels 		- X by 1 vector labeling the subjects.
-  %
-  % Outputs:
-  %    	PredictedLabel - X by 1 vector labeling the subjects based on the model.
-  %
-  % Other m-files required: 		none
-  % Subfunctions: 				      none
-  % Toolbox required: 			    export_figs
-  %
+function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, DefaultMistakeThreshold)
+%ClassifierModel - Return an array containing all RUSBoosted classifiers at various weight and tree counts.
+%
+% Syntax:  ClassifierModel = RUSBoostClassifier(metrics,trueLabels)
+%
+% Inputs:
+%    	metrics 			- metrics per subject, observations in rows, metrics arranged in columns.
+%    	trueLabels 		- X by 1 vector labeling the subjects.
+%
+% Outputs:
+%    	PredictedLabel - X by 1 vector labeling the subjects based on the model.
+%
+% Other m-files required: 		none
+% Subfunctions: 				      none
+% Toolbox required: 			    export_figs
+%
 
-  % Author: Yang Ding
-  % All works sponsored by Dr. Gregory Lodygensky and the Canadian Neonatal Brain Platform
-  % Saint. Justine Hospital, Montreal, Quebec,
-  % email address: it@cnbp.ca
-  % Website: http://cnbp.ca
-  % 2017-07; Last revision: 10:21 AM 2017-07-19
+% Author: Yang Ding
+% All works sponsored by Dr. Gregory Lodygensky and the Canadian Neonatal Brain Platform
+% Saint. Justine Hospital, Montreal, Quebec,
+% email address: it@cnbp.ca
+% Website: http://cnbp.ca
+% 2017-07; Last revision: 2017-08-22 10:00:56 Eastern Time
 
-  %------------- BEGIN CODE --------------
+%------------- BEGIN CODE --------------
 
-  global Output;
-
-  OutputLabels = [];
+  Settings = LoadConfigVariables();
 
   % Check if metrics and labels have the same rows.
   if (isempty(metrics) || isempty(trueLabelsVector) || isempty(DefaultMistakeThreshold))
@@ -38,12 +36,9 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
   elseif (size(trueLabelsVector,2) == 2)
     error('Fatal Error:Input trueLabels must only have two classes!');
     return;
-  elseif ~isfinite(DefaultMistakeThreshold) || ~isfinite(bias)
+  elseif ~isfinite(DefaultMistakeThreshold)
     error('Fatal Error: mistake/bias threshold not valid!');
     return; %Return if the default mistake is not a number.
-  elseif floor(bias)~=ceil(bias) || bias > 3 || bias < 1
-    error('Model bias incorrect')
-    return;
   end
 
   %Initialization block
@@ -64,16 +59,16 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
   CurrentFalseNegative                 = DefaultMistakeThreshold;
   CurrentMistakes                      = DefaultMistakeThreshold;
 
-  currendDir = pwd;
+  currentDir = pwd;
 
-  cd(Output.ResultFolder)
+  cd(Settings.ResultFolder)
 
   %Generate new directory for today's data.
-  NowDirectory = mkdirNowPrefix('RUSBoostClassifer');
+  NowDirectory = mkdirNowPrefix(['ClassifierModel-RUSBoostClassifier']);
   cd (NowDirectory);
 
   %Begin ensemble classifier
-  for fold = [10 100 1000] %10000 fold has no gain.
+  for fold = [10 100] %10000 fold has no gain.
     for cost = [5 10 11 12 13 14 15 16]
 
       %Make an emsembled tree. with 10K learning cycle, using RUSBoost, and penalize incorrect Class0 (worst image) weight X times more than regular images after Y fold cross validation
@@ -103,11 +98,14 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       % Bottom Left to Right are PREDICTED CLASSES: 1 TO 4 eg.
       % A combination of both false positive and false negatives
 
-      % So Coordinate (2,1) is interpreted as TRUE class 1 (Bad Images) being Label as class 2 (Clear Images), aka false negative when it comes to image QA
-      CurrentFalseNegative = confusionMat(2,1); % False Negatives
+      %%% IMPORTANT TO UNDERSTAND THIS SECTION!!!!
+      % So Coordinate (2,1) is interpreted as TRUE class 2 (Good Images) being Label as class 1 (Bad Images),
+      % aka false positives when it comes to image QA (target class is 0), % False Negatives when it comes to GOOD image identification (target class is 1)
+      CurrentFalsePositive = confusionMat(2,1); % Storing as false positives as these are for QA purposes!
 
-      % So Coordinate (1,2) is interpreted as TRUE class 2 (Good Images) being Label as class 1 (Bad Images), aka false positive when it comes to image QA
-      CurrentFalsePositive = confusionMat(1,2); % Flase Positives
+      % So Coordinate (1,2) is interpreted as TRUE class 1 (Bad Images) being Label as class 2 (Good Images),
+      % aka false negative when it comes to image QA (target class is 0), false POSITIVE when it comes to GOOD image identification (target class is 1)
+      CurrentFalseNegative = confusionMat(1,2); % Storing as false negatives as these are for QA purposes!
 
       % Tabulate all mistakes together
       CurrentMistakes = CurrentFalseNegative + CurrentFalsePositive;
@@ -116,19 +114,19 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       %GoodImagePredictedLabel= predictedLabelVector;
       %BadImagePredictedLabel = (predictedLabelVector+(-1)) * -1; % Convert the label to Binary style, for plotConfusion
       %predictedLabel = [BadImagePredictedLabel GoodImagePredictedLabel];
-      predictedLabelVector = LabelConverter1Dto2D(predictedLabelVector);
+      predictedLabels = LabelConverter1Dto2D(predictedLabelVector);
 
 
       % Compute and concatenate Binary TRUE Labels
       %GoodImageTrueLabel= trueLabelsVector;
       %BadImageTrueLabel = (trueLabelsVector+(-1)) * -1; % Convert the labe to Binary style, for plotConfusion
       %trueLabels = [BadImageTrueLabel GoodImageTrueLabel];
-      trueLabelsVector = LabelConverter1Dto2D(trueLabelsVector);
+      trueLabels = LabelConverter1Dto2D(trueLabelsVector);
 
 
       % Note that predicted Label and Truel Labels are 0: bad image, 1: good images where as class number-wise, they are 1 then 2.
 
-      figure('Visible','on');
+      figure('Visible','off');
       filenameConfusion = strcat('Confusion_Fold',string(fold),'-Cost',string(cost),'.fig');
       filenameROCPoint = strcat('ROCPoint_Fold',string(fold),'-Cost',string(cost),'.fig');
       filenameROC = strcat('ROC_Fold',string(fold),'-Cost',string(cost),'.fig');
@@ -145,7 +143,7 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       saveas(gcf,char(filenameROC),'fig');
 
       % Plot confusion, class in row, column represent observations.Must use their binary form.
-      plotconfusion(trueLabels',predictedLabel');
+      plotconfusion(trueLabels',predictedLabels');
 
       xlabel('Truth')
       ylabel('Inferred')
@@ -154,7 +152,7 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       saveas(gcf,char(filenameConfusion),'fig');
 
       % Plot the ROC characterics
-      plotroc(trueLabels',predictedLabel');
+      plotroc(trueLabels',predictedLabels');
       saveas(gcf,char(filenameROCPoint),'fig');
 
       %openfig('Confusion.fig','new','visible')
@@ -184,6 +182,7 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
           OverallModel.confusionMat   = confusionMat;
           OverallModel.fold           = fold;
           OverallModel.cost           = cost;
+          OverallModel.time           = datetime('now','format','yyyy-MM-dd_HH-mm-ss');
         end
 
         % Store FalseNegativeBias model data.
@@ -206,6 +205,7 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
             FalseNegativeBiasModel.confusionMat   = confusionMat;
             FalseNegativeBiasModel.fold           = fold;
             FalseNegativeBiasModel.cost           = cost;
+            FalseNegativeBiasModel.time           = datetime('now','format','yyyy-MM-dd_HH-mm-ss');
         end
 
         % Store FalsePositiveBias model data.
@@ -228,37 +228,33 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
             FalsePositiveBiasModel.confusionMat   = confusionMat;
             FalsePositiveBiasModel.fold           = fold;
             FalsePositiveBiasModel.cost           = cost;
+            FalsePositiveBiasModel.time           = datetime('now','format','yyyy-MM-dd_HH-mm-ss');
         end
       end
     end
   end
 
-  if (bias == 1)
-    ClassifierModel = OverallModel;
-  elseif (bias ==2)
-    ClassifierModel = FalsePositiveBiasModel;
-  elseif (bias ==3)
-    ClassifierModel = FalseNegativeBiasModel;
-  end
-  %Final result is based on the predited label of the model.
-
-
-  % Save the model somewhere for inspection and thorough evaluations.
-  save ('OverallModel.mat','OverallModel');
-  save ('FalseNegativeBiasModel.mat','FalseNegativeBiasModel');
-  save ('FalsePositiveBiasModel.mat','FalsePositiveBiasModel');
-
-  % Ouptut
   disp('Crossvalidated results show that: ')
+  ClassifierModel = OverallModel;
+  save ('OverallModel.mat','OverallModel');
   disp(strcat('The best overall model is for fold ',string(OverallModel.fold), ' and cost at ', string(OverallModel.cost)));
-  disp(strcat('The best model optimizing for minimal false negative is for fold ',string(FalseNegativeBiasModel.fold), ' and cost at ', string(FalseNegativeBiasModel.cost)));
+
+
+  save ('FalsePositiveBiasModel.mat','FalsePositiveBiasModel');
   disp(strcat('The best model optimizing for minimal false positive is for fold ',string(FalsePositiveBiasModel.fold), ' and cost at ', string(FalsePositiveBiasModel.cost)));
+
+
+  save ('FalseNegativeBiasModel.mat','FalseNegativeBiasModel');
+  disp(strcat('The best model optimizing for minimal false negative is for fold ',string(FalseNegativeBiasModel.fold), ' and cost at ', string(FalseNegativeBiasModel.cost)));
+
+  %Final result is based on the predited label of the model.
 
   %Require Fig converter at https://www.mathworks.com/matlabcentral/fileexchange/16906-convert-fig-files-to-images
   % Convert all figs. into JPG files.
   export_figs('jpg');
 
   % Return where we come from.
-  cd(currendDir);
+  cd(currentDir);
+  figure('Visible','on');
   %------------- END OF CODE --------------
 end
