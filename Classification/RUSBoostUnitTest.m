@@ -2,7 +2,7 @@
 
 for model = 1:3
   Settings = LoadConfigVariables();
-  cd (Settings.ResultFolder);
+  cd (Settings.Folder.Result);
   load('2017-06-06_ASP_RegressionInput.mat')
   % Unit test for RUSBoostClassifier.m
   ClassifierModel = RUSBoostClassifier(RegressionInput(:,1:65), RegressionInput(:,67),99, model);

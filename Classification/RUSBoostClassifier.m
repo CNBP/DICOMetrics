@@ -61,7 +61,7 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
 
   currentDir = pwd;
 
-  cd(Settings.ResultFolder)
+  cd(Settings.Folder.Result)
 
   %Generate new directory for today's data.
   NowDirectory = mkdirNowPrefix(['ClassifierModel-RUSBoostClassifier']);

@@ -96,7 +96,7 @@ function [predictedLabelVector predictedScore] = PrediValidate(validationMetrics
   [X,Y,Threshold,AreaUnderCurve] = perfcurve(trueLabelsVector,predictedScore(:,1),0);
 
   currentDir = pwd;
-  cd(Settings.ResultFolder)
+  cd(Settings.Folder.Result)
   %Generate new directory for today's data.
   NowDirectory = mkdirNowPrefix('PrediValidate');
   cd (NowDirectory);

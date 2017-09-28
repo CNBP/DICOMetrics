@@ -39,7 +39,7 @@ function Output = SingleModelClassifier(SingleModel, metrics, trueLabelsVector, 
 
   % Save current path.
   currentDir = pwd;
-  cd(Setting.ResultFolder);
+  cd(Setting.Folder.Result);
   Dir = mkdirNowPrefix(['ClassifierModel-' modelLabel]);
   cd (Dir)
 

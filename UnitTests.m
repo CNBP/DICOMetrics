@@ -1,8 +1,21 @@
+% Unit Test for Step 1
+clc;
+clear;
+% Get Main path;
+path                  = uigetdir;
+
+% Step1: Use path to derive metrics;
+Metrics               = Step1ExtractMetrics(path,'ASP');
+
+
+
+
+
 % Unit Test for Step 2
 clc;
 clear;
 Settings = LoadConfigVariables();
-cd (Settings.ResultFolder);
+cd (Settings.Folder.Result);
 
 % Load LabelBinary
 load('2017-06-06_Label_BDP_ANN_Binary.mat');
@@ -24,7 +37,7 @@ ClassifierModel = Step2ClassifiersTests(MetricsMatrix, LabelBinary(:,2));
 clc;
 clear;
 Settings = LoadConfigVariables();
-cd (Settings.ResultFolder);
+cd (Settings.Folder.Result);
 
 % Load LabelBinary
 load('2017-06-06_Label_ASP_ANN_Binary.mat');

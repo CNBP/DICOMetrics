@@ -58,8 +58,17 @@ function Output = LoadConfigVariables()
   [currentpath, filename, fileextension]= fileparts(scriptName);
 
 
-  Output.RootDirectory = pwd;
-  Output.ResultFolder = [currentpath '\Results'];
+  Output.Folder.Root = pwd;
+  Output.Folder.Result = [currentpath '\Results'];
+
+
+  % Study specific settings
+  Output.Folder.ASP = [currentpath '\Results' '\ASP'];
+  Output.Folder.ASPMetrics = [currentpath '\Results' '\ASP' '\Metrics'];
+  Output.Folder.ASPModels = [currentpath '\Results' '\ASP' '\Models'];
+  Output.Folder.BDP = [currentpath '\Results' '\BDP'];
+  Output.Folder.BDPMetrics = [currentpath '\Results' '\BDP' '\Metrics'];
+  Output.Folder.BDPModels = [currentpath '\Results' '\BDP' '\Models'];
 
   %Classifier configuration variables
   Output.ClassifierCount = 6;

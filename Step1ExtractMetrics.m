@@ -1,4 +1,4 @@
-function MetricsMatrix = Step1ExtractMetrics(path)
+function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
 % NAStep1ExtractMetricsME - this main function extract all metrics from the path root directory and recursively explore any subsequent folders that contain all DICOM files.
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
@@ -27,6 +27,7 @@ function MetricsMatrix = Step1ExtractMetrics(path)
 % 2017; Last revision: 2017-08-14 22:45:37 Eastern Time
 
 %------------- BEGIN CODE --------------
+
   % Read in the setting files
   Settings = LoadConfigVariables();
 
@@ -64,20 +65,44 @@ function MetricsMatrix = Step1ExtractMetrics(path)
     Output.DICOMMetrics ...
   );
 
+  %Save EXTRA copy of the data in the final folder AS WELL as the regular output folder.
+  cd(Settings.Folder.Result);
+  if (exist(StudyType))
+    if (StudyType == 'ASP')
+      Output.Dir = Settings.Folder.ASPMetrics;
+      % Enter the output folder
+      mkdir (Output.Dir)
+      cd (Output.Dir)
+      % Save the various output
+      save('MetricsDataStructure.mat','Output')
+      save('MetricsMatrix.mat','MetricsMatrix')
 
+    elseif (StudyType == 'BDP')
+      Output.Dir = Settings.Folder.BDPMetrics;
+      % Enter the output folder
+      mkdir (Output.Dir)
+      cd (Output.Dir)
+      % Save the various output
+      save('MetricsDataStructure.mat','Output')
+      save('MetricsMatrix.mat','MetricsMatrix')
+    end
+  end
+
+  %Regular saving process flow.
 
   %Enter Results directory, save the metrics computed.
-  cd(Settings.ResultFolder);
+  cd(Settings.Folder.Result);
   % Record and enter the specific directory
-  Dir = mkdirNowPrefix('MetricsComputation');
-  cd (Dir)
-  % Save this for records
-  Output.Dir = pwd;
+  Output.Dir = mkdirNowPrefix('MetricsComputation');
+
+  % Enter the output folder
+  cd (Output.Dir)
   % Save the various output
   save('MetricsDataStructure.mat','Output')
   save('MetricsMatrix.mat','MetricsMatrix')
+
   % Return to root.
-  cd(Settings.RootDirectory);
+  cd(Settings.Folder.Root);
   disp('Step 1 Completed:')
   toc
 %------------- END OF CODE --------------
