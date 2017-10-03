@@ -100,6 +100,7 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
   % Save the various output
   save('MetricsDataStructure.mat','Output')
   save('MetricsMatrix.mat','MetricsMatrix')
+  csvwrite('MetricsMatrix.mat',MetricsMatrix)
 
   % Return to root.
   cd(Settings.Folder.Root);
