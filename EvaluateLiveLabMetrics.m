@@ -53,12 +53,12 @@ function NSSMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 		case 2 % BRISQUE
 			NSSMetric = brisquescore(Image);
 
-		% case 3 % DIIVINE
+		% TODO: implement case 3 % DIIVINE
 			% glcms = graycomatrix(Image);
 			% stats = graycoprops(glcms);
 			% NSSMetric = stats.Correlation
 
-		% case 4 % GRNN
+		% TODO: implemented case 4 % GRNN
 			% glcms = graycomatrix(Image);
 			% stats = graycoprops(glcms);
 			% NSSMetric = stats.Energy
