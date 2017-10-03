@@ -7,7 +7,7 @@
 
 % Eero Simoncelli, 6/96.
 
-%% TODO: Verify that this  matches Mandelbrot defn of fractal dimension.
+%% Verify that this  matches Mandelbrot defn of fractal dimension.
 %%       Make this more efficient!
 
 function res = mkFract(dims, fract_dim)
@@ -33,4 +33,4 @@ if (max(max(abs(imag(fres)))) > 1e-10)
 else
   res = real(fres);
   res = res / sqrt(var2(res));
-end  
+end

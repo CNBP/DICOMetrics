@@ -1,7 +1,7 @@
 % IM = mkSquare(SIZE, PERIOD, DIRECTION, AMPLITUDE, PHASE, ORIGIN, TWIDTH)
 %      or
 % IM = mkSine(SIZE, FREQ, AMPLITUDE, PHASE, ORIGIN, TWIDTH)
-% 
+%
 % Compute a matrix of dimension SIZE (a [Y X] 2-vector, or a scalar)
 % containing samples of a 2D square wave, with given PERIOD (in
 % pixels), DIRECTION (radians, CW from X-axis, default = 0), AMPLITUDE
@@ -9,12 +9,12 @@
 % ORIGIN defaults to the center of the image.  TWIDTH specifies width
 % of raised-cosine edges on the bars of the grating (default =
 % min(2,period/3)).
-% 
+%
 % In the second form, FREQ is a 2-vector of frequencies (radians/pixel).
 
 % Eero Simoncelli, 6/96.
 
-% TODO: Add duty cycle.  
+% Add duty cycle.  
 
 function [res] = mkSquare(sz, per_freq, dir_amp, amp_phase, phase_orig, orig_twidth, twidth)
 
@@ -74,7 +74,7 @@ else
 end
 
 %------------------------------------------------------------
-  
+
 if (exist('origin') == 1)
   res = mkRamp(sz, direction, frequency, phase, origin) - pi/2;
 else
@@ -85,5 +85,5 @@ end
 
 res = pointOp(abs(mod(res+pi, 2*pi)-pi),Ytbl,Xtbl(1),Xtbl(2)-Xtbl(1),0);
 
-% OLD threshold version: 
+% OLD threshold version:
 %res = amplitude * (mod(res,2*pi) < pi);

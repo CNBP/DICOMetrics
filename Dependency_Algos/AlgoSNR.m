@@ -1,5 +1,5 @@
-function [Name, Count] = AlgoFocus(Index)
-% NAME - This function returns the name of the specific index requested as well as the count of all current AlgoFocus implemented.
+function [Name, Count] = AlgoSNR(Index)
+% NAME - DESCRIPTION
 %
 % Syntax:  []] = AlgoTemplater(1,0)
 %
@@ -28,38 +28,25 @@ function [Name, Count] = AlgoFocus(Index)
 % Saint. Justine Hospital, Montreal, Quebec,
 % email address: it@cnbp.ca
 % Website: http://cnbp.ca
-% 2017; Last revision: 2017-10-03 11:32:48 Eastern Time
+% 2017; Last revision: 2017-10-03 11:49:02 Eastern Time
+%TODO: better rename AJANE 1 to 4.
+%TODO: add note about the default Bin Number. 
 
-%TODO: make sure to look into the not implemented function here!
-
-AlgoFocus{ 1} = 'ACMO';
-AlgoFocus{ 2} = 'BREN';
-AlgoFocus{ 3} = 'NotImplemented';
-AlgoFocus{ 4} = 'CURV';
-AlgoFocus{ 5} = 'NotImplemented';
-AlgoFocus{ 6} = 'NotImplemented';
-AlgoFocus{ 7} = 'GDER';
-AlgoFocus{ 8} = 'GLVA';
-AlgoFocus{ 9} = 'GLLV';
-AlgoFocus{10} = 'GLVN';
-AlgoFocus{11} = 'GRAE';
-AlgoFocus{12} = 'GRAT';
-AlgoFocus{13} = 'GRAS';
-AlgoFocus{14} = 'HELM';
-AlgoFocus{15} = 'HISE';
-AlgoFocus{16} = 'HISR';
-AlgoFocus{17} = 'LAPE';
-AlgoFocus{18} = 'LAPM';
-AlgoFocus{19} = 'LAPV';
-AlgoFocus{20} = 'LAPD';
-AlgoFocus{21} = 'SFIL';
-AlgoFocus{22} = 'SFRQ';
-AlgoFocus{23} = 'TENG';
-AlgoFocus{24} = 'TENV';
-AlgoFocus{25} = 'VOLA';
-AlgoFocus{26} = 'WAVS';
-AlgoFocus{27} = 'WAVV';
-AlgoFocus{28} = 'WAVR';
+AlgoSNR{ 1} = 'AjaNE1';
+AlgoSNR{ 2} = 'AjaNE2';
+AlgoSNR{ 3} = 'AjaNE3';
+AlgoSNR{ 4} = 'AjaNE4';
+AlgoSNR{ 5} = 'Brummer';
+AlgoSNR{ 6} = 'Chang';
+AlgoSNR{ 7} = 'noise_M1';
+AlgoSNR{ 8} = 'noise_M2';
+AlgoSNR{ 9} = 'MRI_lmmse';
+AlgoSNR{10} = 'MeanImage';
+AlgoSNR{11} = 'MeanC50x50';
+AlgoSNR{12} = 'MeanC100x100';
+AlgoSNR{13} = 'LogImage';
+AlgoSNR{14} = 'LogC50x50';
+AlgoSNR{15} = 'LogC100x100';
 
 %Store Count!
 [column Count] = size(AlgoFocus);
@@ -70,6 +57,5 @@ if (0 < index && index < Count && isinteger(index)){
 } else {
   Name = 'Invalid'
 }
-
 %------------- END OF CODE --------------
 end

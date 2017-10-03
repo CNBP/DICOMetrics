@@ -35,6 +35,9 @@ function Output = EvaluteDICOMMetrics(Image, AlgoIndex)
 %Use DCMINFO to extract the variety of structural informations.
 DCMInfo = dicominfo(Image);
 
+%#################
+% MAKE SUER TO UPDATE THE Algo as well! 
+%#################
 %------------- BEGIN CODE --------------
 
   switch AlgoIndex

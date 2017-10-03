@@ -1,13 +1,13 @@
 % RANGE = showIm (MATRIX, RANGE, ZOOM, LABEL, NSHADES )
-% 
+%
 % Display a MatLab MATRIX as a grayscale image in the current figure,
-% inside the current axes.  If MATRIX is complex, the real and imaginary 
+% inside the current axes.  If MATRIX is complex, the real and imaginary
 % parts are shown side-by-side, with the same grayscale mapping.
-% 
-% If MATRIX is a string, it should be the name of a variable bound to a 
-% MATRIX in the base (global) environment.  This matrix is displayed as an 
+%
+% If MATRIX is a string, it should be the name of a variable bound to a
+% MATRIX in the base (global) environment.  This matrix is displayed as an
 % image, with the title set to the string.
-% 
+%
 % RANGE (optional) is a 2-vector specifying the values that map to
 % black and white, respectively.  Passing a value of 'auto' (default)
 % sets RANGE=[min,max] (as in MatLab's imagesc).  'auto2' sets
@@ -15,25 +15,25 @@
 % RANGE=[p1-(p2-p1)/8, p2+(p2-p1)/8], where p1 is the 10th percentile
 % value of the sorted MATRIX samples, and p2 is the 90th percentile
 % value.
-% 
+%
 % ZOOM specifies the number of matrix samples per screen pixel.  It
 % will be rounded to an integer, or 1 divided by an integer.  A value
 % of 'same' or 'auto' (default) causes the zoom value to be chosen
 % automatically to fit the image into the current axes.  A value of
 % 'full' fills the axis region (leaving no room for labels).  See
 % pixelAxes.m.
-% 
-% If LABEL (optional, default = 1, unless zoom='full') is non-zero, the range 
-% of values that are mapped into the gray colormap and the dimensions 
-% (size) of the matrix and zoom factor are printed below the image.  If label 
+%
+% If LABEL (optional, default = 1, unless zoom='full') is non-zero, the range
+% of values that are mapped into the gray colormap and the dimensions
+% (size) of the matrix and zoom factor are printed below the image.  If label
 % is a string, it is used as a title.
-% 
+%
 % NSHADES (optional) specifies the number of gray shades, and defaults
 % to the size of the current colormap.
 
 % Eero Simoncelli, 6/96.
 
-%%TODO: should use "newplot"
+%% should use "newplot"
 
 function range = showIm( im, range, zoom, label, nshades );
 
@@ -41,7 +41,7 @@ function range = showIm( im, range, zoom, label, nshades );
 %% OPTIONAL ARGS:
 
 if (nargin < 1)
-  error('Requires at least one input argument.'); 
+  error('Requires at least one input argument.');
 end
 
 MLv = version;
@@ -70,14 +70,14 @@ end
 if (exist('label') ~= 1)
   if strcmp(zoom,'full')
     label = 0;				% no labeling
-  else					
+  else
     label = 1;				% just print grayrange & dims
   end
 end
 
 %------------------------------------------------------------
 
-%% Automatic range calculation: 
+%% Automatic range calculation:
 if (strcmp(range,'auto1') | strcmp(range,'auto'))
   if isreal(im)
     [mn,mx] = range2(im);
@@ -135,7 +135,7 @@ xlbl_offset = 0; % default value
 
 if (~any(size(im)==1))
   %% MatLab's "image" rounds when mapping to the colormap, so we compute
-  %%      (im-r1)*(nshades-1)/(r2-r1) + 1.5 
+  %%      (im-r1)*(nshades-1)/(r2-r1) + 1.5
   mult = ((nshades-1) / (range(2)-range(1)));
   d_im = (mult * im) + factor*(1.5 - range(1)*mult);
 end
@@ -174,7 +174,7 @@ else
     set(ax,'Units',orig_units);
     xlbl_offset = (pos1(1)-pos2(1))/2;
   end
-end  
+end
 
 if ~any(size(im)==1)
   colormap(gray(nshades));
@@ -198,7 +198,7 @@ if ((label ~= 0))
     else
       zformat = sprintf('/ %d',round(1/zoom));
     end
-    if isreal(im) 
+    if isreal(im)
       format=[' Range: [%.3g, %.3g] \n Dims: [%d, %d] ', zformat];
         else
       format=['Range: [%.3g, %.3g]  ----  Dims: [%d, %d]', zformat];
@@ -208,7 +208,7 @@ if ((label ~= 0))
     set(h,'FontSize', 9); 		% MAGIC NUMBER: font size!!!
 
     orig_units = get(h,'Units');
-    set(h,'Units','points');  
+    set(h,'Units','points');
     pos = get(h,'Position');
     pos(1:2) = pos(1:2) + [xlbl_offset, 10]; % MAGIC NUMBER: y offset in points
     set(h,'Position',pos);
