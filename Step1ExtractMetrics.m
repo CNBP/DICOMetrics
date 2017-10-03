@@ -73,6 +73,9 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
       % Save the various output
       save('MetricsDataStructure.mat','Output')
       save('MetricsMatrix.mat','MetricsMatrix')
+      csvwrite('UnlabledMatrix.csv','MetricsMatrix');
+      OutputTable = array2table(MetricsMatrix,'VariableNames',Output.LabelAggregate);
+      writetable(OutputTable,'LabeledMatrix.csv');
 
     elseif (StudyType == 'BDP')
       Output.Dir = Settings.Folder.BDPMetrics;
@@ -82,6 +85,9 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
       % Save the various output
       save('MetricsDataStructure.mat','Output')
       save('MetricsMatrix.mat','MetricsMatrix')
+      csvwrite('UnlabledMatrix.csv','MetricsMatrix');
+      OutputTable = array2table(MetricsMatrix,'VariableNames',Output.LabelAggregate);
+      writetable(OutputTable,'LabeledMatrix.csv');
     end
   end
 
@@ -95,9 +101,11 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
   % Enter the output folder
   cd (Output.Dir)
   % Save the various output
-  save('MetricsDataStructure.mat','Output')
-  save('MetricsMatrix.mat','MetricsMatrix')
-  csvwrite('MetricsMatrix.mat',MetricsMatrix)
+  save('MetricsDataStructure.mat','Output');
+  save('MetricsMatrix.mat','MetricsMatrix');
+  csvwrite('UnlabledMatrix.csv','MetricsMatrix');
+  OutputTable = array2table(MetricsMatrix,'VariableNames',Output.LabelAggregate);
+  writetable(OutputTable,'LabeledMatrix.csv');
 
   % Return to root.
   cd(Settings.Folder.Root);

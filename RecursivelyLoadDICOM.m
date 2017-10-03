@@ -139,7 +139,7 @@ Output.LiveLabMetrics      = cell2mat(Results (:,1:Settings.NbMetrics(Settings.I
 Output.DICOMMetrics 	     = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexDICOMMetrics),	Settings.IndexDICOMMetrics));
 
 % Update the label of the outputs.
-Output.LabelAggregate 	 	= cell2mat(LabelAggregate);
+Output.LabelAggregate 	 	= LabelAggregate;
 
 toc
 %------------- END OF CODE --------------
