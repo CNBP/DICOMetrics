@@ -26,6 +26,26 @@ function Output = LoadConfigVariables()
 %------------- BEGIN CODE --------------
 
   %This is the entry function to load all things.
+  scriptName = mfilename('fullpath');
+  [currentpath, ~, ~]= fileparts(scriptName);
+
+  Output.Folder.Root           = pwd;
+  Output.Folder.Algos          = [currentpath '\Dependency_Algos'];
+  Output.Folder.DICOM          = [currentpath '\Dependency_DICOM'];
+  Output.Folder.FocusMetrics   = [currentpath '\Dependency_FocusMetrics'];
+  Output.Folder.General        = [currentpath '\Dependency_General'];
+  Output.Folder.LiveLabMetrics = [currentpath '\Dependency_LiveLabMetrics'];
+  Output.Folder.SNRMetrics     = [currentpath '\Dependency_SNRMetrics'];
+  Output.Folder.TextureMetrics = [currentpath '\Dependency_TextureMetrics'];
+  Output.Folder.Result         = [currentpath '\Results'];
+
+  % Study specific settings
+  Output.Folder.ASP = [currentpath '\Results' '\ASP'];
+  Output.Folder.ASPMetrics = [currentpath '\Results' '\ASP' '\Metrics'];
+  Output.Folder.ASPModels = [currentpath '\Results' '\ASP' '\Models'];
+  Output.Folder.BDP = [currentpath '\Results' '\BDP'];
+  Output.Folder.BDPMetrics = [currentpath '\Results' '\BDP' '\Metrics'];
+  Output.Folder.BDPModels = [currentpath '\Results' '\BDP' '\Models'];
 
   % total number of metric types
   Output.NbMetricTypes = 6;
@@ -40,11 +60,12 @@ function Output = LoadConfigVariables()
   Output.IndexDICOMMetrics 	   = 6;
 
   % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
-  Output.NbFocusMetrics 		 = 28;
-  Output.NbSNRMetrics 		   = 15;
-  Output.NbTextureMetrics 	 = 23;
-  Output.NbLiveLabMetrics	   = 2;
-  Output.NbDICOMMetrics  	   = 27;
+  addpath(Output.Folder.Algos);
+  Output.NbFocusMetrics 		 = AlgoCount(Output.IndexFocusMetrics   );
+  Output.NbSNRMetrics 		   = AlgoCount(Output.IndexSNRMetrics 		);
+  Output.NbTextureMetrics 	 = AlgoCount(Output.IndexTextureMetrics );
+  Output.NbLiveLabMetrics	   = AlgoCount(Output.IndexLiveLabMetrics );
+  Output.NbDICOMMetrics  	   = AlgoCount(Output.IndexDICOMMetrics 	);
 
   Output.NbMetrics(Output.IndexFileRecords)    = 1;
   Output.NbMetrics(Output.IndexFocusMetrics) 	 = Output.NbFocusMetrics;
@@ -54,21 +75,7 @@ function Output = LoadConfigVariables()
   Output.NbMetrics(Output.IndexDICOMMetrics)   = Output.NbDICOMMetrics;
 
 
-  scriptName = mfilename('fullpath');
-  [currentpath, filename, fileextension]= fileparts(scriptName);
 
-
-  Output.Folder.Root = pwd;
-  Output.Folder.Result = [currentpath '\Results'];
-
-
-  % Study specific settings
-  Output.Folder.ASP = [currentpath '\Results' '\ASP'];
-  Output.Folder.ASPMetrics = [currentpath '\Results' '\ASP' '\Metrics'];
-  Output.Folder.ASPModels = [currentpath '\Results' '\ASP' '\Models'];
-  Output.Folder.BDP = [currentpath '\Results' '\BDP'];
-  Output.Folder.BDPMetrics = [currentpath '\Results' '\BDP' '\Metrics'];
-  Output.Folder.BDPModels = [currentpath '\Results' '\BDP' '\Models'];
 
   %Classifier configuration variables
   Output.ClassifierCount = 6;

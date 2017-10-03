@@ -30,18 +30,10 @@ function [Name, Count] = AlgoLiveLab(Index)
 % Website: http://cnbp.ca
 % 2017; Last revision: 2017-10-03 11:56:08 Eastern Time
 
-AlgoFocus{ 1} = 'BIQI';
-AlgoFocus{ 2} = 'BRISQUE';
+AlgoLiveLab{ 1} = 'BIQI';
+AlgoLiveLab{ 2} = 'BRISQUE';
 
-%Store Count!
-[column Count] = size(AlgoFocus);
-
-%If valid index, store name as well.
-if (0 < index && index < Count && isinteger(index)){
-  Name = AlgoFocus{Index}
-} else {
-  Name = 'Invalid'
-}
+[Name, Count] = AlgoName(AlgoLiveLab,Index);
 
 %------------- END OF CODE --------------
 end

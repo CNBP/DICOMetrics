@@ -61,15 +61,7 @@ AlgoFocus{26} = 'WAVS';
 AlgoFocus{27} = 'WAVV';
 AlgoFocus{28} = 'WAVR';
 
-%Store Count!
-[column Count] = size(AlgoFocus);
-
-%If valid index, store name as well.
-if (0 < index && index < Count && isinteger(index)){
-  Name = AlgoFocus{Index}
-} else {
-  Name = 'Invalid'
-}
+[Name, Count] = AlgoName(AlgoFocus,Index);
 
 %------------- END OF CODE --------------
 end

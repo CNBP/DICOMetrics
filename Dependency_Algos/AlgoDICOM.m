@@ -1,4 +1,4 @@
-function [Name, Count] = AlgoDICOM(TypeIndex)
+function [Name, Count] = AlgoDICOM(Index)
   % NAME - This function returns the name of the specific index requested as well as the count of all current DICOM metrics implemented.
   %
   % Syntax:  []] = AlgoTemplater(1,0)
@@ -59,14 +59,6 @@ function [Name, Count] = AlgoDICOM(TypeIndex)
   AlgoDICOM{27} = 'DicomWindowWidth';
 
 
-  %Store Count!
-  [column Count] = size(AlgoDICOM);
-
-  %If valid index, store name as well.
-  if (0 < index && index < Count && isinteger(index)){
-    Name = AlgoFocus{Index}
-  } else {
-    Name = 'Invalid'
-  }
+  [Name, Count] = AlgoName(AlgoDICOM,Index);
 %------------- END OF CODE --------------
 end

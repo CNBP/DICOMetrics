@@ -1,5 +1,5 @@
-function [Name, Count] = AlgoSNR(Index)
-% NAME - DESCRIPTION
+function Count = AlgoCount(TypeIndex)
+% NAME - This algorithm is run to initilize all the algorithm names and as well as the count and indexes of them for subsequent label and resuse.
 %
 % Syntax:  []] = AlgoTemplater(1,0)
 %
@@ -28,26 +28,29 @@ function [Name, Count] = AlgoSNR(Index)
 % Saint. Justine Hospital, Montreal, Quebec,
 % email address: it@cnbp.ca
 % Website: http://cnbp.ca
-% 2017; Last revision: 2017-10-03 11:49:02 Eastern Time
-%TODO: better rename AJANE 1 to 4.
-%TODO: add note about the default Bin Number.
+% 2017; Last revision:
 
-AlgoSNR{ 1} = 'AjaNE1';
-AlgoSNR{ 2} = 'AjaNE2';
-AlgoSNR{ 3} = 'AjaNE3';
-AlgoSNR{ 4} = 'AjaNE4';
-AlgoSNR{ 5} = 'Brummer';
-AlgoSNR{ 6} = 'Chang';
-AlgoSNR{ 7} = 'noise_M1';
-AlgoSNR{ 8} = 'noise_M2';
-AlgoSNR{ 9} = 'MRI_lmmse';
-AlgoSNR{10} = 'MeanImage';
-AlgoSNR{11} = 'MeanC50x50';
-AlgoSNR{12} = 'MeanC100x100';
-AlgoSNR{13} = 'LogImage';
-AlgoSNR{14} = 'LogC50x50';
-AlgoSNR{15} = 'LogC100x100';
+  IndexFocusMetrics 	= 2;
+  IndexSNRMetrics 		= 3;
+  IndexTextureMetrics = 4;
+  IndexLiveLabMetrics = 5;
+  IndexDICOMMetrics 	= 6;
 
-[Name, Count] = AlgoName(AlgoSNR,Index);
+% Default AlgoIndex
+DefaultIndex = 0;
+
+switch TypeIndex
+  case IndexFocusMetrics
+    [~, Count] = AlgoFocus(DefaultIndex);
+  case IndexSNRMetrics
+    [~, Count] = AlgoSNR(DefaultIndex);
+  case IndexTextureMetrics
+    [~, Count] = AlgoTexture(DefaultIndex);
+  case IndexLiveLabMetrics
+    [~, Count] = AlgoLiveLab(DefaultIndex);
+  case IndexDICOMMetrics
+    [~, Count] = AlgoDICOM(DefaultIndex);
+end
+
 %------------- END OF CODE --------------
 end
