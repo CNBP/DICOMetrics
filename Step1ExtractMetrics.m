@@ -33,20 +33,17 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
 
   % Get current path of current script.
   scriptName = mfilename('fullpath');
-  [currentpath, filename, fileextension]= fileparts(scriptName);
 
   % Ensure dependencies are properly referred to
-  addpath(currentpath);
-  addpath(genpath([currentpath,'\Classification']));
-  addpath(genpath([currentpath,'\Results']));
-  addpath(genpath([currentpath '\Dependency_LiveLabMetrics']));
-  addpath(genpath([currentpath '\Dependency_FocusMetrics']));
-  addpath(genpath([currentpath '\Dependency_General']));
-  addpath(genpath([currentpath '\Dependency_SNRMetrics']));
-  addpath(genpath([currentpath '\Dependency_TextureMetrics']));
-  addpath(genpath([currentpath '\Dependency_DICOM']));
-  addpath(genpath([currentpath '\Dependency_General']));
-
+  addpath(Settings.Folder.Root)
+  addpath(Settings.Folder.Result);
+  addpath(Settings.Folder.LiveLabMetrics);
+  addpath(Settings.Folder.FocusMetrics);
+  addpath(Settings.Folder.General);
+  addpath(Settings.Folder.SNRMetrics);
+  addpath(Settings.Folder.TextureMetrics);
+  addpath(Settings.Folder.DICOM);
+  addpath(Settings.Folder.General);
 
   tic;
 

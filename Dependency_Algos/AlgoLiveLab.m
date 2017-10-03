@@ -30,8 +30,8 @@ function [Name, Count] = AlgoLiveLab(Index)
 % Website: http://cnbp.ca
 % 2017; Last revision: 2017-10-03 11:56:08 Eastern Time
 
-AlgoLiveLab{ 1} = 'BIQI';
-AlgoLiveLab{ 2} = 'BRISQUE';
+AlgoLiveLab{ 1} = 'LiveLab_BIQI';
+AlgoLiveLab{ 2} = 'LiveLab_BRISQUE';
 
 [Name, Count] = AlgoName(AlgoLiveLab,Index);
 

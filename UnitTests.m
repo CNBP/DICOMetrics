@@ -1,4 +1,6 @@
+%########################
 % Unit Test for Step 1
+%########################
 clc;
 clear;
 % Get Main path;
@@ -10,8 +12,9 @@ Metrics               = Step1ExtractMetrics(path,'ASP');
 
 
 
-
+%########################
 % Unit Test for Step 2
+%########################
 clc;
 clear;
 Settings = LoadConfigVariables();
@@ -32,8 +35,9 @@ ClassifierModel = Step2ClassifiersTests(MetricsMatrix, LabelBinary(:,2));
 
 
 
-
+%########################
 % Unit Test for Step 2
+%########################
 clc;
 clear;
 Settings = LoadConfigVariables();

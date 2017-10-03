@@ -32,21 +32,21 @@ function [Name, Count] = AlgoSNR(Index)
 %TODO: better rename AJANE 1 to 4.
 %TODO: add note about the default Bin Number.
 
-AlgoSNR{ 1} = 'AjaNE1';
-AlgoSNR{ 2} = 'AjaNE2';
-AlgoSNR{ 3} = 'AjaNE3';
-AlgoSNR{ 4} = 'AjaNE4';
-AlgoSNR{ 5} = 'Brummer';
-AlgoSNR{ 6} = 'Chang';
-AlgoSNR{ 7} = 'noise_M1';
-AlgoSNR{ 8} = 'noise_M2';
-AlgoSNR{ 9} = 'MRI_lmmse';
-AlgoSNR{10} = 'MeanImage';
-AlgoSNR{11} = 'MeanC50x50';
-AlgoSNR{12} = 'MeanC100x100';
-AlgoSNR{13} = 'LogImage';
-AlgoSNR{14} = 'LogC50x50';
-AlgoSNR{15} = 'LogC100x100';
+AlgoSNR{ 1} = 'SNR_AjaNE1';
+AlgoSNR{ 2} = 'SNR_AjaNE2';
+AlgoSNR{ 3} = 'SNR_AjaNE3';
+AlgoSNR{ 4} = 'SNR_AjaNE4';
+AlgoSNR{ 5} = 'SNR_Brummer';
+AlgoSNR{ 6} = 'SNR_Chang';
+AlgoSNR{ 7} = 'SNR_noise_M1';
+AlgoSNR{ 8} = 'SNR_noise_M2';
+AlgoSNR{ 9} = 'SNR_MRI_lmmse';
+AlgoSNR{10} = 'SNR_MeanImage';
+AlgoSNR{11} = 'SNR_MeanC50x50';
+AlgoSNR{12} = 'SNR_MeanC100x100';
+AlgoSNR{13} = 'SNR_LogImage';
+AlgoSNR{14} = 'SNR_LogC50x50';
+AlgoSNR{15} = 'SNR_LogC100x100';
 
 [Name, Count] = AlgoName(AlgoSNR,Index);
 %------------- END OF CODE --------------

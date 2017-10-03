@@ -37,6 +37,7 @@ function Output = LoadConfigVariables()
   Output.Folder.LiveLabMetrics = [currentpath '\Dependency_LiveLabMetrics'];
   Output.Folder.SNRMetrics     = [currentpath '\Dependency_SNRMetrics'];
   Output.Folder.TextureMetrics = [currentpath '\Dependency_TextureMetrics'];
+  Output.Folder.Classification = [currentpath '\Classification'];
   Output.Folder.Result         = [currentpath '\Results'];
 
   % Study specific settings

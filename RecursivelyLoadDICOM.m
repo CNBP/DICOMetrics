@@ -21,7 +21,7 @@ function Output = RecursivelyLoadDICOM(path)
 % Saint. Justine Hospital, Montreal, Quebec,
 % email address: it@cnbp.ca
 % Website: http://cnbp.ca
-% 2017-03; Last revision: 2017-08-11 09:48:20 Eastern Time
+% 2017-03; Last revision: 2017-10-03 13:42:56 Eastern Time
 
 %------------- BEGIN CODE --------------
 
@@ -58,8 +58,9 @@ scriptName = mfilename('fullpath');
 [currentpath, filename, fileextension]= fileparts(scriptName);
 
 % Ensure dependencies are properly referred to
-addpath(currentpath);
-addpath(genpath([currentpath,'\Dependency_General']));
+addpath(Settings.Folder.General);
+addpath(Settings.Folder.Algos);
+
 
 % Rejection criteria when the path is invalid.
 if exist(path) ~= 7
@@ -73,6 +74,9 @@ files = dirrec(path);
 if isempty(files)
 	error('No files found');;
 end
+
+% Initialized algorithms label tracking;
+labelIndex = 0;
 
 %============
 %AlgoType: 1
@@ -114,7 +118,11 @@ for algoType = 2:Settings.NbMetricTypes
 		%End Per file level loop
 
     %Update UI:
-    %fprintf(['Algo ', algoIndex, ' out of ', NbMetrics(algoType), ' in AlgoType ', algoType, ' out of ' NbMetricTypes, 'finished.'])
+    print('Algo', algoIndex,'/', Settings.NbMetrics(algoType), 'in Algorithm Type', algoType, '/', Settings.NbMetricTypes, 'finished.')
+
+		%Record Algo Information:
+		labelIndex = labelIndex+1;
+		LabelAggregate{labelIndex} = AlgoIdentify(algoType,algoIndex);
 
 	end
 	% End per algorithm level.
@@ -123,14 +131,15 @@ end
 
 
 % Update the output struct and it's relevant file structure to store the proper information.
-Output.FileRecords 		= 				 Results (:,1:Settings.NbMetrics(Settings.IndexFileRecords), Settings.IndexFileRecords 	);
-Output.FocusMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics), Settings.IndexFocusMetrics ));
-Output.SNRMetrics 		= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
-Output.TextureMetrics = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
-Output.LiveLabMetrics = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
-Output.DICOMMetrics 	= cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexDICOMMetrics),	Settings.IndexDICOMMetrics));
+Output.FileRecords 		     = 				  Results ( :,1:Settings.NbMetrics(Settings.IndexFileRecords), Settings.IndexFileRecords 	);
+Output.FocusMetrics 	     = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics), Settings.IndexFocusMetrics ));
+Output.SNRMetrics 		     = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
+Output.TextureMetrics      = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
+Output.LiveLabMetrics      = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexLiveLabMetrics),	Settings.IndexLiveLabMetrics));
+Output.DICOMMetrics 	     = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexDICOMMetrics),	Settings.IndexDICOMMetrics));
 
-
+% Update the label of the outputs.
+Output.LabelAggregate 	 	= cell2mat(LabelAggregate);
 
 toc
 %------------- END OF CODE --------------

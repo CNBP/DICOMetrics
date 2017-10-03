@@ -1,4 +1,4 @@
-function [Name, Count] = AlgoName(AlgoNameArray,Index)
+function Name = AlgoIdentify(TypeIndex,AlgoIndex)
 % NAME - DESCRIPTION
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
@@ -28,24 +28,31 @@ function [Name, Count] = AlgoName(AlgoNameArray,Index)
 % Saint. Justine Hospital, Montreal, Quebec,
 % email address: it@cnbp.ca
 % Website: http://cnbp.ca
-% 2017; Last revision:
+% 2017; Last revision: 2017-10-03 13:34:27 Eastern Time
 
 %------------- BEGIN CODE --------------
+IndexFocusMetrics 	= 2;
+IndexSNRMetrics 		= 3;
+IndexTextureMetrics = 4;
+IndexLiveLabMetrics = 5;
+IndexDICOMMetrics 	= 6;
 
-if(isempty(AlgoNameArray))
-  error 'Must have input name array'
+% Default AlgoIndex
+DefaultIndex = 0;
+
+switch TypeIndex
+case IndexFocusMetrics
+  [Name, ~] = AlgoFocus(AlgoIndex);
+case IndexSNRMetrics
+  [Name, ~] = AlgoSNR(AlgoIndex);
+case IndexTextureMetrics
+  [Name, ~] = AlgoTexture(AlgoIndex);
+case IndexLiveLabMetrics
+  [Name, ~] = AlgoLiveLab(AlgoIndex);
+case IndexDICOMMetrics
+  [Name, ~] = AlgoDICOM(AlgoIndex);
 end
 
-  %Store Count!
-  [~, Count] = size(AlgoNameArray);
 
-  %If valid index, store name as well.
-  if (Index == 0)
-    Name = 'Invalid';
-  elseif ( 0 < Index && Index < Count + 1 && floor(Index)==Index)
-    Name = AlgoNameArray{Index};
-  else
-    error 'Algorithm Index out of bound for Algorithm Type!'
-  end
 %------------- END OF CODE --------------
 end

@@ -1,5 +1,5 @@
-function [Name, Count] = AlgoName(AlgoNameArray,Index)
-% NAME - DESCRIPTION
+function print(varargin)
+% NAME - print... because Matlab print a few variables are messy
 %
 % Syntax:  [output1,output2] = function_name(input1,input2,input3)
 %
@@ -28,24 +28,17 @@ function [Name, Count] = AlgoName(AlgoNameArray,Index)
 % Saint. Justine Hospital, Montreal, Quebec,
 % email address: it@cnbp.ca
 % Website: http://cnbp.ca
-% 2017; Last revision:
+% 2017; Last revision: 2017-10-03 14:15:02 Eastern Time
 
 %------------- BEGIN CODE --------------
 
-if(isempty(AlgoNameArray))
-  error 'Must have input name array'
+% Courtesy of https://stackoverflow.com/questions/7656576/matlab-console-output
+
+str = '';
+for k=1:length(varargin)
+    str = [str ' ' num2str(varargin{k})];
 end
+disp(str)
 
-  %Store Count!
-  [~, Count] = size(AlgoNameArray);
-
-  %If valid index, store name as well.
-  if (Index == 0)
-    Name = 'Invalid';
-  elseif ( 0 < Index && Index < Count + 1 && floor(Index)==Index)
-    Name = AlgoNameArray{Index};
-  else
-    error 'Algorithm Index out of bound for Algorithm Type!'
-  end
 %------------- END OF CODE --------------
 end
