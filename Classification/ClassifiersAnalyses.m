@@ -54,7 +54,7 @@ function Result = ClassifiersAnalyses(InputDataColumns, trueLabels, AlgoChoice, 
 	switch AlgoChoice
 		case 1 % Linear Discriminant Analysis (LDA). Using Pseudo in case of 0 in data columns.
 			lda = fitcdiscr(InputDataColumns,trueLabels, 'DiscrimType','pseudoLinear');
-      Result = SingleModelClassifier(lda, InputDataColumns, trueLabels, 'pLDA')
+            Result = SingleModelClassifier(lda, InputDataColumns, trueLabels, 'pLDA')
 			% Eg Output: ldaCVErr = 0.3265
 			disp('Linear Discriminant Analysis (LDA) Completed');
 		case 2 % Quadratic Discriminant Analysis (QDA). Using Pseudo in case of 0 in data columns.

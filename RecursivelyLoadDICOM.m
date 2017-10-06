@@ -118,7 +118,7 @@ for algoType = 2:Settings.NbMetricTypes
 		%End Per file level loop
 
     %Update UI:
-    print('Algo', algoIndex,'/', Settings.NbMetrics(algoType), 'in Algorithm Type', algoType, '/', Settings.NbMetricTypes, 'finished.')
+    printcat('Algo', algoIndex,'/', Settings.NbMetrics(algoType), 'in Algorithm Type', algoType, '/', Settings.NbMetricTypes, 'finished.')
 
 		%Record Algo Information:
 		labelIndex = labelIndex+1;

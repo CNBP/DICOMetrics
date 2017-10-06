@@ -6,7 +6,7 @@ function Output = SingleModelClassifier(SingleModel, metrics, trueLabelsVector, 
 % Inputs:
 %    	SingleModel 			 - Description
 %    	metrics 			     - Description
-%    	trueLabelsVector 	 - 0 is indicator for bad quality image. 1 is good quality label indicator
+%    	trueLabelsVector 	 - 0 is indicator for good quality image (non-target). 1 is bad quality label indicator (target)
 %
 % Outputs:
 %    	output1			- Description
@@ -57,12 +57,15 @@ function Output = SingleModelClassifier(SingleModel, metrics, trueLabelsVector, 
   [confusionMat,order] = confusionmat(trueLabelsVector,predictedLabelVector);
 
   % A note about confusionmat function,
-  % Each Row: from top to bottom are TRUE CLASSES, from 1 TO 4, or 0 to 1
-  % Each Column: from left to right are PREDICTED CLASSES: 1 TO 4 eg., or 0 to 1
 
-  % Top Left: Bad images Being Classified as Bad.
-  % Top Right: Bad images Being Classified as Good.    -> this is 1, 2: FalseNegative for image QC purposes.
-  % Bottom Left: Good images Being Classified as Bad.  -> this is 2, 1 : FalsePositive for image QC purpose.
+  % The purpose o QC is to spot the bad images. Hence, TARGET is the BAD IMAGES (indicated as 1)
+
+  % Each Row: from top to bottom are TRUE CLASSES, from 1 TO 4, or 0 to 1 (from non-target to target)
+  % Each Column: from left to right are PREDICTED CLASSES: 1 TO 4 eg., or 0 to 1 (from non-target to target)
+
+  % Top Left: non-target images being classified as non-target, or good images being classified as good images (since good images are non-target).
+  % Top Right: target images being classified as target.    -> this is 1, 2: FalseNegative for image QC purposes.
+  % Bottom Left: Good images being classified as Bad.  -> this is 2, 1 : FalsePositive for image QC purpose.
   % Bottom Right: Good images being classified as Good.
 
   %Keep in mind that PLOTCONFUSION in matlab does NOT give a fuck about this classification as they use two separate 2d vector to compute the overlaps.
@@ -72,14 +75,18 @@ function Output = SingleModelClassifier(SingleModel, metrics, trueLabelsVector, 
 
 
 %%% IMPORTANT TO UNDERSTAND THIS SECTION!!!!
-  % So Coordinate (2,1) is interpreted as TRUE class 2 (Good Images) being Label as class 1 (Bad Images),
-  % aka false positives when it comes to image QA (target class is 0), % False Negatives when it comes to GOOD image identification (target class is 1)
-  CurrentFalsePositive = confusionMat(2,1); % Storing as false positives as these are for QA purposes!
+  % So Coordinate (2,1) is interpreted as non-target class (Good Images) being Label as target class (Bad Images),
+  % aka false positives when it comes to image QA (target class is bad image),
+  CurrentFalseNegative = confusionMat(2,1); % Storing as false positives as these are for QA purposes!
+  % Order = 0, 1 or good image then bad image, an index of 2, 1 means it is bad image labelled good or false negative. .
+  %Observe in bad but is predicted good.
 
-  % So Coordinate (1,2) is interpreted as TRUE class 1 (Bad Images) being Label as class 2 (Good Images),
-  % aka false negative when it comes to image QA (target class is 0), false POSITIVE when it comes to GOOD image identification (target class is 1)
-  CurrentFalseNegative = confusionMat(1,2); % Storing as false negatives as these are for QA purposes!
+  % So Coordinate (1,2) is interpreted as target class 1 (Bad Images) being Label as non-target classs (Good Images),
+  % aka false negative when it comes to image QA (target class is bad image)
+  CurrentFalsePositive = confusionMat(1,2); % Storing as false negatives as these are for QA purposes!
+  % Order = 0, 1 or good image then bad image, an index of 2, 1 means it is bad image labelled good or false negative. .
 
+  %Observe in bad but is predicted good.
   % Tabulate all mistakes together
   CurrentMistakes = CurrentFalseNegative + CurrentFalsePositive;
 
@@ -120,8 +127,8 @@ function Output = SingleModelClassifier(SingleModel, metrics, trueLabelsVector, 
 
   xlabel('Truth')
   ylabel('Inferred')
-  set(gca,'xticklabel',{'True Bad' 'True Good' 'Total Predicted'})
-  set(gca,'yticklabel',{'Predicted Bad' 'Predicted Good' 'Total True'})
+  set(gca,'xticklabel',{'True Good(NT)' 'True Bad(T)' 'Total Predicted'})
+  set(gca,'yticklabel',{'Predicted Good(NT)' 'Predicted Bad(T)' 'Total True'})
   saveas(gcf,char(filenameConfusion),'fig');
 
   % Plot the ROC characterics
@@ -150,10 +157,12 @@ function Output = SingleModelClassifier(SingleModel, metrics, trueLabelsVector, 
 
   %Require Fig converter at https://www.mathworks.com/matlabcentral/fileexchange/16906-convert-fig-files-to-images
   % Convert all figs. into JPG files.
+
   export_figs('jpg');
 
   % Return where we come from.
   cd(currentDir);
   figure('Visible','on');
+
 %------------- END OF CODE --------------
 end

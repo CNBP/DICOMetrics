@@ -99,13 +99,17 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       % A combination of both false positive and false negatives
 
       %%% IMPORTANT TO UNDERSTAND THIS SECTION!!!!
-      % So Coordinate (2,1) is interpreted as TRUE class 2 (Good Images) being Label as class 1 (Bad Images),
-      % aka false positives when it comes to image QA (target class is 0), % False Negatives when it comes to GOOD image identification (target class is 1)
-      CurrentFalsePositive = confusionMat(2,1); % Storing as false positives as these are for QA purposes!
+      % So Coordinate (2,1) is interpreted as non-target class (Good Images) being Label as target class (Bad Images),
+      % aka false positives when it comes to image QA (target class is bad image),
+      CurrentFalseNegative = confusionMat(2,1); % Storing as false positives as these are for QA purposes!
+      % Order = 0, 1 or good image then bad image, an index of 2, 1 means it is bad image labelled good or false negative. .
+      %Observe in bad but is predicted good.
 
-      % So Coordinate (1,2) is interpreted as TRUE class 1 (Bad Images) being Label as class 2 (Good Images),
-      % aka false negative when it comes to image QA (target class is 0), false POSITIVE when it comes to GOOD image identification (target class is 1)
-      CurrentFalseNegative = confusionMat(1,2); % Storing as false negatives as these are for QA purposes!
+      % So Coordinate (1,2) is interpreted as target class 1 (Bad Images) being Label as non-target classs (Good Images),
+      % aka false negative when it comes to image QA (target class is bad image)
+      CurrentFalsePositive = confusionMat(1,2); % Storing as false negatives as these are for QA purposes!
+      % Order = 0, 1 or good image then bad image, an index of 2, 1 means it is bad image labelled good or false negative. .
+      %Observe in bad but is predicted good.
 
       % Tabulate all mistakes together
       CurrentMistakes = CurrentFalseNegative + CurrentFalsePositive;
@@ -142,13 +146,13 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       %legend('Bad Images','Good Images');
       saveas(gcf,char(filenameROC),'fig');
 
-      % Plot confusion, class in row, column represent observations.Must use their binary form.
+      % Plot confusion, class in row, column represent observations. Must use their binary form.
       plotconfusion(trueLabels',predictedLabels');
 
       xlabel('Truth')
       ylabel('Inferred')
-      set(gca,'xticklabel',{'True Bad' 'True Good' 'Total Predicted'})
-      set(gca,'yticklabel',{'Predicted Bad' 'Predicted Good' 'Total True'})
+      set(gca,'xticklabel',{'True Good(NT)' 'True Bad(T)' 'Total Predicted'})
+      set(gca,'yticklabel',{'Predicted Good(NT)' 'Predicted (T)' 'Total True'})
       saveas(gcf,char(filenameConfusion),'fig');
 
       % Plot the ROC characterics

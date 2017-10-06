@@ -1,6 +1,6 @@
 function Output = LableConverter1Dto2D(Label1D)
 % LableConverter1Dto2D - converts a 1D label to 2D binary label. Useful when sometimes some input better use 1D while other time it is better to use 2D labels.
-% Class label must be 0 and 1 where 0 is fail, 1 is pass classification
+% Class label must be 0 and 1 where 0 is NON-TARGET, 1 is TARGET
 %
 % Syntax:  Label2D = LableConverter1Dto2D(Label1D)
 %
@@ -53,11 +53,11 @@ function Output = LableConverter1Dto2D(Label1D)
 
 
   % Compute and concatenate Binary PREDICTED Labels
-  GoodImagePredictedLabel= Label1D; % where 0 is bad, 1 is good.
+  TargetImagePredictedLabel= Label1D; % where 0 is non-target (good image), 1 is target (bad image).
 
-  BadImagePredictedLabel = (Label1D+(-1)) * -1; % Convert the label to Binary style, for plotConfusion. Where 1) -1 is bad, 0 is good, 2) then * -1 is applied, flipping it to 1 is bad, 0 is good.
+  NonTargetImagePredictedLabel = (Label1D+(-1)) * -1; % Convert the label to Binary style, for plotConfusion. Where 1) -1 is bad, 0 is good, 2) then * -1 is applied, flipping it to 1 is bad, 0 is good.
 
-  Output = [BadImagePredictedLabel GoodImagePredictedLabel];
+  Output = [NonTargetImagePredictedLabel TargetImagePredictedLabel];
 
 %------------- END OF CODE --------------
 end
