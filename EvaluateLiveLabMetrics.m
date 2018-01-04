@@ -35,7 +35,7 @@ function NSSMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 	[currentpath, filename, fileextension]= fileparts(scriptName);
 
 	% Ensure dependencies are properly referred to
-	addpath(genpath([currentpath,'\Dependency_LiveLabMetrics']));
+	addpath(genpath([currentpath,'\Dependency_NSSMetrics']));
 
 	%Input QC Check
 	if(~isnumeric(AlgoIndex))
