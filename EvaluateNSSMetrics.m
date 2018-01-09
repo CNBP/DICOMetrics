@@ -1,7 +1,7 @@
-function NSSMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
-%EvaluateLiveLabMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of NSS image quality processing utilities..
+function NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
+%EvaluateNSSMetrics - % This function loads a regular image try to parse it properly to the format and then send it to a bunch of NSS image quality processing utilities..
 %
-% Syntax:  NSSMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
+% Syntax:  NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
 %
 % Inputs:
 %    	Image 			- this is the grayscale level image has been passed to be processed and summarized
@@ -52,6 +52,12 @@ function NSSMetric = EvaluateLiveLabMetrics(Image,AlgoIndex)
 
 		case 2 % BRISQUE
 			NSSMetric = brisquescore(Image);
+
+		case 3 % BRISQUE from MatLab, the lower, the better.
+			NSSMetric = brisque(Image);
+
+		case 4 % NIQE
+			NSSMetric = niqe(Image);
 
 		% TODO: implement case 3 % DIIVINE
 			% glcms = graycomatrix(Image);

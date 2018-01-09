@@ -34,7 +34,7 @@ function Output = LoadConfigVariables()
   Output.Folder.DICOM          = [currentpath '\Dependency_DICOM'];
   Output.Folder.FocusMetrics   = [currentpath '\Dependency_FocusMetrics'];
   Output.Folder.General        = [currentpath '\Dependency_General'];
-  Output.Folder.LiveLabMetrics = [currentpath '\Dependency_NSSMetrics'];
+  Output.Folder.NSSMetrics = [currentpath '\Dependency_NSSMetrics'];
   Output.Folder.SNRMetrics     = [currentpath '\Dependency_SNRMetrics'];
   Output.Folder.TextureMetrics = [currentpath '\Dependency_TextureMetrics'];
   Output.Folder.Classification = [currentpath '\Classification'];
@@ -57,7 +57,7 @@ function Output = LoadConfigVariables()
   Output.IndexFocusMetrics 	   = 2;
   Output.IndexSNRMetrics 		   = 3;
   Output.IndexTextureMetrics 	 = 4;
-  Output.IndexLiveLabMetrics   = 5;
+  Output.IndexNSSMetrics   = 5;
   Output.IndexDICOMMetrics 	   = 6;
 
   % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
@@ -65,14 +65,14 @@ function Output = LoadConfigVariables()
   Output.NbFocusMetrics 		 = AlgoCount(Output.IndexFocusMetrics   );
   Output.NbSNRMetrics 		   = AlgoCount(Output.IndexSNRMetrics 		);
   Output.NbTextureMetrics 	 = AlgoCount(Output.IndexTextureMetrics );
-  Output.NbLiveLabMetrics	   = AlgoCount(Output.IndexLiveLabMetrics );
+  Output.NbNSSMetrics	   = AlgoCount(Output.IndexNSSMetrics );
   Output.NbDICOMMetrics  	   = AlgoCount(Output.IndexDICOMMetrics 	);
 
   Output.NbMetrics(Output.IndexFileRecords)    = 1;
   Output.NbMetrics(Output.IndexFocusMetrics) 	 = Output.NbFocusMetrics;
   Output.NbMetrics(Output.IndexSNRMetrics) 	   = Output.NbSNRMetrics;
   Output.NbMetrics(Output.IndexTextureMetrics) = Output.NbTextureMetrics;
-  Output.NbMetrics(Output.IndexLiveLabMetrics) = Output.NbLiveLabMetrics;
+  Output.NbMetrics(Output.IndexNSSMetrics) = Output.NbNSSMetrics;
   Output.NbMetrics(Output.IndexDICOMMetrics)   = Output.NbDICOMMetrics;
 
 

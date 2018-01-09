@@ -34,7 +34,7 @@ function Name = AlgoIdentify(TypeIndex,AlgoIndex)
 IndexFocusMetrics 	= 2;
 IndexSNRMetrics 		= 3;
 IndexTextureMetrics = 4;
-IndexLiveLabMetrics = 5;
+IndexNSSMetrics = 5;
 IndexDICOMMetrics 	= 6;
 
 % Default AlgoIndex
@@ -47,8 +47,8 @@ case IndexSNRMetrics
   [Name, ~] = AlgoSNR(AlgoIndex);
 case IndexTextureMetrics
   [Name, ~] = AlgoTexture(AlgoIndex);
-case IndexLiveLabMetrics
-  [Name, ~] = AlgoLiveLab(AlgoIndex);
+case IndexNSSMetrics
+  [Name, ~] = AlgoNSS(AlgoIndex);
 case IndexDICOMMetrics
   [Name, ~] = AlgoDICOM(AlgoIndex);
 end

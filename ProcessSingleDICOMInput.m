@@ -53,8 +53,8 @@ function Metric = ProcessSingleDICOMInput(Input, AlgoIndex, AlgoType)
 		case 4 % Texture Metrics
 			Metric = EvaluateTextureMetrics	(InputDoubleImage, AlgoIndex);
 
-		case 5 % LIveLab Metrics
-			Metric = EvaluateLiveLabMetrics 	(InputDoubleImage, AlgoIndex);
+		case 5 % NSS Metrics
+			Metric = EvaluateNSSMetrics 	(InputDoubleImage, AlgoIndex);
 
 		case 6 % DICOM info
 			Metric = EvaluateDICOMMetrics (Input,AlgoIndex);

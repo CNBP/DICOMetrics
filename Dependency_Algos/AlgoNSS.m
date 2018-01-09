@@ -1,5 +1,5 @@
-function [Name, Count] = AlgoLiveLab(Index)
-% NAME - This function returns the name of the specific index requested as well as the count of all current LiveLab algorithm implemented.
+function [Name, Count] = AlgoNSS(Index)
+% NAME - This function returns the name of the specific index requested as well as the count of all current NSS algorithm implemented.
 %
 % Syntax:  []] = AlgoTemplater(1,0)
 %
@@ -30,10 +30,12 @@ function [Name, Count] = AlgoLiveLab(Index)
 % Website: http://cnbp.ca
 % 2017; Last revision: 2017-10-03 11:56:08 Eastern Time
 
-AlgoLiveLab{ 1} = 'LiveLab_BIQI';
-AlgoLiveLab{ 2} = 'LiveLab_BRISQUE';
+AlgoNSS{ 1} = 'NSS_BIQI';
+AlgoNSS{ 2} = 'NSS_BRISQUE';
+AlgoNSS{ 3} = 'MSS_MatLabBRISQUE';
+AlgoNSS{ 4} = 'MSS_MatLabNIQE';
 
-[Name, Count] = AlgoName(AlgoLiveLab,Index);
+[Name, Count] = AlgoName(AlgoNSS,Index);
 
 %------------- END OF CODE --------------
 end

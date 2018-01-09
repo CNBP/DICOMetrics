@@ -818,28 +818,28 @@ BEGIN GPL
 END GPL.                                                                                        
 
 GGRAPH                                                                                          
-  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 LiveLab_BIQI MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 NSS_BIQI MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
 BEGIN GPL                                                                                       
   SOURCE: s=userSource(id("graphdataset"))                                                      
   DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
-  DATA:LiveLab_BIQI=col(source(s), name("LiveLab_BIQI"))
+  DATA:NSS_BIQI=col(source(s), name("NSS_BIQI"))
   DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
   GUIDE: axis(dim(1), label("Sab2"))                                                            
-  GUIDE: axis(dim(2), label("LiveLab_BIQI"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  GUIDE: axis(dim(2), label("NSS_BIQI"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
   SCALE: linear(dim(2), include(0))                                                             
-  ELEMENT: schema(position(bin.quantile.letter(Sab2*LiveLab_BIQI)), label(id))                    
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*NSS_BIQI)), label(id))                    
 END GPL.                                                                                        
 
 GGRAPH                                                                                          
-  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 LiveLab_BRISQUE MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
+  /GRAPHDATASET NAME="graphdataset" VARIABLES=Sab2 NSS_BRISQUE MISSING=LISTWISE REPORTMISSING=NO   /GRAPHSPEC SOURCE=INLINE.                                                                     
 BEGIN GPL                                                                                       
   SOURCE: s=userSource(id("graphdataset"))                                                      
   DATA: Sab2=col(source(s), name("Sab2"), unit.category())                                      
-  DATA:LiveLab_BRISQUE=col(source(s), name("LiveLab_BRISQUE"))
+  DATA:NSS_BRISQUE=col(source(s), name("NSS_BRISQUE"))
   DATA: id=col(source(s), name("$CASENUM"), unit.category())                                    
   GUIDE: axis(dim(1), label("Sab2"))                                                            
-  GUIDE: axis(dim(2), label("LiveLab_BRISQUE"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
+  GUIDE: axis(dim(2), label("NSS_BRISQUE"))  SCALE: cat(dim(1), include("0", "1", "2", "3"))                                    
   SCALE: linear(dim(2), include(0))                                                             
-  ELEMENT: schema(position(bin.quantile.letter(Sab2*LiveLab_BRISQUE)), label(id))                    
+  ELEMENT: schema(position(bin.quantile.letter(Sab2*NSS_BRISQUE)), label(id))                    
 END GPL.                                                                                        
 

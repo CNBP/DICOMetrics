@@ -33,7 +33,7 @@ function Count = AlgoCount(TypeIndex)
   IndexFocusMetrics 	= 2;
   IndexSNRMetrics 		= 3;
   IndexTextureMetrics = 4;
-  IndexLiveLabMetrics = 5;
+  IndexNSSMetrics = 5;
   IndexDICOMMetrics 	= 6;
 
 % Default AlgoIndex
@@ -46,8 +46,8 @@ switch TypeIndex
     [~, Count] = AlgoSNR(DefaultIndex);
   case IndexTextureMetrics
     [~, Count] = AlgoTexture(DefaultIndex);
-  case IndexLiveLabMetrics
-    [~, Count] = AlgoLiveLab(DefaultIndex);
+  case IndexNSSMetrics
+    [~, Count] = AlgoNSS(DefaultIndex);
   case IndexDICOMMetrics
     [~, Count] = AlgoDICOM(DefaultIndex);
 end

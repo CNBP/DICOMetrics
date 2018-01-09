@@ -39,19 +39,19 @@ Setting = LoadConfigVariables();
 % FocusMetrics 	= 2;
 % SNRMetrics 		= 3;
 % TextureMetrics 	= 4;
-% LiveLabMetrics 	= 5;
+% NSSMetrics 	= 5;
 
 % % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics
 % NbFocusMetrics 		= 28;
 % NbSNRMetrics 		= 15;
 % NbTextureMetrics 	= 5;
-% NbLiveLabMetrics 	= 2;
+% NbNSSMetrics 	= 2;
 
 % NbMetrics(FileRecords)      = 1;
 % NbMetrics(FocusMetrics) 	= NbFocusMetrics;
 % NbMetrics(SNRMetrics) 		= NbSNRMetrics;
 % NbMetrics(TextureMetrics) 	= NbTextureMetrics;
-% NbMetrics(LiveLabMetrics) 	= NbLiveLabMetrics;
+% NbMetrics(NSSMetrics) 	= NbNSSMetrics;
 
 % % total number of metric types
 % NbMetricTypes = 5;

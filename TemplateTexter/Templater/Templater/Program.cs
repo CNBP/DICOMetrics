@@ -74,8 +74,8 @@ namespace Templater
             "Texture_Inf2H",
             "Texture_Indnc",
             "Texture_Idmnc",
-            "LiveLab_BIQI",
-            "LiveLab_BRISQUE"
+            "NSS_BIQI",
+            "NSS_BRISQUE"
             };
 
 
