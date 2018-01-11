@@ -171,9 +171,9 @@ for AggregateIndex = 1 : size(AlgoAggregate,2)
 	RalgoIndex = AlgoAggregate{AggregateIndex}{2};
 	RalgoType = AlgoAggregate{AggregateIndex}{1};
 	Results(:,RalgoIndex,RalgoType) = ParResults{AggregateIndex};
-	disp(size(ParResults));
-	disp(size(Results));
-	disp(AggregateIndex);
+	%disp(size(ParResults));
+	%disp(size(Results));
+	%disp(AggregateIndex);
 end
 
 disp('Finished reconstitution');
