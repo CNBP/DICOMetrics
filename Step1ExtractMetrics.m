@@ -34,16 +34,21 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
   % Get current path of current script.
   scriptName = mfilename('fullpath');
 
-  % Ensure dependencies are properly referred to
-  addpath(Settings.Folder.Root)
-  addpath(Settings.Folder.Result);
-  addpath(Settings.Folder.NSSMetrics);
-  addpath(Settings.Folder.FocusMetrics);
-  addpath(Settings.Folder.General);
-  addpath(Settings.Folder.SNRMetrics);
-  addpath(Settings.Folder.TextureMetrics);
-  addpath(Settings.Folder.DICOM);
-  addpath(Settings.Folder.General);
+  % Ensure dependencies are properly referred to by recursively add the folder and subdirectories.
+  addpath(genpath(Settings.Folder.Root));
+  addpath(genpath(Settings.Folder.Result));
+  addpath(genpath(Settings.Folder.NSSMetrics));
+  addpath(genpath(Settings.Folder.FocusMetrics));
+  addpath(genpath(Settings.Folder.General));
+  addpath(genpath(Settings.Folder.SNRMetrics));
+  addpath(genpath(Settings.Folder.TextureMetrics));
+  addpath(genpath(Settings.Folder.DICOM));
+  addpath(genpath(Settings.Folder.General));
+
+  %Update Windows System environment variables to ensure that the SVM-predict etc can be utilized.
+  setenv('SVMLib',Settings.Folder.SVMLib);
+
+
 
   tic;
 
@@ -51,7 +56,7 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
   % path = uigetdir;
 
   % Get output.
-  Output = RecursivelyLoadDICOM(path);
+  Output = ParRecursivelyLoadDICOM(path);
 
   % Put everything in a gigantic matrix for further analyses.
   MetricsMatrix = cat (2, ...

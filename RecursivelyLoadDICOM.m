@@ -94,7 +94,7 @@ end
 % Algo Type: 2 to 6
 %===================
 %Loop at the algorithm TYPE level
-for algoType = 2:Settings.NbMetricTypes
+for algoType = 5 %2:Settings.NbMetricTypes
 
 	%Loop at per algorithm level  % Do Focus Measure
 	for algoIndex = 1:Settings.NbMetrics(algoType)
@@ -131,11 +131,11 @@ end
 
 
 % Update the output struct and it's relevant file structure to store the proper information.
-Output.FileRecords 		     = 				  Results ( :,1:Settings.NbMetrics(Settings.IndexFileRecords), Settings.IndexFileRecords 	);
+Output.FileRecords 		     = 				  Results (:,1:Settings.NbMetrics(Settings.IndexFileRecords), Settings.IndexFileRecords 	);
 Output.FocusMetrics 	     = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexFocusMetrics), Settings.IndexFocusMetrics ));
 Output.SNRMetrics 		     = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexSNRMetrics),		Settings.IndexSNRMetrics 	));
 Output.TextureMetrics      = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexTextureMetrics),	Settings.IndexTextureMetrics));
-Output.NSSMetrics      = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexNSSMetrics),	Settings.IndexNSSMetrics));
+Output.NSSMetrics          = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexNSSMetrics),	Settings.IndexNSSMetrics));
 Output.DICOMMetrics 	     = cell2mat(Results (:,1:Settings.NbMetrics(Settings.IndexDICOMMetrics),	Settings.IndexDICOMMetrics));
 
 % Update the label of the outputs.

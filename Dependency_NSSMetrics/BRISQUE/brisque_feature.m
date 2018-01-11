@@ -8,6 +8,7 @@ window = fspecial('gaussian',7,7/6);
 window = window/sum(sum(window));
 
 feat = [];
+tic
 for itr_scale = 1:scalenum
 
 mu            = filter2(window, imdist, 'same');
@@ -38,3 +39,4 @@ imdist                   = imresize(imdist,0.5);
 
 
 end
+toc

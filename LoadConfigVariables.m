@@ -34,9 +34,10 @@ function Output = LoadConfigVariables()
   Output.Folder.DICOM          = [currentpath '\Dependency_DICOM'];
   Output.Folder.FocusMetrics   = [currentpath '\Dependency_FocusMetrics'];
   Output.Folder.General        = [currentpath '\Dependency_General'];
-  Output.Folder.NSSMetrics = [currentpath '\Dependency_NSSMetrics'];
+  Output.Folder.NSSMetrics     = [currentpath '\Dependency_NSSMetrics'];
   Output.Folder.SNRMetrics     = [currentpath '\Dependency_SNRMetrics'];
   Output.Folder.TextureMetrics = [currentpath '\Dependency_TextureMetrics'];
+  Output.Folder.SVMLib         = [currentpath '\Dependency_NSSMetrics\libsvm\windows'];
   Output.Folder.Classification = [currentpath '\Classification'];
   Output.Folder.Result         = [currentpath '\Results'];
 
@@ -57,7 +58,7 @@ function Output = LoadConfigVariables()
   Output.IndexFocusMetrics 	   = 2;
   Output.IndexSNRMetrics 		   = 3;
   Output.IndexTextureMetrics 	 = 4;
-  Output.IndexNSSMetrics   = 5;
+  Output.IndexNSSMetrics       = 5;
   Output.IndexDICOMMetrics 	   = 6;
 
   % Elaborate on the specific numbers of metrics loop that are required to calculated these metrics

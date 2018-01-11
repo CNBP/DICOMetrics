@@ -1,12 +1,11 @@
 function qualityscore  = brisquescore(imdist)
 
-% Get current path of current script. 
+%Get and visit the current path to ensure no svm-predict conflict.
 scriptName = mfilename('fullpath');
 [currentpath, filename, fileextension]= fileparts(scriptName);
+cd(currentpath)
 
-%Enter the script location in order for the system dependenceis to work
-%well. 
-cd(currentpath);
+
 
 if(size(imdist,3)==3)
     imdist = uint8(imdist);
@@ -17,7 +16,7 @@ imdist = double(imdist);
 
 if(nargin<2)
 feat = brisque_feature(imdist);
-disp('feat computed');
+disp('feat computed')
 end
 
 
@@ -29,7 +28,7 @@ end
 fid = fopen('test_ind','w');
 
 for jj = 1:size(feat,1)
-    
+
 fprintf(fid,'1 ');
 for kk = 1:size(feat,2)
 fprintf(fid,'%d:%f ',kk,feat(jj,kk));

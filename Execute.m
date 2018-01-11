@@ -46,7 +46,7 @@ function Output = Execute(label)
   path                  = uigetdir;
 
   % Step1: Use path to derive metrics;
-  Metrics               = Step1ExtractMetrics(path);
+  Metrics               = Step1ExtractMetrics(path,'BDP');
 
   % Must check Metrics dimention vs labelPath size dimension
   if (checkSize(Metrics,label))

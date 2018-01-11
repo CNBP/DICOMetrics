@@ -32,8 +32,11 @@ function [Name, Count] = AlgoNSS(Index)
 
 AlgoNSS{ 1} = 'NSS_BIQI';
 AlgoNSS{ 2} = 'NSS_BRISQUE';
-AlgoNSS{ 3} = 'MSS_MatLabBRISQUE';
-AlgoNSS{ 4} = 'MSS_MatLabNIQE';
+AlgoNSS{ 3} = 'NSS_JP2KNR';
+AlgoNSS{ 4} = 'NSS_NIQE';
+AlgoNSS{ 5} = 'NSS_SSEQ';
+AlgoNSS{ 6} = 'MSS_MatLabBRISQUE';
+AlgoNSS{ 7} = 'MSS_MatLabNIQE';
 
 [Name, Count] = AlgoName(AlgoNSS,Index);
 

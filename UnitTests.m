@@ -9,7 +9,7 @@ path                  = uigetdir;
 % Step1: Use path to derive metrics;
 Metrics               = Step1ExtractMetrics(path,'ASP');
 
-
+Data = dicomread('TestFolder/I6.dcm');
 
 
 %########################

@@ -47,16 +47,25 @@ function NSSMetric = EvaluateNSSMetrics(Image,AlgoIndex)
 	% from this point onward input must be a grayscale image
 	switch AlgoIndex
 
-		case 1 % BIQI
-			NSSMetric = biqi(Image);
+		case 1 % LiveLabBIQI
+			[NSSMetric, ~] = biqi(Image);
 
-		case 2 % BRISQUE
+		case 2 % LiveLabBRISQUE
 			NSSMetric = brisquescore(Image);
 
-		case 3 % BRISQUE from MatLab, the lower, the better.
+		case 3 % LiveLabJP2KNR
+			NSSMetric = jp2knr_quality(Image);
+
+		case 4 % LiveLab NIQE
+			NSSMetric = LiveNIQE(Image);
+
+		case 5 % LiveLab SSEQ
+			NSSMetric = SSEQ(Image);
+
+		case 6 % BRISQUE from MatLab, the lower, the better.
 			NSSMetric = brisque(Image);
 
-		case 4 % NIQE
+		case 7 % NIQE
 			NSSMetric = niqe(Image);
 
 		% TODO: implement case 3 % DIIVINE

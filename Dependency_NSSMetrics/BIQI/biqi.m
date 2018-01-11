@@ -1,4 +1,4 @@
-function [quality probs] = biqi(im)
+function [quality, probs] = biqi(im)
 
 
 %========================================================================
@@ -6,34 +6,34 @@ function [quality probs] = biqi(im)
 % -----------COPYRIGHT NOTICE STARTS WITH THIS LINE------------
 % Copyright (c) 2009 The University of Texas at Austin
 % All rights reserved.
-% 
-% Permission is hereby granted, without written agreement and without license or royalty fees, to use, copy, 
+%
+% Permission is hereby granted, without written agreement and without license or royalty fees, to use, copy,
 % modify, and distribute this code (the source files) and its documentation for
-% any purpose, provided that the copyright notice in its entirety appear in all copies of this code, and the 
+% any purpose, provided that the copyright notice in its entirety appear in all copies of this code, and the
 % original source of this code, Laboratory for Image and Video Engineering (LIVE, http://live.ece.utexas.edu)
-% and Center for Perceptual Systems (CPS, http://www.cps.utexas.edu) at the University of Texas at Austin (UT Austin, 
+% and Center for Perceptual Systems (CPS, http://www.cps.utexas.edu) at the University of Texas at Austin (UT Austin,
 % http://www.utexas.edu), is acknowledged in any publication that reports research using this code. The research
 % is to be cited in the bibliography as:
-% 
+%
 % 1. A. K. Moorthy and A. C. Bovik, "A Modular Framework for Constructing Blind
 % Universal Quality Indices", submitted to IEEE Signal Processing Letters (2009).
-% 
-% 2. A. K. Moorthy and A. C. Bovik, "BIQI Software Release", 
+%
+% 2. A. K. Moorthy and A. C. Bovik, "BIQI Software Release",
 % URL: http://live.ece.utexas.edu/research/quality/biqi.zip, 2009.
-% 
-% IN NO EVENT SHALL THE UNIVERSITY OF TEXAS AT AUSTIN BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL, 
+%
+% IN NO EVENT SHALL THE UNIVERSITY OF TEXAS AT AUSTIN BE LIABLE TO ANY PARTY FOR DIRECT, INDIRECT, SPECIAL, INCIDENTAL,
 % OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OF THIS DATABASE AND ITS DOCUMENTATION, EVEN IF THE UNIVERSITY OF TEXAS
 % AT AUSTIN HAS BEEN ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-% 
-% THE UNIVERSITY OF TEXAS AT AUSTIN SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED 
+%
+% THE UNIVERSITY OF TEXAS AT AUSTIN SPECIFICALLY DISCLAIMS ANY WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
 % WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE DATABASE PROVIDED HEREUNDER IS ON AN "AS IS" BASIS,
 % AND THE UNIVERSITY OF TEXAS AT AUSTIN HAS NO OBLIGATION TO PROVIDE MAINTENANCE, SUPPORT, UPDATES, ENHANCEMENTS, OR MODIFICATIONS.
-% 
+%
 % -----------COPYRIGHT NOTICE ENDS WITH THIS LINE------------%
 
 %Author  : Anush Krishna Moorthy
 %Version : 1.0
-% 
+%
 %The authors are with the Laboratory for Image and Video Engineering
 %(LIVE), Department of Electrical and Computer Engineering, The
 %University of Texas at Austin, Austin, TX.
@@ -42,7 +42,7 @@ function [quality probs] = biqi(im)
 %
 %========================================================================
 %
-% This is a demonstration of the Blind Image Quality Index (BIQI) . 
+% This is a demonstration of the Blind Image Quality Index (BIQI) .
 % It is an implementation of the BIQI in the reference.
 % The algorithm is described in:
 % A. K. Moorthy and A. C. Bovik, "A Modular Framework for Constructing Blind
@@ -60,7 +60,7 @@ function [quality probs] = biqi(im)
 %
 %1. Load the image, for example
 %
-%   image = rgb2gray(imread('testimage.jpg')); 
+%   image = rgb2gray(imread('testimage.jpg'));
 %
 %2. Call this function to calculate the quality score:
 %
@@ -75,16 +75,18 @@ function [quality probs] = biqi(im)
 % model_89_wn, model_89_blur, model_89_jp2k, rang2_ff model_ff
 %========================================================================
 
-%Adapted by Yang Ding for ease of use when not executing from the BIQI
-%directories.
 
-% Get current path of current script. 
+
+
+
+%Get and visit the current path to ensure no svm-predict conflict.
 scriptName = mfilename('fullpath');
 [currentpath, filename, fileextension]= fileparts(scriptName);
+cd(currentpath)
 
-%Enter the script location in order for the system dependenceis to work
-%well. 
-cd(currentpath);
+
+
+
 
 
 if(size(im,3)~=1)
@@ -142,13 +144,9 @@ for j = 1:size(rep_vec,1)
 end
 fclose(fid);
 
+system(['svm-scale -r range2 test_ind.txt >> test_ind_scaled']);
+system(['svm-predict -b 1 test_ind_scaled model_89 output_89']);
 
-%Find SVM-Scale files. 
-predict_path = which ('svm-predict.exe');
-scale_path = which ('svm-scale.exe');
-
-system([scale_path,' -r range2 test_ind.txt >> test_ind_scaled']);
-system([predict_path, ' -b 1 test_ind_scaled model_89 output_89']);
 delete test_ind.txt test_ind_scaled
 
 %% Quality along each dimension
@@ -166,40 +164,39 @@ end
 fclose(fid);
 
 % Jp2k quality
-system([scale_path,' -r range2_jp2k test_ind.txt >> test_ind_scaled']);
-system([predict_path, ' -b 1 test_ind_scaled model_89_jp2k output_blur']);
-load output_blur
-jp2k_score = output_blur;
-delete output_blur test_ind_scaled
+system(['svm-scale -r range2_jp2k test_ind.txt >> test_ind_scaled1']);
+system(['svm-predict  -b 1 test_ind_scaled1 model_89_jp2k output_blur1']);
+load output_blur1
+jp2k_score = output_blur1;
+delete output_blur1 test_ind_scaled1
 
 % JPEG quality
 jpeg_score  = jpeg_quality_score(im);
 
 
 % WN quality
-system([scale_path,' -r range2_wn test_ind.txt >> test_ind_scaled']);
-system([predict_path, ' -b 1 test_ind_scaled model_89_wn output_blur']);
-load output_blur
-wn_score = output_blur;
-delete output_blur test_ind_scaled
+system(['svm-scale -r range2_wn test_ind.txt >> test_ind_scaled2']);
+system(['svm-predict -b 1 test_ind_scaled2 model_89_wn output_blur2']);
+load output_blur2
+wn_score = output_blur2;
+delete output_blur2 test_ind_scaled2
 
 
 % Blur quality
-system([scale_path,' -r range2_blur test_ind.txt >> test_ind_scaled']);
-system([predict_path, ' -b 1 test_ind_scaled model_89_blur output_blur']);
-load output_blur
-blur_score = output_blur;
-delete output_blur test_ind_scaled
+system(['svm-scale -r range2_blur test_ind.txt >> test_ind_scaled3']);
+system(['svm-predict  -b 1 test_ind_scaled3 model_89_blur output_blur3']);
+load output_blur3
+blur_score = output_blur3;
+delete output_blur3 test_ind_scaled3
 
 % FF quality
-system([scale_path,' -r range2_ff test_ind.txt >> test_ind_scaled']);
-system([predict_path, ' -b 1 test_ind_scaled model_89_ff output_blur']);
-load output_blur
-ff_score = output_blur;
+system(['svm-scale -r range2_ff test_ind.txt >> test_ind_scaled4']);
+system(['svm-predict  -b 1 test_ind_scaled4 model_89_ff output_blur4']);
+load output_blur4
+ff_score = output_blur4;
 
-
-delete output_blur
-delete test_ind.txt test_ind_scaled
+delete output_blur4
+delete test_ind.txt test_ind_scaled4
 
 
 %% Final pooling
@@ -213,6 +210,5 @@ fclose(fid);
 probs = output(:,2:end);
 scores  = [jp2k_score jpeg_score wn_score blur_score ff_score];
 quality = sum(probs.*scores,2);
-delete output_89 
+delete output_89
 clc
-
