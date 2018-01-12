@@ -144,8 +144,8 @@ for j = 1:size(rep_vec,1)
 end
 fclose(fid);
 
-system(['svm-scale -r range2 test_ind.txt >> test_ind_scaled']);
-system(['svm-predict -b 1 test_ind_scaled model_89 output_89']);
+[~,~] = system(['svm-scale -r range2 test_ind.txt >> test_ind_scaled']);
+[~,~] = system(['svm-predict -b 1 test_ind_scaled model_89 output_89']);
 
 delete test_ind.txt test_ind_scaled
 
@@ -164,8 +164,8 @@ end
 fclose(fid);
 
 % Jp2k quality
-system(['svm-scale -r range2_jp2k test_ind.txt >> test_ind_scaled1']);
-system(['svm-predict  -b 1 test_ind_scaled1 model_89_jp2k output_blur1']);
+[~,~] = system(['svm-scale -r range2_jp2k test_ind.txt >> test_ind_scaled1']);
+[~,~] = system(['svm-predict  -b 1 test_ind_scaled1 model_89_jp2k output_blur1']);
 load output_blur1
 jp2k_score = output_blur1;
 delete output_blur1 test_ind_scaled1
@@ -175,23 +175,23 @@ jpeg_score  = jpeg_quality_score(im);
 
 
 % WN quality
-system(['svm-scale -r range2_wn test_ind.txt >> test_ind_scaled2']);
-system(['svm-predict -b 1 test_ind_scaled2 model_89_wn output_blur2']);
+[~,~] = system(['svm-scale -r range2_wn test_ind.txt >> test_ind_scaled2']);
+[~,~] = system(['svm-predict -b 1 test_ind_scaled2 model_89_wn output_blur2']);
 load output_blur2
 wn_score = output_blur2;
 delete output_blur2 test_ind_scaled2
 
 
 % Blur quality
-system(['svm-scale -r range2_blur test_ind.txt >> test_ind_scaled3']);
-system(['svm-predict  -b 1 test_ind_scaled3 model_89_blur output_blur3']);
+[~,~] = system(['svm-scale -r range2_blur test_ind.txt >> test_ind_scaled3']);
+[~,~] = system(['svm-predict  -b 1 test_ind_scaled3 model_89_blur output_blur3']);
 load output_blur3
 blur_score = output_blur3;
 delete output_blur3 test_ind_scaled3
 
 % FF quality
-system(['svm-scale -r range2_ff test_ind.txt >> test_ind_scaled4']);
-system(['svm-predict  -b 1 test_ind_scaled4 model_89_ff output_blur4']);
+[~,~] = system(['svm-scale -r range2_ff test_ind.txt >> test_ind_scaled4']);
+[~,~] = system(['svm-predict  -b 1 test_ind_scaled4 model_89_ff output_blur4']);
 load output_blur4
 ff_score = output_blur4;
 

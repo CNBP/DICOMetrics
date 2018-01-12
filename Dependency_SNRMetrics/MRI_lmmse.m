@@ -10,7 +10,7 @@ function I_est=MRI_lmmse(Im,Ws,varargin)
 %   I_est=MRI_lmmse(Im,[7,7],[Noise method]);
 %
 %
-% DEFAULT: 
+% DEFAULT:
 %
 %   I_est=MRI_lmmse(Im,[7,7]);
 %         Noise estimationmethod: mode2N
@@ -19,7 +19,7 @@ function I_est=MRI_lmmse(Im,Ws,varargin)
 %        - Im: input image
 %        - Ws: Size [M,N] of the square window used for local estimation
 %              Odd number recomended
-%   
+%
 %  Noise Estimation Method:
 %       y= MRI_lmmse(...,'sigma',sigma) Standard deviation of noise given
 %                   - sigma: Standar deviation of noise
@@ -45,10 +45,10 @@ function I_est=MRI_lmmse(Im,Ws,varargin)
 %       y= MRI_lmmse(...,'modeVN') Estimate the noise using the mode of the
 %               local variance [Aja06]
 %       y= MRI_lmmse(...,'modeVN_NI') Estimate the noise using the mode of the
-%  
+%
 %   Uses algorithms developed in
 %
-%           S. Aja-Fernández, C. Alberola-Lopez and C.-F. Westin. "Noise and Signal 
+%           S. Aja-Fernández, C. Alberola-Lopez and C.-F. Westin. "Noise and Signal
 %           Estimation in Magnitude MRI and Rician Distributed Images: A LMMSE Approach",
 %           IEEE Trans. on Image Processing, Vol. 17, No. 8, Aug. 2008, pp. 1383-1398.
 %
@@ -56,7 +56,7 @@ function I_est=MRI_lmmse(Im,Ws,varargin)
 %   www.lpi.tel.uva.es/~santi
 %   Version 2.0  12/06/2012
 
-[mask,thresM,noise,sigma] = parse_inputs(varargin{:});  
+[mask,thresM,noise,sigma] = parse_inputs(varargin{:});
 
 %Noise Estimation-------------------------------------------
 %LOCAL STATISTICS
@@ -72,13 +72,13 @@ if noise==5
     if mask==0
         sigma2=(prod(Ws)/(prod(Ws)-1)).*(moda(En,1000)./2);
     else
-       mask =im2bw(1-double(imfill(Im>thresM,'holes'))); 
-       sigma2=(prod(Ws)/(prod(Ws)-1)).*(moda(En(mask),1000)./2);  
+       mask =im2bw(1-double(imfill(Im>thresM,'holes')));
+       sigma2=(prod(Ws)/(prod(Ws)-1)).*(moda(En(mask),1000)./2);
     end
     sigma=sqrt(sigma2);
 end
 
-I_est = sigma
+I_est = sigma;
 %End Noise estimation-----------------------------------------------
 
 
@@ -116,7 +116,7 @@ for i = 1 : length(varargin)
       noise=2;
       thresM = varargin{i+1};
       flag = 1;
-      dfsteppos = i+1; 
+      dfsteppos = i+1;
    elseif strcmp(varargin{i},'momentN')
       noise=3;
       flag = 1;
@@ -131,10 +131,10 @@ for i = 1 : length(varargin)
       flag = 1;
    elseif strcmp(varargin{i},'modeVN')
       noise=7;
-      flag = 1; 
+      flag = 1;
     elseif strcmp(varargin{i},'modeVN_NI')
       noise=8;
-      flag = 1;   
+      flag = 1;
     end
    if flag == 0
       error('Too many parameters !')
@@ -158,7 +158,7 @@ function m=moda(u,N)
 %
 %   Author: Santiago Aja Fernandez
 %   www.lpi.tel.uva.es/~santi
-%   LOCAL STATISTICS TOOLBOX 
+%   LOCAL STATISTICS TOOLBOX
 %
 %   Modified: Feb 01 2008
 %
