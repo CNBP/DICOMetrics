@@ -39,8 +39,8 @@ end
 fclose(fid);
 warning off all
 delete output test_ind_scaled dump
-[~,~] = system('svm-scale -r allrange test_ind >> test_ind_scaled');
-[~,~] = system('svm-predict -b 1 test_ind_scaled allmodel output >>dump');
+[~,~] = system('svm-scale1 -r allrange test_ind >> test_ind_scaled');
+[~,~] = system('svm-predict1 -b 1 test_ind_scaled allmodel output >>dump');
 
 load output
 qualityscore = output;

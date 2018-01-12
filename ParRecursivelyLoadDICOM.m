@@ -115,12 +115,12 @@ end
 % Initialized algorithms label tracking;
 labelIndex = 0;
 %Loop at the algorithm TYPE level
-%for algoType = 2 : Settings.NbMetricTypes
-for algoType = 5
+for algoType = 2 : Settings.NbMetricTypes
+%for algoType = 5
 	algoCount = Settings.NbMetrics(algoType);
 	%Loop at per algorithm level  % Do Focus Measure
-	%for algoIndex = 1:algoCount
-	for algoIndex = 1
+	for algoIndex = 1:algoCount
+	%for algoIndex = 1
 		%Record Algo Information:
 		labelIndex = labelIndex+1;
 		LabelAggregate{labelIndex} = AlgoIdentify(algoType,algoIndex);
@@ -137,7 +137,7 @@ fileCount = length(validFiles); % This must be constant OUTSIDE parfor so inside
 
 AlgoAggregateCount = size(AlgoAggregate,2);
 disp('Begin Parallel Code:');
-for AggregateIndex = 1 : AlgoAggregateCount
+parfor AggregateIndex = 1 : AlgoAggregateCount
 	PalgoIndex = AlgoAggregate{AggregateIndex}{2};
 	PalgoType = AlgoAggregate{AggregateIndex}{1};
 
