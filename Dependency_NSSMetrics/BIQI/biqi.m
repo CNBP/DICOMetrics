@@ -209,6 +209,10 @@ output = [C{1} C{2} C{3} C{4} C{5} C{6}];
 fclose(fid);
 probs = output(:,2:end);
 scores  = [jp2k_score jpeg_score wn_score blur_score ff_score];
+%Debug for weird scores
+if size(scores,1)==2
+    disp('SERIOUS ISSUES YO');
+end
 quality = sum(probs.*scores,2);
 delete output_89
 clc

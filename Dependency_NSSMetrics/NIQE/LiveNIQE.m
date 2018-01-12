@@ -33,7 +33,7 @@ function Output = LiveNIQE(Image)
 %------------- BEGIN CODE --------------
 
     %Dependency Clearing:
-    
+
 
     %Get and visit the current path to ensure no svm-predict conflict.
     scriptName = mfilename('fullpath');
@@ -49,7 +49,7 @@ function Output = LiveNIQE(Image)
 
     % Final return
     Output = computequality(Image,blocksizerow,blocksizecol,blockrowoverlap,blockcoloverlap, ...
-        mu_prisparam,cov_prisparam)
+        mu_prisparam,cov_prisparam);
 
 end
 %------------- END OF CODE --------------
