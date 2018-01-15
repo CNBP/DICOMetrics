@@ -41,10 +41,10 @@ Output = false;
   elseif (size(metrics,1) ~= size(label,1))
     error('Fatal Error:Input rows do not match and cannot process. Make sure labels and metrics have the SAME number of rows!');
     return;
-  elseif (size(size(Metrics),2) ~= 2)
+  elseif (size(size(metrics),2) ~= 2)
     error('Fatal Error:Input metrics must be a 2d array!');
     return;
-  elseif (size(size(label),2) ~= 1)
+  elseif (size(label,2) ~= 1)
     error('Fatal Error:Input metrics must be a 1d vector!');
     return;
   end

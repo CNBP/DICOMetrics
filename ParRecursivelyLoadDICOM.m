@@ -114,6 +114,7 @@ end
 % Section for aggregate the labels into an index that can be parallel processed.
 % Initialized algorithms label tracking;
 labelIndex = 0;
+
 %Loop at the algorithm TYPE level
 for algoType = 2 : Settings.NbMetricTypes
 %for algoType = 5
@@ -149,8 +150,14 @@ parfor AggregateIndex = 1 : AlgoAggregateCount
 		% At per file level, check if the file is dicom.
 		if isdicom(validFiles{fileIndex})
 
-			%Calculate the focus metrics score
-			Result = ProcessSingleDICOMInput(validFiles{fileIndex}, PalgoIndex, PalgoType);
+			% Debugging script that igore anything not algorithm type 5 (i.e. NSS metrics)
+			%if PalgoType ~= 5
+			%	Result = 0;
+			%else
+				%Calculate the focus metrics score
+				Result = ProcessSingleDICOMInput(validFiles{fileIndex}, PalgoIndex, PalgoType);
+			%	end
+
 			%Result =  PalgoIndex * 10 + PalgoType;
 			PerAggregateResults {fileIndex} = Result;
 
