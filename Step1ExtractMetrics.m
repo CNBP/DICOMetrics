@@ -108,7 +108,10 @@ function MetricsMatrix = Step1ExtractMetrics(path, StudyType)
   % Save the various output
   save('MetricsDataStructure.mat','Output');
   save('MetricsMatrix.mat','MetricsMatrix');
-  csvwrite('UnlabledMatrix.csv','MetricsMatrix');
+
+
+  csvwrite('UnlabledMatrix.csv',MetricsMatrix);
+
   OutputTable = array2table(MetricsMatrix,'VariableNames',Output.LabelAggregate);
   writetable(OutputTable,'LabeledMatrix.csv');
 

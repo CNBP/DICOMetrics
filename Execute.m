@@ -41,7 +41,6 @@ function Output = Execute(label)
 
 %------------- BEGIN CODE --------------
   clc;
-  clear;
   % Get Main path;
   path                  = uigetdir;
 

@@ -9,8 +9,8 @@ function [Name, Count] = AlgoNSS(Index)
 %    	input3 			- Description
 %
 % Outputs:
-%    	output1			- Description
-%    	output2			- Description
+%    	output1			- Descriptions
+%    	output2			- Descriptison
 %
 % Example:
 %    	Line 1 of example
@@ -35,8 +35,8 @@ AlgoNSS{ 2} = 'NSS_BRISQUE';
 AlgoNSS{ 3} = 'NSS_JP2KNR';
 AlgoNSS{ 4} = 'NSS_NIQE';
 AlgoNSS{ 5} = 'NSS_SSEQ';
-AlgoNSS{ 6} = 'MSS_MatLabBRISQUE';
-AlgoNSS{ 7} = 'MSS_MatLabNIQE';
+AlgoNSS{ 6} = 'NSS_MatLabBRISQUE';
+AlgoNSS{ 7} = 'NsSS_MatLabNIQE';
 
 [Name, Count] = AlgoName(AlgoNSS,Index);
 
