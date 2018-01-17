@@ -29,8 +29,8 @@ function Output = Step2ClassifiersTests(DataMatrix,labelBinary)
 % The structure that will be used to contain all output.
 Output = struct;
 
-% Read in the setting files
-Setting = LoadConfigVariables();
+% Read in the Settings files
+Settings = LoadConfigVariables();
 
 %This is the entry function to load all things such as the following:
 
@@ -56,12 +56,18 @@ Setting = LoadConfigVariables();
 % % total number of metric types
 % NbMetricTypes = 5;
 
+  % Ensure dependencies are properly referred to by recursively add the folder and subdirectories.
+  addpath(genpath(Settings.Folder.Root));
+  addpath(genpath(Settings.Folder.Result));
+  addpath(genpath(Settings.Folder.General));
+  addpath(genpath(Settings.Folder.Classification));
+
   %Loop through all classes in the labelBinary.
   for labelBinaryColumnIndex = 1:size(labelBinary,2)
       %Record all FILES:
-      for ClassifierIndex = 1:Setting.ClassifierCount;
+      for ClassifierIndex = 1:Settings.ClassifierCount
           % Check if the file is dicom.
-          ClassifierInfo = ClassifiersAnalyses(DataMatrix, labelBinary(:,labelBinaryColumnIndex), ClassifierIndex, Setting.CrossValidationFold);
+          ClassifierInfo = ClassifiersAnalyses(DataMatrix, labelBinary(:,labelBinaryColumnIndex), ClassifierIndex, Settings.CrossValidationFold);
           if (isempty(ClassifierInfo))
             % Copy over the classifier info.
             Output(ClassifierIndex,labelBinaryColumnIndex).Classifier   = []
