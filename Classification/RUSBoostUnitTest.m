@@ -19,7 +19,7 @@ end
 
 
 
-trueLabelsVector = RegressionInput(:,67);
+label = RegressionInput(:,67);
 metrics = RegressionInput(:,1:65);
 fold = 10;
 cost = 15;

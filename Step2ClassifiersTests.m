@@ -4,7 +4,7 @@ function Output = Step2ClassifiersTests(DataMatrix,labelBinary)
 % Syntax:   Output = RecursivelyAnalyzeResults()
 %
 % Inputs:
-%    labelBinary      0 for bad images, 1 for good images.
+%    !!!labelBinary      1 for bad images, 0 for good images!!!!
 %
 % Outputs:
 %    	Output			- the matrix array that contains ALL results.

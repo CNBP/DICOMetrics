@@ -149,10 +149,29 @@ function ClassifierModel = RUSBoostClassifier(metrics, trueLabelsVector, Default
       % Plot confusion, class in row, column represent observations. Must use their binary form.
       plotconfusion(trueLabels',predictedLabels');
 
-      xlabel('Truth')
-      ylabel('Inferred')
-      set(gca,'xticklabel',{'True Good(NT)' 'True Bad(T)' 'Total Predicted'})
-      set(gca,'yticklabel',{'Predicted Good(NT)' 'Predicted (T)' 'Total True'})
+      % Going to customize the color a bit.
+      % Remove gray background:
+      %defining my colors
+      SenSpecBG=[235 235 235]/255;
+      TruePositiveBG=[50 205 50]/255;
+      ErrorBG=[236 0 0]/255;
+      totalBG=[255 255 255]/255;
+
+      %fontsize
+      set(findobj(gca,'type','text'),'fontsize',20)
+
+      %colors
+      set(findobj(gca,'color',[0,102,0]./255),'color',TruePositiveBG)
+      %set(findobj(gca,'color',[102,0,0]./255),'color',ErrorBG)
+      set(findobj(gcf,'facecolor',[120,230,180]./255),'facecolor',TruePositiveBG)
+      %set(findobj(gcf,'facecolor',[230,140,140]./255),'facecolor',ErrorBG)
+      set(findobj(gcf,'facecolor',[0.5,0.5,0.5]),'facecolor',SenSpecBG)
+      set(findobj(gcf,'facecolor',[120,150,230]./255),'facecolor',totalBG)
+      set(gcf,'Position', [10 10 900 600])
+      xlabel('Ground Truth')
+      ylabel('Prediction')
+      set(gca,'xticklabel',{'True QC Pass' 'True QC Fail' 'Green:  NPV / PPV'})
+      set(gca,'yticklabel',{'Predicted QC Pass' 'Predicted QC Fail' 'Green: Specificity / Sensitivity'})
       saveas(gcf,char(filenameConfusion),'fig');
 
       % Plot the ROC characterics
