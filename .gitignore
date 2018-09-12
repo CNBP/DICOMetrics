@@ -54,3 +54,5 @@ Temporary Items
 .dcm
 TemplateTexter/Templater/Templater/bin/
 TemplateTexter/Templater/Templater/obj/
+.idea/*
+.idea
